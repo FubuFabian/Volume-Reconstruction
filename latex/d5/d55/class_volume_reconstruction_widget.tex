@@ -1,0 +1,329 @@
+\hypertarget{class_volume_reconstruction_widget}{\section{Volume\-Reconstruction\-Widget Class Reference}
+\label{d5/d55/class_volume_reconstruction_widget}\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}}
+}
+
+
+Has the interaction methods for the user to generate a new volue.  
+
+
+
+
+{\ttfamily \#include $<$Volume\-Reconstruction\-Widget.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_volume_reconstruction_widget_a416775ea7aaf4825ac221175748d4a44}{Volume\-Reconstruction\-Widget} (Q\-Widget $\ast$parent=0)
+\item 
+\hyperlink{class_volume_reconstruction_widget_a3405f6a602f58f56a00eb3931832c244}{$\sim$\-Volume\-Reconstruction\-Widget} ()
+\item 
+void \hyperlink{class_volume_reconstruction_widget_af052a30a68972c3d864268afdf4a9b01}{set\-Main\-Window} (\hyperlink{class_main_window}{Main\-Window} $\ast$mainwindow)
+\item 
+void \hyperlink{class_volume_reconstruction_widget_a4a6309c14e9dc0b56a4d2e5037f6ded7}{set\-Transform\-Stack} (std\-::vector$<$ vnl\-\_\-matrix$<$ double $>$ $>$)
+\item 
+void \hyperlink{class_volume_reconstruction_widget_a748ad3f117a04950da1e46eda4d5f763}{set\-Volume\-Image\-Stack} (std\-::vector$<$ vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ $>$)
+\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_volume_reconstruction_widget_a610fbb01abf2c0a69c143304233170ac}{save} ()
+\begin{DoxyCompactList}\small\item\em Saves the volume in a .mhd and .raw file. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_widget_a65ed7b767a7e256539b4f4cdeebe8a3f}{generate} ()
+\begin{DoxyCompactList}\small\item\em Calls \hyperlink{_volume_reconstruction_8h}{Volume\-Reconstruction.\-h} to generate the new volume data. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_widget_abdcc0d358ef82fecdc093b534b11c08c}{invert} ()
+\begin{DoxyCompactList}\small\item\em Invert the color transfer function. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_widget_afef1bd7aa84184b34065beb91e858edc}{transparency} ()
+\begin{DoxyCompactList}\small\item\em Changes the oacity of the volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_volume_reconstruction_widget_a8a4852fab62c5f8512f758cb3a106071}{calc\-Image\-Coords} ()
+\begin{DoxyCompactList}\small\item\em Computes every pixel coord of each image in the 3\-D space. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_widget_a6645ccc86f2b2b02e38835f191a96464}{calc\-Image\-Bounds} ()
+\begin{DoxyCompactList}\small\item\em Computes the coords of the images bounds int he 3\-D space. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_widget_aacf14912ac38b5633f01bb3c742f54f4}{calc\-Volume\-Size} (bool)
+\begin{DoxyCompactList}\small\item\em Computes the volume size. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_widget_a24a0314f3c08b8c878518e72da5fad3e}{set\-Volume\-Opacity} (int)
+\begin{DoxyCompactList}\small\item\em Set the volume opacity. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_widget_abaeb27296325b0fe55125337e73cbea8}{set\-Volume\-Color\-Map} (bool)
+\begin{DoxyCompactList}\small\item\em Set the volume colo transfer function. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_widget_a318c42b0fc54dda95cf2a71346f994ff}{set\-Display\-Properties} (vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$)
+\begin{DoxyCompactList}\small\item\em Set the display properties of the volume and the rendering method. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_widget_a09883a3dbf07b5edf1dae1ce20bbbc29}{display\-Volume} ()
+\begin{DoxyCompactList}\small\item\em Display the volume in the 3\-D scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ui\-::\-Volume\-Reconstruction\-Widget $\ast$ \hyperlink{class_volume_reconstruction_widget_afe330d72d1167607d761a6be7f5c4048}{ui}
+\item 
+\hyperlink{class_main_window}{Main\-Window} $\ast$ \hyperlink{class_volume_reconstruction_widget_a3c4a62c79152059201b1ace97af89691}{main\-Window}
+\item 
+std\-::vector$<$ vtk\-Smart\-Pointer\\*
+$<$ vtk\-Image\-Data $>$ $>$ \hyperlink{class_volume_reconstruction_widget_a521dcefa95fe4f079622c83e162349b5}{volume\-Image\-Stack}
+\item 
+std\-::vector$<$ vnl\-\_\-matrix$<$ double $>$ $>$ \hyperlink{class_volume_reconstruction_widget_a184f596737a8ba01e74e2acb3843fcfc}{transform\-Stack}
+\item 
+std\-::vector$<$ vnl\-\_\-matrix$<$ double $>$ $>$ \hyperlink{class_volume_reconstruction_widget_af74830d4db64cc68e46eb49d261f537e}{image\-Coords\-X\-Stack}
+\item 
+std\-::vector$<$ vnl\-\_\-matrix$<$ double $>$ $>$ \hyperlink{class_volume_reconstruction_widget_a510a59c37345dfc2e0e3593a5384d664}{image\-Coords\-Y\-Stack}
+\item 
+std\-::vector$<$ vnl\-\_\-matrix$<$ double $>$ $>$ \hyperlink{class_volume_reconstruction_widget_addd1ebae781cf60c4a4dff76bc6b6a2c}{image\-Coords\-Z\-Stack}
+\item 
+std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$ \hyperlink{class_volume_reconstruction_widget_ac955dfda26333bae884d4dbe1f60a4da}{image\-Bounds\-X\-Stack}
+\item 
+std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$ \hyperlink{class_volume_reconstruction_widget_a4d5b04312c40280d1b32bd51f65d38b7}{image\-Bounds\-Y\-Stack}
+\item 
+std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$ \hyperlink{class_volume_reconstruction_widget_a016899517e376967dd75c268c0e4d81c}{image\-Bounds\-Z\-Stack}
+\item 
+vtk\-Smart\-Pointer$<$ vtk\-Volume $>$ \hyperlink{class_volume_reconstruction_widget_a40d53f5d382c03ff1ea33531f0c90394}{volume}
+\item 
+vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ \hyperlink{class_volume_reconstruction_widget_a88b81c92ab3f640a7e1e9f8bbf40a2ba}{volume\-Data}
+\item 
+vtk\-Smart\-Pointer\\*
+$<$ vtk\-Volume\-Property $>$ \hyperlink{class_volume_reconstruction_widget_aa019933b9a5cdfee94739d13b383b7b8}{volume\-Property}
+\item 
+vnl\-\_\-vector$<$ double $>$ \hyperlink{class_volume_reconstruction_widget_a8a96c61c0e699daeaa349bc94610863b}{volume\-Origin}
+\item 
+vnl\-\_\-vector$<$ double $>$ \hyperlink{class_volume_reconstruction_widget_abb6e7b4895b0a9e6b60419b432b9afcb}{volume\-Final}
+\item 
+vnl\-\_\-vector$<$ double $>$ \hyperlink{class_volume_reconstruction_widget_ac6e459db730b1349685d3d01e95692bd}{volume\-Size}
+\item 
+vnl\-\_\-vector$<$ double $>$ \hyperlink{class_volume_reconstruction_widget_ae236e766bdd26a8e1d3af5abc965b558}{scale}
+\item 
+bool \hyperlink{class_volume_reconstruction_widget_a5c6d9354261c5494fab5d408da9ec13f}{invert\-Colors}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Has the interaction methods for the user to generate a new volue. 
+
+This class allows the user to choose between a voxel based method or a pixel based method to recontruct a volume and set the main volume properties. It allows to change the opacity of the generated volume and to changethe colors. This class also allows to the user to save the volume in a .mhd and .raw files 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_volume_reconstruction_widget_a416775ea7aaf4825ac221175748d4a44}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}}
+\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{Volume\-Reconstruction\-Widget}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Volume\-Reconstruction\-Widget\-::\-Volume\-Reconstruction\-Widget} (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}explicit\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a416775ea7aaf4825ac221175748d4a44}
+\hypertarget{class_volume_reconstruction_widget_a3405f6a602f58f56a00eb3931832c244}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!$\sim$\-Volume\-Reconstruction\-Widget@{$\sim$\-Volume\-Reconstruction\-Widget}}
+\index{$\sim$\-Volume\-Reconstruction\-Widget@{$\sim$\-Volume\-Reconstruction\-Widget}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{$\sim$\-Volume\-Reconstruction\-Widget}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Volume\-Reconstruction\-Widget\-::$\sim$\-Volume\-Reconstruction\-Widget} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{d5/d55/class_volume_reconstruction_widget_a3405f6a602f58f56a00eb3931832c244}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_volume_reconstruction_widget_a6645ccc86f2b2b02e38835f191a96464}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!calc\-Image\-Bounds@{calc\-Image\-Bounds}}
+\index{calc\-Image\-Bounds@{calc\-Image\-Bounds}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{calc\-Image\-Bounds}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::calc\-Image\-Bounds} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a6645ccc86f2b2b02e38835f191a96464}
+
+
+Computes the coords of the images bounds int he 3\-D space. 
+
+\hypertarget{class_volume_reconstruction_widget_a8a4852fab62c5f8512f758cb3a106071}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!calc\-Image\-Coords@{calc\-Image\-Coords}}
+\index{calc\-Image\-Coords@{calc\-Image\-Coords}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{calc\-Image\-Coords}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::calc\-Image\-Coords} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a8a4852fab62c5f8512f758cb3a106071}
+
+
+Computes every pixel coord of each image in the 3\-D space. 
+
+\hypertarget{class_volume_reconstruction_widget_aacf14912ac38b5633f01bb3c742f54f4}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!calc\-Volume\-Size@{calc\-Volume\-Size}}
+\index{calc\-Volume\-Size@{calc\-Volume\-Size}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{calc\-Volume\-Size}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::calc\-Volume\-Size} (
+\begin{DoxyParamCaption}
+\item[{bool}]{use\-Pixel\-Method}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_aacf14912ac38b5633f01bb3c742f54f4}
+
+
+Computes the volume size. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em if} & bool is true it computes it with the imagecoords, else it uses the image bounds \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_volume_reconstruction_widget_a09883a3dbf07b5edf1dae1ce20bbbc29}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!display\-Volume@{display\-Volume}}
+\index{display\-Volume@{display\-Volume}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{display\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::display\-Volume} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a09883a3dbf07b5edf1dae1ce20bbbc29}
+
+
+Display the volume in the 3\-D scene. 
+
+\hypertarget{class_volume_reconstruction_widget_a65ed7b767a7e256539b4f4cdeebe8a3f}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!generate@{generate}}
+\index{generate@{generate}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{generate}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::generate} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private, slot\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a65ed7b767a7e256539b4f4cdeebe8a3f}
+
+
+Calls \hyperlink{_volume_reconstruction_8h}{Volume\-Reconstruction.\-h} to generate the new volume data. 
+
+\hypertarget{class_volume_reconstruction_widget_abdcc0d358ef82fecdc093b534b11c08c}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!invert@{invert}}
+\index{invert@{invert}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{invert}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::invert} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private, slot\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_abdcc0d358ef82fecdc093b534b11c08c}
+
+
+Invert the color transfer function. 
+
+\hypertarget{class_volume_reconstruction_widget_a610fbb01abf2c0a69c143304233170ac}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!save@{save}}
+\index{save@{save}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::save} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private, slot\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a610fbb01abf2c0a69c143304233170ac}
+
+
+Saves the volume in a .mhd and .raw file. 
+
+\hypertarget{class_volume_reconstruction_widget_a318c42b0fc54dda95cf2a71346f994ff}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!set\-Display\-Properties@{set\-Display\-Properties}}
+\index{set\-Display\-Properties@{set\-Display\-Properties}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{set\-Display\-Properties}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::set\-Display\-Properties} (
+\begin{DoxyParamCaption}
+\item[{vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$}]{volume\-Data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a318c42b0fc54dda95cf2a71346f994ff}
+
+
+Set the display properties of the volume and the rendering method. 
+
+\hypertarget{class_volume_reconstruction_widget_af052a30a68972c3d864268afdf4a9b01}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!set\-Main\-Window@{set\-Main\-Window}}
+\index{set\-Main\-Window@{set\-Main\-Window}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{set\-Main\-Window}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::set\-Main\-Window} (
+\begin{DoxyParamCaption}
+\item[{{\bf Main\-Window} $\ast$}]{mainwindow}
+\end{DoxyParamCaption}
+)}}\label{d5/d55/class_volume_reconstruction_widget_af052a30a68972c3d864268afdf4a9b01}
+Set the window to display the volume \hypertarget{class_volume_reconstruction_widget_a4a6309c14e9dc0b56a4d2e5037f6ded7}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!set\-Transform\-Stack@{set\-Transform\-Stack}}
+\index{set\-Transform\-Stack@{set\-Transform\-Stack}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{set\-Transform\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::set\-Transform\-Stack} (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ vnl\-\_\-matrix$<$ double $>$ $>$}]{transform\-Stack}
+\end{DoxyParamCaption}
+)}}\label{d5/d55/class_volume_reconstruction_widget_a4a6309c14e9dc0b56a4d2e5037f6ded7}
+Set the transformation stack for the volume image \hypertarget{class_volume_reconstruction_widget_abaeb27296325b0fe55125337e73cbea8}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!set\-Volume\-Color\-Map@{set\-Volume\-Color\-Map}}
+\index{set\-Volume\-Color\-Map@{set\-Volume\-Color\-Map}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{set\-Volume\-Color\-Map}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::set\-Volume\-Color\-Map} (
+\begin{DoxyParamCaption}
+\item[{bool}]{invert}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_abaeb27296325b0fe55125337e73cbea8}
+
+
+Set the volume colo transfer function. 
+
+\hypertarget{class_volume_reconstruction_widget_a748ad3f117a04950da1e46eda4d5f763}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!set\-Volume\-Image\-Stack@{set\-Volume\-Image\-Stack}}
+\index{set\-Volume\-Image\-Stack@{set\-Volume\-Image\-Stack}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{set\-Volume\-Image\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::set\-Volume\-Image\-Stack} (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ $>$}]{volume\-Image\-Stack}
+\end{DoxyParamCaption}
+)}}\label{d5/d55/class_volume_reconstruction_widget_a748ad3f117a04950da1e46eda4d5f763}
+Set the image data stack \hypertarget{class_volume_reconstruction_widget_a24a0314f3c08b8c878518e72da5fad3e}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!set\-Volume\-Opacity@{set\-Volume\-Opacity}}
+\index{set\-Volume\-Opacity@{set\-Volume\-Opacity}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{set\-Volume\-Opacity}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::set\-Volume\-Opacity} (
+\begin{DoxyParamCaption}
+\item[{int}]{point}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a24a0314f3c08b8c878518e72da5fad3e}
+
+
+Set the volume opacity. 
+
+\hypertarget{class_volume_reconstruction_widget_afef1bd7aa84184b34065beb91e858edc}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!transparency@{transparency}}
+\index{transparency@{transparency}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{transparency}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::transparency} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private, slot\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_afef1bd7aa84184b34065beb91e858edc}
+
+
+Changes the oacity of the volume. 
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_volume_reconstruction_widget_ac955dfda26333bae884d4dbe1f60a4da}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!image\-Bounds\-X\-Stack@{image\-Bounds\-X\-Stack}}
+\index{image\-Bounds\-X\-Stack@{image\-Bounds\-X\-Stack}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{image\-Bounds\-X\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-vector$<$double$>$ $>$ {\bf Volume\-Reconstruction\-Widget\-::image\-Bounds\-X\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_ac955dfda26333bae884d4dbe1f60a4da}
+Contains the transformed bounds in x of each image pixel \hypertarget{class_volume_reconstruction_widget_a4d5b04312c40280d1b32bd51f65d38b7}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!image\-Bounds\-Y\-Stack@{image\-Bounds\-Y\-Stack}}
+\index{image\-Bounds\-Y\-Stack@{image\-Bounds\-Y\-Stack}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{image\-Bounds\-Y\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-vector$<$double$>$ $>$ {\bf Volume\-Reconstruction\-Widget\-::image\-Bounds\-Y\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a4d5b04312c40280d1b32bd51f65d38b7}
+Contains the transformed bounds in y of each image pixel \hypertarget{class_volume_reconstruction_widget_a016899517e376967dd75c268c0e4d81c}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!image\-Bounds\-Z\-Stack@{image\-Bounds\-Z\-Stack}}
+\index{image\-Bounds\-Z\-Stack@{image\-Bounds\-Z\-Stack}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{image\-Bounds\-Z\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-vector$<$double$>$ $>$ {\bf Volume\-Reconstruction\-Widget\-::image\-Bounds\-Z\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a016899517e376967dd75c268c0e4d81c}
+Contains the transformed bounds in z of each image pixel \hypertarget{class_volume_reconstruction_widget_af74830d4db64cc68e46eb49d261f537e}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!image\-Coords\-X\-Stack@{image\-Coords\-X\-Stack}}
+\index{image\-Coords\-X\-Stack@{image\-Coords\-X\-Stack}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{image\-Coords\-X\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-matrix$<$double$>$ $>$ {\bf Volume\-Reconstruction\-Widget\-::image\-Coords\-X\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_af74830d4db64cc68e46eb49d261f537e}
+Contains the transformed coords in x of each image pixel \hypertarget{class_volume_reconstruction_widget_a510a59c37345dfc2e0e3593a5384d664}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!image\-Coords\-Y\-Stack@{image\-Coords\-Y\-Stack}}
+\index{image\-Coords\-Y\-Stack@{image\-Coords\-Y\-Stack}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{image\-Coords\-Y\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-matrix$<$double$>$ $>$ {\bf Volume\-Reconstruction\-Widget\-::image\-Coords\-Y\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a510a59c37345dfc2e0e3593a5384d664}
+Contains the transformed coords in y of each image pixel \hypertarget{class_volume_reconstruction_widget_addd1ebae781cf60c4a4dff76bc6b6a2c}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!image\-Coords\-Z\-Stack@{image\-Coords\-Z\-Stack}}
+\index{image\-Coords\-Z\-Stack@{image\-Coords\-Z\-Stack}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{image\-Coords\-Z\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-matrix$<$double$>$ $>$ {\bf Volume\-Reconstruction\-Widget\-::image\-Coords\-Z\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_addd1ebae781cf60c4a4dff76bc6b6a2c}
+Contains the transformed coords in z of each image pixel \hypertarget{class_volume_reconstruction_widget_a5c6d9354261c5494fab5d408da9ec13f}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!invert\-Colors@{invert\-Colors}}
+\index{invert\-Colors@{invert\-Colors}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{invert\-Colors}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Volume\-Reconstruction\-Widget\-::invert\-Colors}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a5c6d9354261c5494fab5d408da9ec13f}
+\hypertarget{class_volume_reconstruction_widget_a3c4a62c79152059201b1ace97af89691}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!main\-Window@{main\-Window}}
+\index{main\-Window@{main\-Window}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{main\-Window}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Main\-Window}$\ast$ {\bf Volume\-Reconstruction\-Widget\-::main\-Window}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a3c4a62c79152059201b1ace97af89691}
+the main window to call it \hypertarget{class_volume_reconstruction_widget_ae236e766bdd26a8e1d3af5abc965b558}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!scale@{scale}}
+\index{scale@{scale}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{scale}]{\setlength{\rightskip}{0pt plus 5cm}vnl\-\_\-vector$<$double$>$ {\bf Volume\-Reconstruction\-Widget\-::scale}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_ae236e766bdd26a8e1d3af5abc965b558}
+Scale of the images \hypertarget{class_volume_reconstruction_widget_a184f596737a8ba01e74e2acb3843fcfc}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!transform\-Stack@{transform\-Stack}}
+\index{transform\-Stack@{transform\-Stack}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{transform\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-matrix$<$double$>$ $>$ {\bf Volume\-Reconstruction\-Widget\-::transform\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a184f596737a8ba01e74e2acb3843fcfc}
+Contains the transformation of each image \hypertarget{class_volume_reconstruction_widget_afe330d72d1167607d761a6be7f5c4048}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!ui@{ui}}
+\index{ui@{ui}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{ui}]{\setlength{\rightskip}{0pt plus 5cm}Ui\-::\-Volume\-Reconstruction\-Widget$\ast$ {\bf Volume\-Reconstruction\-Widget\-::ui}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_afe330d72d1167607d761a6be7f5c4048}
+\hypertarget{class_volume_reconstruction_widget_a40d53f5d382c03ff1ea33531f0c90394}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!volume@{volume}}
+\index{volume@{volume}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{volume}]{\setlength{\rightskip}{0pt plus 5cm}vtk\-Smart\-Pointer$<$vtk\-Volume$>$ {\bf Volume\-Reconstruction\-Widget\-::volume}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a40d53f5d382c03ff1ea33531f0c90394}
+the volume to display \hypertarget{class_volume_reconstruction_widget_a88b81c92ab3f640a7e1e9f8bbf40a2ba}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!volume\-Data@{volume\-Data}}
+\index{volume\-Data@{volume\-Data}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{volume\-Data}]{\setlength{\rightskip}{0pt plus 5cm}vtk\-Smart\-Pointer$<$vtk\-Image\-Data$>$ {\bf Volume\-Reconstruction\-Widget\-::volume\-Data}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a88b81c92ab3f640a7e1e9f8bbf40a2ba}
+Data of the volume \hypertarget{class_volume_reconstruction_widget_abb6e7b4895b0a9e6b60419b432b9afcb}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!volume\-Final@{volume\-Final}}
+\index{volume\-Final@{volume\-Final}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{volume\-Final}]{\setlength{\rightskip}{0pt plus 5cm}vnl\-\_\-vector$<$double$>$ {\bf Volume\-Reconstruction\-Widget\-::volume\-Final}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_abb6e7b4895b0a9e6b60419b432b9afcb}
+End of the volume data in the 3\-D space \hypertarget{class_volume_reconstruction_widget_a521dcefa95fe4f079622c83e162349b5}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!volume\-Image\-Stack@{volume\-Image\-Stack}}
+\index{volume\-Image\-Stack@{volume\-Image\-Stack}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{volume\-Image\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vtk\-Smart\-Pointer$<$vtk\-Image\-Data$>$ $>$ {\bf Volume\-Reconstruction\-Widget\-::volume\-Image\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a521dcefa95fe4f079622c83e162349b5}
+The data of each image \hypertarget{class_volume_reconstruction_widget_a8a96c61c0e699daeaa349bc94610863b}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!volume\-Origin@{volume\-Origin}}
+\index{volume\-Origin@{volume\-Origin}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{volume\-Origin}]{\setlength{\rightskip}{0pt plus 5cm}vnl\-\_\-vector$<$double$>$ {\bf Volume\-Reconstruction\-Widget\-::volume\-Origin}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a8a96c61c0e699daeaa349bc94610863b}
+Start of the volume data in the 3\-D space \hypertarget{class_volume_reconstruction_widget_aa019933b9a5cdfee94739d13b383b7b8}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!volume\-Property@{volume\-Property}}
+\index{volume\-Property@{volume\-Property}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{volume\-Property}]{\setlength{\rightskip}{0pt plus 5cm}vtk\-Smart\-Pointer$<$vtk\-Volume\-Property$>$ {\bf Volume\-Reconstruction\-Widget\-::volume\-Property}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_aa019933b9a5cdfee94739d13b383b7b8}
+Main volume properties \hypertarget{class_volume_reconstruction_widget_ac6e459db730b1349685d3d01e95692bd}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!volume\-Size@{volume\-Size}}
+\index{volume\-Size@{volume\-Size}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
+\subsubsection[{volume\-Size}]{\setlength{\rightskip}{0pt plus 5cm}vnl\-\_\-vector$<$double$>$ {\bf Volume\-Reconstruction\-Widget\-::volume\-Size}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_ac6e459db730b1349685d3d01e95692bd}
+Size of the volume data 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_volume_reconstruction_widget_8h}{Volume\-Reconstruction\-Widget.\-h}\item 
+\hyperlink{_volume_reconstruction_widget_8cpp}{Volume\-Reconstruction\-Widget.\-cpp}\end{DoxyCompactItemize}

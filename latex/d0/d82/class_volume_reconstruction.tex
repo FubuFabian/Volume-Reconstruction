@@ -1,0 +1,240 @@
+\hypertarget{class_volume_reconstruction}{\section{Volume\-Reconstruction Class Reference}
+\label{d0/d82/class_volume_reconstruction}\index{Volume\-Reconstruction@{Volume\-Reconstruction}}
+}
+
+
+Generate a new volume.  
+
+
+
+
+{\ttfamily \#include $<$Volume\-Reconstruction.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_volume_reconstruction_a91d4ebf982057964f9a27e293833bde0}{set\-Volume\-Size} (vnl\-\_\-vector$<$ double $>$)
+\begin{DoxyCompactList}\small\item\em Set the size of the volume data. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_a5bbf3c65905834931937a0e973e571d9}{set\-Volume\-Origin} (vnl\-\_\-vector$<$ double $>$)
+\begin{DoxyCompactList}\small\item\em Set the volume data orgin in the 3\-D scene. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_a4ad4c87bba6fc1f23cebc591f6f446f1}{set\-Image\-Bounds\-Stack} (std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$, std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$, std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$)
+\begin{DoxyCompactList}\small\item\em Set the image bounds. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_a48ad149cd89751de3288f9eab48301dc}{set\-Volume\-Image\-Stack} (std\-::vector$<$ vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ $>$)
+\begin{DoxyCompactList}\small\item\em Set image data stack to generate the volume. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_af64a1f92390e10bb4137fb4336b6c642}{set\-Transform\-Stack} (std\-::vector$<$ vnl\-\_\-matrix$<$ double $>$ $>$)
+\begin{DoxyCompactList}\small\item\em Set the transformation for each image used in the reconstruction. \end{DoxyCompactList}\item 
+void \hyperlink{class_volume_reconstruction_a0d8aadc257be0ebaf0830c2134c6af6e}{set\-Scale} (vnl\-\_\-vector$<$ double $>$)
+\begin{DoxyCompactList}\small\item\em Set the scale of the images. \end{DoxyCompactList}\item 
+vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ \hyperlink{class_volume_reconstruction_a30444231716f75031e8c57a2a8208f87}{generate\-Volume} ()
+\begin{DoxyCompactList}\small\item\em Returns the new volume data with the voxel based method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_volume_reconstruction}{Volume\-Reconstruction} $\ast$ \hyperlink{class_volume_reconstruction_a5c90b7fb1ef05a8ce122a9cb57976e0a}{New} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_volume_reconstruction_a35f8f4ee0dacf37cfbcfc8f827f240e2}{calc\-Image\-Plane} ()
+\begin{DoxyCompactList}\small\item\em Compute the plane equation for each image. \end{DoxyCompactList}\item 
+double \hyperlink{class_volume_reconstruction_a56c2752963605f4f3946f993b965896b}{calc\-Max\-Distance} ()
+\begin{DoxyCompactList}\small\item\em Computes the maximun distance in the volume. \end{DoxyCompactList}\item 
+double \hyperlink{class_volume_reconstruction_a6a8f5b24210f1c991c62b3cd988b7ed4}{calc\-Voxel\-Value} (std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$, vnl\-\_\-vector$<$ double $>$, vnl\-\_\-vector$<$ double $>$)
+\begin{DoxyCompactList}\small\item\em Computes the voxel value using three lineal interpolation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vnl\-\_\-vector$<$ double $>$ \hyperlink{class_volume_reconstruction_a7ad648349d7db6376ab9e2fed94cbff9}{volume\-Size}
+\item 
+vnl\-\_\-vector$<$ double $>$ \hyperlink{class_volume_reconstruction_ada4102ad3e89c1e3dfe2d8aa2147493a}{volume\-Origin}
+\item 
+std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$ \hyperlink{class_volume_reconstruction_a96b8325b93561329706e8fa152b31568}{image\-Bounds\-X\-Stack}
+\item 
+std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$ \hyperlink{class_volume_reconstruction_a4e8c38f1168e4b35c026af2700f3aabc}{image\-Bounds\-Y\-Stack}
+\item 
+std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$ \hyperlink{class_volume_reconstruction_a00e60d5e0d604279caabe68c4ebc8fda}{image\-Bounds\-Z\-Stack}
+\item 
+std\-::vector$<$ vtk\-Smart\-Pointer\\*
+$<$ vtk\-Image\-Data $>$ $>$ \hyperlink{class_volume_reconstruction_a9974405ea1911b5922a28ae682087730}{volume\-Image\-Stack}
+\item 
+std\-::vector$<$ vnl\-\_\-matrix$<$ double $>$ $>$ \hyperlink{class_volume_reconstruction_a4be301f984c70fa431aa176535882eca}{transform\-Stack}
+\item 
+vnl\-\_\-vector$<$ double $>$ \hyperlink{class_volume_reconstruction_a6911c1ecd44ed6cc11f73740db81f6c0}{scale}
+\item 
+std\-::vector$<$ vtk\-Smart\-Pointer\\*
+$<$ vtk\-Plane $>$ $>$ \hyperlink{class_volume_reconstruction_a3ff58286a3dded49e06408d2ff60bb67}{image\-Plane\-Stack}
+\item 
+double \hyperlink{class_volume_reconstruction_a05a3b2bff77b320303dc6ca1e8a94cad}{max\-Distance}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Generate a new volume. 
+
+This class generate a new volume data using a voxel based method with the previously loaded data. It requiers the images data, the tracker data and the estimated parameters from a calibration. The method implemented a nearest pixel interpolation. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_volume_reconstruction_a35f8f4ee0dacf37cfbcfc8f827f240e2}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!calc\-Image\-Plane@{calc\-Image\-Plane}}
+\index{calc\-Image\-Plane@{calc\-Image\-Plane}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{calc\-Image\-Plane}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-::calc\-Image\-Plane} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a35f8f4ee0dacf37cfbcfc8f827f240e2}
+
+
+Compute the plane equation for each image. 
+
+\hypertarget{class_volume_reconstruction_a56c2752963605f4f3946f993b965896b}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!calc\-Max\-Distance@{calc\-Max\-Distance}}
+\index{calc\-Max\-Distance@{calc\-Max\-Distance}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{calc\-Max\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Volume\-Reconstruction\-::calc\-Max\-Distance} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a56c2752963605f4f3946f993b965896b}
+
+
+Computes the maximun distance in the volume. 
+
+\hypertarget{class_volume_reconstruction_a6a8f5b24210f1c991c62b3cd988b7ed4}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!calc\-Voxel\-Value@{calc\-Voxel\-Value}}
+\index{calc\-Voxel\-Value@{calc\-Voxel\-Value}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{calc\-Voxel\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Volume\-Reconstruction\-::calc\-Voxel\-Value} (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$}]{, }
+\item[{vnl\-\_\-vector$<$ double $>$}]{, }
+\item[{vnl\-\_\-vector$<$ double $>$}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a6a8f5b24210f1c991c62b3cd988b7ed4}
+
+
+Computes the voxel value using three lineal interpolation. 
+
+\hypertarget{class_volume_reconstruction_a30444231716f75031e8c57a2a8208f87}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!generate\-Volume@{generate\-Volume}}
+\index{generate\-Volume@{generate\-Volume}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{generate\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ {\bf Volume\-Reconstruction\-::generate\-Volume} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{d0/d82/class_volume_reconstruction_a30444231716f75031e8c57a2a8208f87}
+
+
+Returns the new volume data with the voxel based method. 
+
+\hypertarget{class_volume_reconstruction_a5c90b7fb1ef05a8ce122a9cb57976e0a}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!New@{New}}
+\index{New@{New}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{New}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Volume\-Reconstruction}$\ast$ {\bf Volume\-Reconstruction\-::\-New} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, static\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a5c90b7fb1ef05a8ce122a9cb57976e0a}
+
+
+Constructor. 
+
+\hypertarget{class_volume_reconstruction_a4ad4c87bba6fc1f23cebc591f6f446f1}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!set\-Image\-Bounds\-Stack@{set\-Image\-Bounds\-Stack}}
+\index{set\-Image\-Bounds\-Stack@{set\-Image\-Bounds\-Stack}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{set\-Image\-Bounds\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-::set\-Image\-Bounds\-Stack} (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$}]{image\-Bounds\-X\-Stack, }
+\item[{std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$}]{image\-Bounds\-Y\-Stack, }
+\item[{std\-::vector$<$ vnl\-\_\-vector$<$ double $>$ $>$}]{image\-Bounds\-Z\-Stack}
+\end{DoxyParamCaption}
+)}}\label{d0/d82/class_volume_reconstruction_a4ad4c87bba6fc1f23cebc591f6f446f1}
+
+
+Set the image bounds. 
+
+\hypertarget{class_volume_reconstruction_a0d8aadc257be0ebaf0830c2134c6af6e}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!set\-Scale@{set\-Scale}}
+\index{set\-Scale@{set\-Scale}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{set\-Scale}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-::set\-Scale} (
+\begin{DoxyParamCaption}
+\item[{vnl\-\_\-vector$<$ double $>$}]{scale}
+\end{DoxyParamCaption}
+)}}\label{d0/d82/class_volume_reconstruction_a0d8aadc257be0ebaf0830c2134c6af6e}
+
+
+Set the scale of the images. 
+
+\hypertarget{class_volume_reconstruction_af64a1f92390e10bb4137fb4336b6c642}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!set\-Transform\-Stack@{set\-Transform\-Stack}}
+\index{set\-Transform\-Stack@{set\-Transform\-Stack}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{set\-Transform\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-::set\-Transform\-Stack} (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ vnl\-\_\-matrix$<$ double $>$ $>$}]{transform\-Stack}
+\end{DoxyParamCaption}
+)}}\label{d0/d82/class_volume_reconstruction_af64a1f92390e10bb4137fb4336b6c642}
+
+
+Set the transformation for each image used in the reconstruction. 
+
+\hypertarget{class_volume_reconstruction_a48ad149cd89751de3288f9eab48301dc}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!set\-Volume\-Image\-Stack@{set\-Volume\-Image\-Stack}}
+\index{set\-Volume\-Image\-Stack@{set\-Volume\-Image\-Stack}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{set\-Volume\-Image\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-::set\-Volume\-Image\-Stack} (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ $>$}]{volume\-Image\-Stack}
+\end{DoxyParamCaption}
+)}}\label{d0/d82/class_volume_reconstruction_a48ad149cd89751de3288f9eab48301dc}
+
+
+Set image data stack to generate the volume. 
+
+\hypertarget{class_volume_reconstruction_a5bbf3c65905834931937a0e973e571d9}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!set\-Volume\-Origin@{set\-Volume\-Origin}}
+\index{set\-Volume\-Origin@{set\-Volume\-Origin}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{set\-Volume\-Origin}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-::set\-Volume\-Origin} (
+\begin{DoxyParamCaption}
+\item[{vnl\-\_\-vector$<$ double $>$}]{volume\-Origin}
+\end{DoxyParamCaption}
+)}}\label{d0/d82/class_volume_reconstruction_a5bbf3c65905834931937a0e973e571d9}
+
+
+Set the volume data orgin in the 3\-D scene. 
+
+\hypertarget{class_volume_reconstruction_a91d4ebf982057964f9a27e293833bde0}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!set\-Volume\-Size@{set\-Volume\-Size}}
+\index{set\-Volume\-Size@{set\-Volume\-Size}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{set\-Volume\-Size}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-::set\-Volume\-Size} (
+\begin{DoxyParamCaption}
+\item[{vnl\-\_\-vector$<$ double $>$}]{volume\-Size}
+\end{DoxyParamCaption}
+)}}\label{d0/d82/class_volume_reconstruction_a91d4ebf982057964f9a27e293833bde0}
+
+
+Set the size of the volume data. 
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_volume_reconstruction_a96b8325b93561329706e8fa152b31568}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!image\-Bounds\-X\-Stack@{image\-Bounds\-X\-Stack}}
+\index{image\-Bounds\-X\-Stack@{image\-Bounds\-X\-Stack}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{image\-Bounds\-X\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-vector$<$double$>$ $>$ {\bf Volume\-Reconstruction\-::image\-Bounds\-X\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a96b8325b93561329706e8fa152b31568}
+Stacks for the image Bounds in x \hypertarget{class_volume_reconstruction_a4e8c38f1168e4b35c026af2700f3aabc}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!image\-Bounds\-Y\-Stack@{image\-Bounds\-Y\-Stack}}
+\index{image\-Bounds\-Y\-Stack@{image\-Bounds\-Y\-Stack}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{image\-Bounds\-Y\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-vector$<$double$>$ $>$ {\bf Volume\-Reconstruction\-::image\-Bounds\-Y\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a4e8c38f1168e4b35c026af2700f3aabc}
+Stacks for the image Bounds in Y \hypertarget{class_volume_reconstruction_a00e60d5e0d604279caabe68c4ebc8fda}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!image\-Bounds\-Z\-Stack@{image\-Bounds\-Z\-Stack}}
+\index{image\-Bounds\-Z\-Stack@{image\-Bounds\-Z\-Stack}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{image\-Bounds\-Z\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-vector$<$double$>$ $>$ {\bf Volume\-Reconstruction\-::image\-Bounds\-Z\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a00e60d5e0d604279caabe68c4ebc8fda}
+Stacks for the image Bounds in Z \hypertarget{class_volume_reconstruction_a3ff58286a3dded49e06408d2ff60bb67}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!image\-Plane\-Stack@{image\-Plane\-Stack}}
+\index{image\-Plane\-Stack@{image\-Plane\-Stack}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{image\-Plane\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vtk\-Smart\-Pointer$<$vtk\-Plane$>$ $>$ {\bf Volume\-Reconstruction\-::image\-Plane\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a3ff58286a3dded49e06408d2ff60bb67}
+The plane equation for each image \hypertarget{class_volume_reconstruction_a05a3b2bff77b320303dc6ca1e8a94cad}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!max\-Distance@{max\-Distance}}
+\index{max\-Distance@{max\-Distance}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{max\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Volume\-Reconstruction\-::max\-Distance}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a05a3b2bff77b320303dc6ca1e8a94cad}
+the maximun distance found in the volume \hypertarget{class_volume_reconstruction_a6911c1ecd44ed6cc11f73740db81f6c0}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!scale@{scale}}
+\index{scale@{scale}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{scale}]{\setlength{\rightskip}{0pt plus 5cm}vnl\-\_\-vector$<$double$>$ {\bf Volume\-Reconstruction\-::scale}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a6911c1ecd44ed6cc11f73740db81f6c0}
+scale of the images \hypertarget{class_volume_reconstruction_a4be301f984c70fa431aa176535882eca}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!transform\-Stack@{transform\-Stack}}
+\index{transform\-Stack@{transform\-Stack}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{transform\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-matrix$<$double$>$ $>$ {\bf Volume\-Reconstruction\-::transform\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a4be301f984c70fa431aa176535882eca}
+Contains the transformation for each image \hypertarget{class_volume_reconstruction_a9974405ea1911b5922a28ae682087730}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!volume\-Image\-Stack@{volume\-Image\-Stack}}
+\index{volume\-Image\-Stack@{volume\-Image\-Stack}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{volume\-Image\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vtk\-Smart\-Pointer$<$ vtk\-Image\-Data$>$ $>$ {\bf Volume\-Reconstruction\-::volume\-Image\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a9974405ea1911b5922a28ae682087730}
+The stack of images data \hypertarget{class_volume_reconstruction_ada4102ad3e89c1e3dfe2d8aa2147493a}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!volume\-Origin@{volume\-Origin}}
+\index{volume\-Origin@{volume\-Origin}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{volume\-Origin}]{\setlength{\rightskip}{0pt plus 5cm}vnl\-\_\-vector$<$double$>$ {\bf Volume\-Reconstruction\-::volume\-Origin}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_ada4102ad3e89c1e3dfe2d8aa2147493a}
+Where the volume data begins in the 3\-D scene \hypertarget{class_volume_reconstruction_a7ad648349d7db6376ab9e2fed94cbff9}{\index{Volume\-Reconstruction@{Volume\-Reconstruction}!volume\-Size@{volume\-Size}}
+\index{volume\-Size@{volume\-Size}!VolumeReconstruction@{Volume\-Reconstruction}}
+\subsubsection[{volume\-Size}]{\setlength{\rightskip}{0pt plus 5cm}vnl\-\_\-vector$<$double$>$ {\bf Volume\-Reconstruction\-::volume\-Size}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d82/class_volume_reconstruction_a7ad648349d7db6376ab9e2fed94cbff9}
+Size of the volume 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_volume_reconstruction_8h}{Volume\-Reconstruction.\-h}\item 
+\hyperlink{_volume_reconstruction_8cpp}{Volume\-Reconstruction.\-cpp}\end{DoxyCompactItemize}
