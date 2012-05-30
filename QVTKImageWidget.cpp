@@ -435,6 +435,8 @@ vnl_matrix<double> QVTKImageWidget::computeTransformation(vnl_vector<double> qua
     tTr.put(2, 3, translation[2]);
 
     vnl_matrix<double> tTp = tTr*rTp;
+	
+	tTp.print(std::cout);
 
     return tTp;
 
@@ -457,10 +459,17 @@ void QVTKImageWidget::displaySelectedImage(int idx)
 void QVTKImageWidget::displayVolume(vtkSmartPointer<vtkVolume> volume)
 {
 
+	
+    renderer = vtkSmartPointer<vtkRenderer>::New();
+    renderer->SetBackground(1, 1, 1);
 	renderer->AddVolume(volume);
+
     renwin = vtkSmartPointer<vtkRenderWindow>::New();
     renwin->AddRenderer(renderer);
+
     qvtkWidget->SetRenderWindow(renwin);
+	std::cout<<std::endl;
+	std::cout<<"Displaying volume"<<std::endl<<std::endl;
     renwin->Render();
 }
 

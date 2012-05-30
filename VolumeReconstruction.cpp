@@ -1,7 +1,9 @@
 #include "VolumeReconstruction.h"
 
 #include <vtkMath.h>
+#include <vtkMetaImageWriter.h>
 #include <vnl/vnl_inverse.h>
+#include <exception>
 
 vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 {
@@ -20,12 +22,12 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 
 	std::cout<<"Calculating voxel values";
 
-	for(int i=0; i<volumeSize[0]; i++){
+	for(int i=215; i<volumeSize[0]; i++){
 		
 		std::cout<<".";
 
-		for(int j=0; j<volumeSize[1]; j++){
-			for(int k=0; k<volumeSize[2]; k++){
+		for(int j=82; j<volumeSize[1]; j++){
+			for(int k=230; k<volumeSize[2]; k++){
 
 				double voxel[3];
 				voxel[0] = i*scale[0] + volumeOrigin[0];
@@ -108,6 +110,17 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 		}
 	}
 
+	 
+	vtkSmartPointer<vtkMetaImageWriter> writer = vtkSmartPointer<vtkMetaImageWriter>::New();
+	writer->SetFileName("C:/Users/Administrador/Documents/Volumenes/test_03.mhd");
+	writer->SetRAWFileName("C:/Users/Administrador/Documents/Volumenes/test_03.raw");
+	writer->SetInputConnection(volumeData->GetProducerPort());
+	try{
+	writer->Write();
+	}catch( exception& e ){
+		std::cout<<e.what()<<std::endl;
+	}
+
 	return volumeData;
 
 }
@@ -120,6 +133,11 @@ double VolumeReconstruction::calcVoxelValue(std::vector< vnl_vector<double>> cro
 	
 	for(int i=0; i<crossPoints.size(); i++){
 
+//////////////////////
+		double plano = distancePlane[i];
+		double distancia = distance[i];
+/////////////////////
+
 		vnl_matrix<double> inverseTransform = vnl_inverse(transformStack.at(distancePlane[i]));
 	
 		vnl_vector<double> pointCoords;
@@ -128,6 +146,12 @@ double VolumeReconstruction::calcVoxelValue(std::vector< vnl_vector<double>> cro
 		pointCoords.put(1,crossPoints.at(i)[1]);
 		pointCoords.put(2,crossPoints.at(i)[2]);
 		pointCoords.put(3,1);
+
+////////////////////
+		double punto1 = crossPoints.at(i)[0];
+		double punto2 = crossPoints.at(i)[1];
+		double punto3 = crossPoints.at(i)[2];
+////////////////////
 
 		vnl_vector<double> imgCoord = inverseTransform*pointCoords; 
 

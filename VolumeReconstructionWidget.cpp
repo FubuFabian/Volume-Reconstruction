@@ -204,6 +204,7 @@ void VolumeReconstructionWidget::calcImageBounds()
 		imageBoundsZStack.push_back(imageBoundsZ);
 
 	}
+
 }
 
 
@@ -367,6 +368,10 @@ void VolumeReconstructionWidget::save()
 	writer->SetFileName(saveMhdFile);
 	writer->SetRAWFileName(saveRawFile);
 	writer->SetInputConnection(volumeData->GetProducerPort());
-	writer->Write();
 
+	try{
+	writer->Write();
+	}catch( exception& e){
+		std::cout<<e.what()<<std::endl;
+	}
 }
