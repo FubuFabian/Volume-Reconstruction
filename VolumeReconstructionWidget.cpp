@@ -13,10 +13,6 @@ VolumeReconstructionWidget::VolumeReconstructionWidget(QWidget *parent) :
 	ui->setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose);
 
-	ui->transparency->setTickInterval(1);
-    ui->transparency->setRange(0,255);
-    
-	invertColors = false;
 }
 
 VolumeReconstructionWidget::~VolumeReconstructionWidget()
@@ -58,36 +54,8 @@ void VolumeReconstructionWidget::generate()
 
 	}
 
-	volume = vtkSmartPointer<vtkVolume>::New();
-	volumeProperty = vtkSmartPointer<vtkVolumeProperty>::New();
-
-	setVolumeOpacity(255);
-	setVolumeColorMap(invertColors);
-	
-	volume->SetOrigin(0,0,0);
-	volume->SetPosition(volumeOrigin[0],volumeOrigin[1],volumeOrigin[2]);
-
-	setDisplayProperties(volumeData);
-	displayVolume();
-
-}
-
-void VolumeReconstructionWidget::invert()
-{
-	invertColors = !invertColors;
-
-	setVolumeColorMap(invertColors);
-	displayVolume();
-
-}
-
-void VolumeReconstructionWidget::transparency()
-{
-	int transparencyValue = ui->transparency->value();
-
-	setVolumeOpacity(transparencyValue);
-	displayVolume();
-
+    mainWindow->getDisplayWidget()->setAndDisplayVolume(volumeData);
+	mainWindow->getDisplayWidget()->setVolumeOrigin(volumeOrigin);
 }
 
 void VolumeReconstructionWidget::setTransformStack(std::vector< vnl_matrix<double> > transformStack)
@@ -273,68 +241,6 @@ void VolumeReconstructionWidget::calcVolumeSize(bool usePixelMethod)
 	volumeSize[1] = vtkMath::Round((volumeFinal[1] - volumeOrigin[1])/scale[0]);
 	volumeSize[2] = vtkMath::Round((volumeFinal[2] - volumeOrigin[2])/scale[0]);
 	std::cout<<"Volume size: "<<volumeSize[0]<<","<<volumeSize[1]<<","<<volumeSize[2]<<std::endl<<std::endl;
-}
-
-
-void VolumeReconstructionWidget::setVolumeOpacity(int point)
-{
-	std::cout<<"Setting volume Opacity"<<std::endl;
-
-	vtkSmartPointer<vtkPiecewiseFunction> volumeScalarOpacity = vtkSmartPointer<vtkPiecewiseFunction>::New();
-	volumeScalarOpacity->AddPoint(0,0.00);
-	volumeScalarOpacity->AddPoint(point,1.00);
-	volumeScalarOpacity->AddPoint(255,0.00);
-	volumeScalarOpacity->Update();
-	volumeProperty->SetScalarOpacity(volumeScalarOpacity);
-
-
-}
-
-void VolumeReconstructionWidget::setVolumeColorMap(bool invert)
-{
-
-	std::cout<<"Setting volume Color Map"<<std::endl;
-
-	vtkSmartPointer<vtkColorTransferFunction> volumeColor = vtkSmartPointer<vtkColorTransferFunction>::New();
-
-	if(!invert){
-		volumeColor->AddRGBPoint(0,0.0,0.0,0.0);
-		volumeColor->AddRGBPoint(64,0.25,0.25,0.25);
-		volumeColor->AddRGBPoint(128,0.5,0.5,0.5);
-		volumeColor->AddRGBPoint(192,0.75,0.75,0.75);
-		volumeColor->AddRGBPoint(255,1.0,1.0,1.0);
-	}else{
-		volumeColor->AddRGBPoint(255,0.0,0.0,0.0);
-		volumeColor->AddRGBPoint(192,0.25,0.25,0.25);
-		volumeColor->AddRGBPoint(128,0.5,0.5,0.5);
-		volumeColor->AddRGBPoint(64,0.75,0.75,0.75);
-		volumeColor->AddRGBPoint(0,1.0,1.0,1.0);
-	}
-
-	volumeProperty->SetColor(volumeColor);
-}
-
-
-void VolumeReconstructionWidget::setDisplayProperties(vtkSmartPointer<vtkImageData> volumeData)
-{
-	std::cout<<std::endl<<"Setting Display Properties"<<std::endl;
-	
-	vtkSmartPointer<vtkVolumeRayCastCompositeFunction> compositeFunction = 
-		vtkSmartPointer<vtkVolumeRayCastCompositeFunction>::New(); 
-
-	vtkSmartPointer<vtkVolumeRayCastMapper> volumeMapper = vtkSmartPointer<vtkVolumeRayCastMapper>::New();
-	volumeMapper->SetVolumeRayCastFunction(compositeFunction);
-	volumeMapper->CroppingOff(); 
-	volumeMapper->SetInput(volumeData);
-	volume->SetMapper(volumeMapper);
-
-}
-
-void VolumeReconstructionWidget::displayVolume()
-{
-	volume->SetProperty(volumeProperty);
-	volume->Update();
-	mainWindow->getDisplayWidget()->displayVolume(volume);
 }
 
 

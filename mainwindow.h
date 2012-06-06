@@ -36,23 +36,28 @@ public:
 
 
 
+
 private:
+
   Ui::MainWindow *ui;
 
   /** \brief The filename of each selected image */
   QStringList imagesFilenames;
 
   /** \brief The filenames of each selected volume image */
-  QStringList volumeImagesFilenames; ///<List that contains the volume images filenames.
+  QStringList volumeImagesFilenames;
 
   /** \brief The filename of the rotation data for each image */
-  QString volumeRotationData; ///<Roation data filename.
+  QString volumeRotationData;
 
    /** \brief The filename of the translation data for each image */
-  QString volumeTranslationData; ///<Translation data filename.
+  QString volumeTranslationData;
 
    /** \brief The filename of the estimated parameters in the calibration */
-  QString volumeCalibrationData; ///<Calibration data filename
+  QString volumeCalibrationData;
+
+  /** \brief The filename of the selected volume */
+  QString volumeFilename;
 
   QString textOnTextArea;
 
@@ -77,6 +82,11 @@ private slots:
   void displaySelectedImage(int idx);
 
   /**
+   * \brief Set selected opacity for the displayed volume
+   */
+  void setSelectedOpacity(int idx);
+
+  /**
    * \brief Implements a ultrasound 3D probe calibration, for navigate with the 
    * probe
    */
@@ -97,6 +107,11 @@ private slots:
    *with the loaded data
    */
   void volumeReconstruction();
+
+  /**
+   * \brief Set a volume filename
+   */
+  void openVolume();
 
 };
 

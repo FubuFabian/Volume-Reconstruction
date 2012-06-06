@@ -4,6 +4,7 @@
 #include <vtkMetaImageWriter.h>
 #include <vnl/vnl_inverse.h>
 #include <exception>
+#include <time.h>
 
 vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 {
@@ -21,13 +22,14 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 	maxDistance = calcMaxDistance();
 
 	std::cout<<"Calculating voxel values";
-
-	for(int i=215; i<volumeSize[0]; i++){
+	clock_t begin = clock();
+	
+	for(int i=0; i<volumeSize[0]; i++){
 		
 		std::cout<<".";
 
-		for(int j=82; j<volumeSize[1]; j++){
-			for(int k=230; k<volumeSize[2]; k++){
+		for(int j=0; j<volumeSize[1]; j++){
+			for(int k=0; k<volumeSize[2]; k++){
 
 				double voxel[3];
 				voxel[0] = i*scale[0] + volumeOrigin[0];
@@ -103,13 +105,15 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 
 				double voxelValue = calcVoxelValue(crossPoints, distancePlane, distance);
 
-				unsigned char* pixel = static_cast<unsigned char*>(volumeData->GetScalarPointer(i,j,k));
-
-				pixel[0] = voxelValue;
+				volumeData->SetScalarComponentFromDouble(i,j,k,0,voxelValue);
 			}
 		}
 	}
 
+	clock_t end = clock();
+	double diffticks = end - begin;
+	double diffms = (diffticks * 10) / CLOCKS_PER_SEC;
+	std::cout<<std::endl<<"Time elapsed: "<< double(diffms)<<" ms" <<std::endl;
 	 
 	vtkSmartPointer<vtkMetaImageWriter> writer = vtkSmartPointer<vtkMetaImageWriter>::New();
 	writer->SetFileName("C:/Users/Administrador/Documents/Volumenes/test_03.mhd");
@@ -155,8 +159,13 @@ double VolumeReconstruction::calcVoxelValue(std::vector< vnl_vector<double>> cro
 
 		vnl_vector<double> imgCoord = inverseTransform*pointCoords; 
 
+///////////////////
+		double imgCoord1 = imgCoord[0];
+		double imgCoord2 = imgCoord[1];
+///////////////////
+
 		int x = imgCoord[0]/scale[0];
-		int y = imgCoord[1]/scale[1];
+		int y = imgCoord[1]/scale[0];
 
 		double pixelValue= 0;
 
@@ -199,6 +208,7 @@ double VolumeReconstruction::calcVoxelValue(std::vector< vnl_vector<double>> cro
 double VolumeReconstruction::calcMaxDistance()
 {
 	double maxDistance = sqrt(volumeSize[0]*volumeSize[0] + volumeSize[1]*volumeSize[1] + volumeSize[2]*volumeSize[2]);
+	maxDistance = maxDistance*scale[0];
 	std::cout<<std::endl<<"Maximum distance in the volume: "<<maxDistance<<std::endl;
 
 	return maxDistance;

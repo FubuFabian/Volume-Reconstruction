@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
   // hide the slider andonly show if an image stack is load
   ui->imageSlider->hide();
-
+  ui->opacitySlider->hide();
   // create the connections 
   Connections = vtkSmartPointer<vtkEventQtSlotConnect>::New();
 
@@ -103,6 +103,22 @@ void MainWindow::openVolumeData()
 
 }
 
+void MainWindow::openVolume()
+{
+
+
+    this->volumeFilename = QFileDialog::getOpenFileName(this, tr("Open Volume .mhd"),
+        QDir::currentPath(), tr("Volume Files (*.mhd)"));
+
+    ui->opacitySlider->show();
+    ui->opacitySlider->setTickInterval(1);
+    ui->opacitySlider->setRange(0, 255);
+
+    
+	this->displayWidget->setAndDisplayVolume(volumeFilename);
+    ui->opacitySlider->setValue(127);
+}
+
 void MainWindow::probeCalibration()
 {
   if (!displayWidget->getImageStack().empty())
@@ -138,7 +154,12 @@ void MainWindow::volumeReconstruction()
 	std::cout<<"VOLUME RECONSTRUCTION"<<std::endl<<std::endl;
     if (!displayWidget->getVolumeImageStack().empty())
       {
-        VolumeReconstructionWidget * volumeReconstruction = new VolumeReconstructionWidget();
+       VolumeReconstructionWidget * volumeReconstruction = new VolumeReconstructionWidget();
+
+		ui->opacitySlider->show();
+		ui->opacitySlider->setTickInterval(1);
+		ui->opacitySlider->setRange(0, 255);
+		
 
 		if (displayWidget->isVolumeImageStackLoaded){
            volumeReconstruction->setVolumeImageStack(displayWidget->getVolumeImageStack());
@@ -155,11 +176,17 @@ void MainWindow::volumeReconstruction()
             "No volume data loaded, </ br> please data before reconstruct the volume");
         errorMessage.exec();
       }
+	
 }
 
 void MainWindow::displaySelectedImage(int idx)
 {
   this->displayWidget->displaySelectedImage(idx);
+}
+
+void MainWindow::setSelectedOpacity(int idx)
+{
+  this->displayWidget->setVolumeOpacity(idx);
 }
 
 

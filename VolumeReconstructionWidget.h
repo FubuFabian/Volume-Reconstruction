@@ -94,8 +94,6 @@ private:
     /** Scale of the images */
 	vnl_vector<double> scale;
 
-	bool invertColors;
-
     /**
      * \brief Computes every pixel coord of each image in the 3D space
      */
@@ -116,12 +114,12 @@ private:
     /**
      * \brief Set the volume opacity
      */
-	void setVolumeOpacity(int);
+    void setVolumeOpacity();
 
     /**
      * \brief Set the volume colo transfer function
      */
-	void setVolumeColorMap(bool);
+    void setVolumeColorMap();
 
     /**
      * \brief Set the display properties of the volume and the rendering method
@@ -145,15 +143,7 @@ private slots:
      */
     void generate();
 
-    /**
-     * \brief Invert the color transfer function
-     */
-    void invert();
 
-    /**
-     * \brief Changes the oacity of the volume
-     */
-    void transparency();
 };
 
 #endif // VOLUMERECONSTRUCTIONWIDGET_H

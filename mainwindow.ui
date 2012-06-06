@@ -48,7 +48,7 @@
     </size>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0">
+    <item row="3" column="0">
      <widget class="QTextEdit" name="textEdit">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -80,8 +80,15 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
+    <item row="2" column="0">
      <widget class="QSlider" name="imageSlider">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QSlider" name="opacitySlider">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -105,6 +112,7 @@
     <addaction name="separator"/>
     <addaction name="actionAdd_Images_Folder"/>
     <addaction name="actionOpen_Volume_Data"/>
+    <addaction name="actionOpen_Volume"/>
     <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menuProcess">
@@ -120,7 +128,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAdd_Images_Folder">
    <property name="text">
-    <string>Open Image</string>
+    <string>Open Image(s)</string>
    </property>
    <property name="toolTip">
     <string>Open Image or images</string>
@@ -144,6 +152,11 @@
   <action name="actionVolume_Reconstruction">
    <property name="text">
     <string>Volume Reconstruction</string>
+   </property>
+  </action>
+  <action name="actionOpen_Volume">
+   <property name="text">
+    <string>Open Volume</string>
    </property>
   </action>
  </widget>
@@ -246,6 +259,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionOpen_Volume</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>openVolume()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>330</x>
+     <y>329</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>opacitySlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setSelectedOpacity(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>523</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>551</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addImages()</slot>
@@ -254,5 +299,7 @@
   <slot>displaySelectedImage(int)</slot>
   <slot>openVolumeData()</slot>
   <slot>volumeReconstruction()</slot>
+  <slot>openVolume()</slot>
+  <slot>setSelectedOpacity(int)</slot>
  </slots>
 </ui>

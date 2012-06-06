@@ -26,13 +26,12 @@
 #include <vtkImageActor.h>
 #include <vtkInteractorStyleImage.h>
 #include <vtkImageFlip.h>
-#include <vtkVolume.h>
+
 #include <vtkVolumeRayCastMapper.h>
 #include <vtkVolumeRayCastCompositeFunction.h>
-#include <vtkVolumeProperty.h>
 #include <vtkColorTransferFunction.h>
-#include <vtkPiecewiseFunction.h>
 #include <vtkMath.h>
+#include <vtkMetaImageReader.h>
 
 QVTKImageWidget::QVTKImageWidget(QWidget *parent) : QWidget(parent)
 {
@@ -291,6 +290,100 @@ void QVTKImageWidget::setAndDisplayVolumeImages(QStringList imageFilenames, QStr
 
 }
 
+
+void QVTKImageWidget::setAndDisplayVolume(QString volumeFilename)
+{
+
+
+    vtkSmartPointer<vtkMetaImageReader> reader = vtkSmartPointer<vtkMetaImageReader>::New();
+    reader->SetFileName(volumeFilename.toAscii().data());
+    reader->Update();
+
+    volumeData = reader->GetOutput();
+
+    volumeProperty = vtkSmartPointer<vtkVolumeProperty>::New();
+
+    vtkSmartPointer<vtkVolumeRayCastCompositeFunction> rayCastFunction =
+                vtkSmartPointer<vtkVolumeRayCastCompositeFunction>::New();
+
+    volumeScalarOpacity = vtkSmartPointer<vtkPiecewiseFunction>::New();
+    volumeScalarOpacity->AddPoint(0,0.00);
+    opacityPoint = 127;
+    volumeScalarOpacity->AddPoint(opacityPoint,1.00);
+    volumeScalarOpacity->AddPoint(255,0.00);
+    volumeScalarOpacity->Update();
+    volumeProperty->SetScalarOpacity(volumeScalarOpacity);
+
+    vtkSmartPointer<vtkColorTransferFunction> volumeColor = vtkSmartPointer<vtkColorTransferFunction>::New();
+    volumeColor->AddRGBPoint(0,0.0,0.0,0.0);
+    volumeColor->AddRGBPoint(64,0.25,0.25,0.25);
+    volumeColor->AddRGBPoint(128,0.5,0.5,0.5);
+    volumeColor->AddRGBPoint(192,0.75,0.75,0.75);
+    volumeColor->AddRGBPoint(255,1.0,1.0,1.0);
+    volumeProperty->SetColor(volumeColor);
+
+    vtkSmartPointer<vtkVolumeRayCastCompositeFunction> compositeFunction =
+            vtkSmartPointer<vtkVolumeRayCastCompositeFunction>::New();
+
+    vtkSmartPointer<vtkVolumeRayCastMapper> volumeMapper = vtkSmartPointer<vtkVolumeRayCastMapper>::New();
+    volumeMapper->SetVolumeRayCastFunction(compositeFunction);
+    volumeMapper->CroppingOff();
+    volumeMapper->SetInput(volumeData);
+
+    volume = vtkSmartPointer<vtkVolume>::New();
+    volume->SetMapper(volumeMapper);
+    volume->SetOrigin(0,0,0);
+    volume->SetProperty(volumeProperty);
+    volume->Update();
+
+    this->displayVolume(volume);
+
+}
+
+void QVTKImageWidget::setAndDisplayVolume(vtkSmartPointer<vtkImageData> volumeData)
+{
+
+    this->volumeData = volumeData;
+
+    volumeProperty = vtkSmartPointer<vtkVolumeProperty>::New();
+
+    vtkSmartPointer<vtkVolumeRayCastCompositeFunction> rayCastFunction =
+                vtkSmartPointer<vtkVolumeRayCastCompositeFunction>::New();
+
+    volumeScalarOpacity = vtkSmartPointer<vtkPiecewiseFunction>::New();
+    volumeScalarOpacity->AddPoint(0,0.00);
+    opacityPoint = 127;
+    volumeScalarOpacity->AddPoint(opacityPoint,1.00);
+    volumeScalarOpacity->AddPoint(255,0.00);
+    volumeScalarOpacity->Update();
+    volumeProperty->SetScalarOpacity(volumeScalarOpacity);
+
+    vtkSmartPointer<vtkColorTransferFunction> volumeColor = vtkSmartPointer<vtkColorTransferFunction>::New();
+    volumeColor->AddRGBPoint(0,0.0,0.0,0.0);
+    volumeColor->AddRGBPoint(64,0.25,0.25,0.25);
+    volumeColor->AddRGBPoint(128,0.5,0.5,0.5);
+    volumeColor->AddRGBPoint(192,0.75,0.75,0.75);
+    volumeColor->AddRGBPoint(255,1.0,1.0,1.0);
+    volumeProperty->SetColor(volumeColor);
+
+    vtkSmartPointer<vtkVolumeRayCastCompositeFunction> compositeFunction =
+            vtkSmartPointer<vtkVolumeRayCastCompositeFunction>::New();
+
+    vtkSmartPointer<vtkVolumeRayCastMapper> volumeMapper = vtkSmartPointer<vtkVolumeRayCastMapper>::New();
+    volumeMapper->SetVolumeRayCastFunction(compositeFunction);
+    volumeMapper->CroppingOff();
+    volumeMapper->SetInput(volumeData);
+
+    volume = vtkSmartPointer<vtkVolume>::New();
+    volume->SetMapper(volumeMapper);
+    volume->SetOrigin(0,0,0);
+    volume->SetProperty(volumeProperty);
+    volume->Update();
+
+    //this->displayVolume(volume);
+
+}
+
 void QVTKImageWidget::displayImage(vtkImageData *image)
 {
     imageViewer->SetInput(image);
@@ -435,11 +528,8 @@ vnl_matrix<double> QVTKImageWidget::computeTransformation(vnl_vector<double> qua
     tTr.put(2, 3, translation[2]);
 
     vnl_matrix<double> tTp = tTr*rTp;
-	
-	tTp.print(std::cout);
 
     return tTp;
-
 	
 
 }
@@ -492,6 +582,29 @@ void QVTKImageWidget::setImageProperties(bool verbose)
         }
 }
 
+void QVTKImageWidget::setVolumeOpacity(int opacity)
+{
+
+	volumeScalarOpacity->RemovePoint(opacityPoint);
+	volumeScalarOpacity->AddPoint(opacity,1.00);
+	volumeScalarOpacity->Update();
+
+	opacityPoint = opacity;
+
+	volumeProperty->SetScalarOpacity(volumeScalarOpacity);
+    volume->SetProperty(volumeProperty);
+    volume->Update();
+
+    this->displayVolume(volume);
+
+}
+
+void QVTKImageWidget::setVolumeOrigin(vnl_vector<double> volumeOrigin)
+{
+	volume->SetOrigin(0,0,0);
+	volume->SetPosition(volumeOrigin[0],volumeOrigin[1],volumeOrigin[2]);
+	this->displayVolume(volume);
+}
 
 QVTKWidget* QVTKImageWidget::getQVTKWidget()
 {
@@ -547,6 +660,10 @@ void QVTKImageWidget::setYPicked(int yPosition)
     this->yPicked = yPosition;
 }
 
+void QVTKImageWidget::setVolumeData(vtkSmartPointer<vtkImageData> volumeData)
+{
+    this->volumeData = volumeData;
+}
 
 QString QVTKImageWidget::getPixelType()
 {
