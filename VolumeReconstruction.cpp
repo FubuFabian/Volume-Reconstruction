@@ -114,16 +114,6 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 	double diffticks = end - begin;
 	double diffms = (diffticks * 10) / CLOCKS_PER_SEC;
 	std::cout<<std::endl<<"Time elapsed: "<< double(diffms)<<" ms" <<std::endl;
-	 
-	vtkSmartPointer<vtkMetaImageWriter> writer = vtkSmartPointer<vtkMetaImageWriter>::New();
-	writer->SetFileName("C:/Users/Administrador/Documents/Volumenes/test_03.mhd");
-	writer->SetRAWFileName("C:/Users/Administrador/Documents/Volumenes/test_03.raw");
-	writer->SetInputConnection(volumeData->GetProducerPort());
-	try{
-	writer->Write();
-	}catch( exception& e ){
-		std::cout<<e.what()<<std::endl;
-	}
 
 	return volumeData;
 
