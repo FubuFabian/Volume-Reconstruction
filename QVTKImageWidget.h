@@ -270,7 +270,7 @@ private:
 	/** \brief A vtkImageData Vector for keep the volume image references when load an
      * image stack Transformed.
      */
-    std::vector<vnl_matrix<double>> transformStack;
+    std::vector< vnl_matrix<double> > transformStack;
 
     /** \brief A vtkImageData Vector for keep the volume image actor references when load an
      * image stack.

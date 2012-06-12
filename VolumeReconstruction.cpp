@@ -129,18 +129,13 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 
 }
 
-double VolumeReconstruction::calcVoxelValue(std::vector< vnl_vector<double>> crossPoints, 
+double VolumeReconstruction::calcVoxelValue(std::vector< vnl_vector<double> > crossPoints, 
 											vnl_vector<double> distancePlane, vnl_vector<double> distance)
 {
 	double voxelValue = 0;
 	int prom = 0;
 	
 	for(int i=0; i<crossPoints.size(); i++){
-
-//////////////////////
-		double plano = distancePlane[i];
-		double distancia = distance[i];
-/////////////////////
 
 		vnl_matrix<double> inverseTransform = vnl_inverse(transformStack.at(distancePlane[i]));
 	
@@ -151,18 +146,7 @@ double VolumeReconstruction::calcVoxelValue(std::vector< vnl_vector<double>> cro
 		pointCoords.put(2,crossPoints.at(i)[2]);
 		pointCoords.put(3,1);
 
-////////////////////
-		double punto1 = crossPoints.at(i)[0];
-		double punto2 = crossPoints.at(i)[1];
-		double punto3 = crossPoints.at(i)[2];
-////////////////////
-
 		vnl_vector<double> imgCoord = inverseTransform*pointCoords; 
-
-///////////////////
-		double imgCoord1 = imgCoord[0];
-		double imgCoord2 = imgCoord[1];
-///////////////////
 
 		int x = imgCoord[0]/scale[0];
 		int y = imgCoord[1]/scale[0];
@@ -188,7 +172,7 @@ double VolumeReconstruction::calcVoxelValue(std::vector< vnl_vector<double>> cro
 
 				pixelValue /= 9;
 
-				double w = 1 - distance[distancePlane[i]]/maxDistance;
+				double w = 1 - distance[i]/maxDistance;
 
 				pixelValue *= w;
 				voxelValue += pixelValue;
