@@ -21,12 +21,12 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 	calcImagePlane();
 	maxDistance = calcMaxDistance();
 
-	std::cout<<"Calculating voxel values";
+	std::cout<<"Calculating voxel values"<<std::flush;
 	clock_t begin = clock();
 	
 	for(int i=0; i<volumeSize[0]; i++){
 		
-		std::cout<<".";
+		std::cout<<"."<<std::flush;
 
 		for(int j=0; j<volumeSize[1]; j++){
 			for(int k=0; k<volumeSize[2]; k++){
