@@ -119,6 +119,7 @@
     <property name="title">
      <string>Process</string>
     </property>
+    <addaction name="actionCrop_Images"/>
     <addaction name="actionUS_Probe_Calibration"/>
     <addaction name="actionVolume_Reconstruction"/>
    </widget>
@@ -157,6 +158,11 @@
   <action name="actionOpen_Volume">
    <property name="text">
     <string>Open Volume</string>
+   </property>
+  </action>
+  <action name="actionCrop_Images">
+   <property name="text">
+    <string>Crop Images</string>
    </property>
   </action>
  </widget>
@@ -291,6 +297,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionCrop_Images</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>cropImages()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>330</x>
+     <y>329</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addImages()</slot>
@@ -301,5 +323,6 @@
   <slot>volumeReconstruction()</slot>
   <slot>openVolume()</slot>
   <slot>setSelectedOpacity(int)</slot>
+  <slot>cropImages()</slot>
  </slots>
 </ui>

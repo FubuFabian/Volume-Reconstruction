@@ -2,6 +2,7 @@
 #include "mainwindow.h"
 #include "ProbeCalibrationWidget.h"
 #include "VolumeReconstructionWidget.h"
+#include "CropImagesWidget.h"
 
 #include <QVBoxLayout>
 #include <vtkEventQtSlotConnect.h>
@@ -77,7 +78,8 @@ void MainWindow::addImages()
 void MainWindow::openVolumeData()
 {
 
-	
+	std::cout<<"Loading Volume Data"<<std::endl;
+
     this->volumeImagesFilenames = QFileDialog::getOpenFileNames(this, tr("Open Volume Images"), 
 		QDir::currentPath(), tr("Image Files (*.png *.jpg *.bmp)"));
 	
@@ -107,6 +109,8 @@ void MainWindow::openVolume()
 {
 
 
+	std::cout<<"Loading Volume"<<std::endl;
+
     this->volumeFilename = QFileDialog::getOpenFileName(this, tr("Open Volume .mhd"),
         QDir::currentPath(), tr("Volume Files (*.mhd)"));
 
@@ -121,7 +125,10 @@ void MainWindow::openVolume()
 
 void MainWindow::probeCalibration()
 {
-  if (!displayWidget->getImageStack().empty())
+
+	std::cout<<"Probe Calibration"<<std::endl;
+
+	if (!displayWidget->getImageStack().empty())
     {
       ProbeCalibrationWidget* probeCalibration = new ProbeCalibrationWidget();
 
@@ -213,4 +220,27 @@ void MainWindow::print()
 }
 
 
+void MainWindow::cropImages()
+{
+	std::cout<<"Image Cropping"<<std::endl;
 
+	if (!displayWidget->getImageStack().empty())
+    {
+      CropImagesWidget* cropImages = new CropImagesWidget();
+
+      if (displayWidget->isImageStackLoaded)
+        cropImages->setImageStack(displayWidget->getImageStack());
+      else
+        cropImages->setImage(displayWidget->getImageViewer()->GetInput());
+
+      cropImages->setMainWindow(this);
+      cropImages->show();
+    }
+  else
+    {
+      QErrorMessage errorMessage;
+      errorMessage.showMessage(
+		  "No images loaded, </ br> please load an images before crop images");
+      errorMessage.exec();
+    }
+}

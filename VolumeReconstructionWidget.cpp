@@ -236,10 +236,11 @@ void VolumeReconstructionWidget::calcVolumeSize(bool usePixelMethod)
 	volumeFinal[2] = zMax.max_value();
 	std::cout<<"Volume final coords: "<<volumeFinal[0]<<","<<volumeFinal[1]<<","<<volumeFinal[2]<<std::endl;
 
+	int fs = 10;
 	volumeSize.set_size(3);
-	volumeSize[0] = vtkMath::Round((volumeFinal[0] - volumeOrigin[0])/scale[0]);
-	volumeSize[1] = vtkMath::Round((volumeFinal[1] - volumeOrigin[1])/scale[0]);
-	volumeSize[2] = vtkMath::Round((volumeFinal[2] - volumeOrigin[2])/scale[0]);
+	volumeSize[0] = vtkMath::Round((volumeFinal[0] - volumeOrigin[0])/(scale[0]*fs));
+	volumeSize[1] = vtkMath::Round((volumeFinal[1] - volumeOrigin[1])/(scale[0]*fs));
+	volumeSize[2] = vtkMath::Round((volumeFinal[2] - volumeOrigin[2])/(scale[0]*fs));
 	std::cout<<"Volume size: "<<volumeSize[0]<<","<<volumeSize[1]<<","<<volumeSize[2]<<std::endl<<std::endl;
 }
 

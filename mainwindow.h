@@ -113,6 +113,7 @@ private slots:
    */
   void openVolume();
 
+  void cropImages();
 };
 
 
