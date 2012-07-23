@@ -106,7 +106,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <a name="l00010"></a>00010 
 <a name="l00011"></a>00011 <span class="keyword">class </span>QAction;
 <a name="l00012"></a>00012 
-<a name="l00013"></a><a class="code" href="../../dc/df0/namespace_ui.html">00013</a> <span class="keyword">namespace </span>Ui
+<a name="l00013"></a>00013 <span class="keyword">namespace </span>Ui
 <a name="l00014"></a>00014 {
 <a name="l00015"></a>00015   <span class="keyword">class </span><a class="code" href="../../d9/dc6/class_main_window.html" title="Main window for user interaction.">MainWindow</a>;
 <a name="l00016"></a>00016 }
@@ -125,51 +125,60 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <a name="l00036"></a>00036 
 <a name="l00037"></a>00037 
 <a name="l00038"></a>00038 
-<a name="l00039"></a>00039 <span class="keyword">private</span>:
-<a name="l00040"></a><a class="code" href="../../d9/dc6/class_main_window.html#a35466a70ed47252a0191168126a352a5">00040</a>   Ui::MainWindow *<a class="code" href="../../d9/dc6/class_main_window.html#a35466a70ed47252a0191168126a352a5">ui</a>;
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="keyword">private</span>:
 <a name="l00041"></a>00041 
-<a name="l00043"></a><a class="code" href="../../d9/dc6/class_main_window.html#a8b33f17919e8e99127a612476aefdaed">00043</a>   QStringList <a class="code" href="../../d9/dc6/class_main_window.html#a8b33f17919e8e99127a612476aefdaed" title="The filename of each selected image.">imagesFilenames</a>;
-<a name="l00044"></a>00044 
-<a name="l00046"></a><a class="code" href="../../d9/dc6/class_main_window.html#a1a88d2961b59b38eb58bffeb1a6ffe39">00046</a>   QStringList <a class="code" href="../../d9/dc6/class_main_window.html#a1a88d2961b59b38eb58bffeb1a6ffe39" title="The filenames of each selected volume image.">volumeImagesFilenames</a>; 
-<a name="l00047"></a>00047 
-<a name="l00049"></a><a class="code" href="../../d9/dc6/class_main_window.html#ad2139711b6f91f541304b5dc5cf311ac">00049</a>   QString <a class="code" href="../../d9/dc6/class_main_window.html#ad2139711b6f91f541304b5dc5cf311ac" title="The filename of the rotation data for each image.">volumeRotationData</a>; 
-<a name="l00050"></a>00050 
-<a name="l00052"></a><a class="code" href="../../d9/dc6/class_main_window.html#aec94bc06393ad4a2fc014d71fbeddbd3">00052</a>   QString <a class="code" href="../../d9/dc6/class_main_window.html#aec94bc06393ad4a2fc014d71fbeddbd3" title="The filename of the translation data for each image.">volumeTranslationData</a>; 
-<a name="l00053"></a>00053 
-<a name="l00055"></a><a class="code" href="../../d9/dc6/class_main_window.html#ae44a1faf67f60347fd55e2ceebe874c3">00055</a>   QString <a class="code" href="../../d9/dc6/class_main_window.html#ae44a1faf67f60347fd55e2ceebe874c3" title="The filename of the estimated parameters in the calibration.">volumeCalibrationData</a>; 
-<a name="l00056"></a>00056 
-<a name="l00057"></a><a class="code" href="../../d9/dc6/class_main_window.html#aac7c4f4184a77a56eef59fff591c9521">00057</a>   QString <a class="code" href="../../d9/dc6/class_main_window.html#aac7c4f4184a77a56eef59fff591c9521">textOnTextArea</a>;
+<a name="l00042"></a><a class="code" href="../../d9/dc6/class_main_window.html#a35466a70ed47252a0191168126a352a5">00042</a>   Ui::MainWindow *<a class="code" href="../../d9/dc6/class_main_window.html#a35466a70ed47252a0191168126a352a5">ui</a>;
+<a name="l00043"></a>00043 
+<a name="l00045"></a><a class="code" href="../../d9/dc6/class_main_window.html#a8b33f17919e8e99127a612476aefdaed">00045</a>   QStringList <a class="code" href="../../d9/dc6/class_main_window.html#a8b33f17919e8e99127a612476aefdaed" title="The filename of each selected image.">imagesFilenames</a>;
+<a name="l00046"></a>00046 
+<a name="l00048"></a><a class="code" href="../../d9/dc6/class_main_window.html#a1a88d2961b59b38eb58bffeb1a6ffe39">00048</a>   QStringList <a class="code" href="../../d9/dc6/class_main_window.html#a1a88d2961b59b38eb58bffeb1a6ffe39" title="The filenames of each selected volume image.">volumeImagesFilenames</a>;
+<a name="l00049"></a>00049 
+<a name="l00051"></a><a class="code" href="../../d9/dc6/class_main_window.html#ad2139711b6f91f541304b5dc5cf311ac">00051</a>   QString <a class="code" href="../../d9/dc6/class_main_window.html#ad2139711b6f91f541304b5dc5cf311ac" title="The filename of the rotation data for each image.">volumeRotationData</a>;
+<a name="l00052"></a>00052 
+<a name="l00054"></a><a class="code" href="../../d9/dc6/class_main_window.html#aec94bc06393ad4a2fc014d71fbeddbd3">00054</a>   QString <a class="code" href="../../d9/dc6/class_main_window.html#aec94bc06393ad4a2fc014d71fbeddbd3" title="The filename of the translation data for each image.">volumeTranslationData</a>;
+<a name="l00055"></a>00055 
+<a name="l00057"></a><a class="code" href="../../d9/dc6/class_main_window.html#ae44a1faf67f60347fd55e2ceebe874c3">00057</a>   QString <a class="code" href="../../d9/dc6/class_main_window.html#ae44a1faf67f60347fd55e2ceebe874c3" title="The filename of the estimated parameters in the calibration.">volumeCalibrationData</a>;
 <a name="l00058"></a>00058 
-<a name="l00062"></a><a class="code" href="../../d9/dc6/class_main_window.html#a79daf435968c77e526ddf286bcc86a8f">00062</a>   <a class="code" href="../../d8/dd7/class_q_v_t_k_image_widget.html" title="Display VTK images.">QVTKImageWidget</a> *<a class="code" href="../../d9/dc6/class_main_window.html#a79daf435968c77e526ddf286bcc86a8f">displayWidget</a>;
+<a name="l00060"></a><a class="code" href="../../d9/dc6/class_main_window.html#ae2defb97ae56b28261ea646b533c5b10">00060</a>   QString <a class="code" href="../../d9/dc6/class_main_window.html#ae2defb97ae56b28261ea646b533c5b10" title="The filename of the selected volume.">volumeFilename</a>;
+<a name="l00061"></a>00061 
+<a name="l00062"></a><a class="code" href="../../d9/dc6/class_main_window.html#aac7c4f4184a77a56eef59fff591c9521">00062</a>   QString <a class="code" href="../../d9/dc6/class_main_window.html#aac7c4f4184a77a56eef59fff591c9521">textOnTextArea</a>;
 <a name="l00063"></a>00063 
-<a name="l00064"></a>00064 
-<a name="l00065"></a><a class="code" href="../../d9/dc6/class_main_window.html#a2581229148c6c597849b827689e58a12">00065</a>   vtkSmartPointer&lt;vtkEventQtSlotConnect&gt; <a class="code" href="../../d9/dc6/class_main_window.html#a2581229148c6c597849b827689e58a12">Connections</a>;
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067 <span class="keyword">private</span> slots:
+<a name="l00067"></a><a class="code" href="../../d9/dc6/class_main_window.html#a79daf435968c77e526ddf286bcc86a8f">00067</a>   <a class="code" href="../../d8/dd7/class_q_v_t_k_image_widget.html" title="Display VTK images.">QVTKImageWidget</a> *<a class="code" href="../../d9/dc6/class_main_window.html#a79daf435968c77e526ddf286bcc86a8f">displayWidget</a>;
 <a name="l00068"></a>00068 
-<a name="l00072"></a>00072   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#afdd9e98dfe3d68ab08aed2df37e8c1dc" title="Add image folder to application.">addImages</a>();
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="../../d9/dc6/class_main_window.html#a2581229148c6c597849b827689e58a12">00070</a>   vtkSmartPointer&lt;vtkEventQtSlotConnect&gt; <a class="code" href="../../d9/dc6/class_main_window.html#a2581229148c6c597849b827689e58a12">Connections</a>;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 <span class="keyword">private</span> slots:
 <a name="l00073"></a>00073 
-<a name="l00077"></a>00077   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#a67ec1c2d082b1b5a63347df9660275f1" title="Display selected image with the image slider.">displaySelectedImage</a>(<span class="keywordtype">int</span> idx);
+<a name="l00077"></a>00077   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#afdd9e98dfe3d68ab08aed2df37e8c1dc" title="Add image folder to application.">addImages</a>();
 <a name="l00078"></a>00078 
-<a name="l00083"></a>00083   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#a7a01aa3ba0210c1915d53d37d7272a13" title="Implements a ultrasound 3D probe calibration, for navigate with the probe.">probeCalibration</a>();
-<a name="l00084"></a>00084 
-<a name="l00088"></a>00088   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#a66293ccc95d836b4b014e6bdc5e2ae9f" title="Set the image, rotation, translation and calibration parameters file name.">openVolumeData</a>();
-<a name="l00089"></a>00089   
-<a name="l00093"></a>00093   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#a873aaee370c1456b99f1a2399ff13691" title="Print message in logger.">print</a>();
+<a name="l00082"></a>00082   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#a67ec1c2d082b1b5a63347df9660275f1" title="Display selected image with the image slider.">displaySelectedImage</a>(<span class="keywordtype">int</span> idx);
+<a name="l00083"></a>00083 
+<a name="l00087"></a>00087   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#a65b1fde248d1db6fab4ddb58315d3802" title="Set selected opacity for the displayed volume.">setSelectedOpacity</a>(<span class="keywordtype">int</span> idx);
+<a name="l00088"></a>00088 
+<a name="l00093"></a>00093   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#a7a01aa3ba0210c1915d53d37d7272a13" title="Implements a ultrasound 3D probe calibration, for navigate with the probe.">probeCalibration</a>();
 <a name="l00094"></a>00094 
-<a name="l00099"></a>00099   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#a51a6d66666f907cee479298f561a87c6" title="Calls the VolumeReconstructionWidget.h to generate a new volume *with the loaded data.">volumeReconstruction</a>();
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101 };
-<a name="l00102"></a>00102 
-<a name="l00103"></a>00103 
+<a name="l00098"></a>00098   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#a66293ccc95d836b4b014e6bdc5e2ae9f" title="Set the image, rotation, translation and calibration parameters file name.">openVolumeData</a>();
+<a name="l00099"></a>00099   
+<a name="l00103"></a>00103   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#a873aaee370c1456b99f1a2399ff13691" title="Print message in logger.">print</a>();
 <a name="l00104"></a>00104 
-<a name="l00105"></a>00105 
-<a name="l00106"></a>00106 <span class="preprocessor">#endif // MAINWINDOW_H</span>
+<a name="l00109"></a>00109   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#a51a6d66666f907cee479298f561a87c6" title="Calls the VolumeReconstructionWidget.h to generate a new volume *with the loaded data.">volumeReconstruction</a>();
+<a name="l00110"></a>00110 
+<a name="l00114"></a>00114   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#a8e8ac6f589b710d984e918f63c64e7da" title="Set a volume filename.">openVolume</a>();
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116   <span class="keywordtype">void</span> <a class="code" href="../../d9/dc6/class_main_window.html#ab821280b066f71fcb1a6b0390d99174c">cropImages</a>();
+<a name="l00117"></a>00117 };
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122 <span class="preprocessor">#endif // MAINWINDOW_H</span>
 </pre></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 17 2012 18:03:12 for Volume Reconstruction by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 23 2012 15:08:35 for Volume Reconstruction by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

@@ -24,219 +24,252 @@
 \contentsline {subsubsection}{\numberline {5.1.4.2}estimated\discretionary {-}{}{}U\discretionary {-}{}{}S\discretionary {-}{}{}Calibration\discretionary {-}{}{}Parameters}{10}{subsubsection.5.1.4.2}
 \contentsline {subsubsection}{\numberline {5.1.4.3}image\discretionary {-}{}{}Points}{10}{subsubsection.5.1.4.3}
 \contentsline {subsubsection}{\numberline {5.1.4.4}transformations}{11}{subsubsection.5.1.4.4}
-\contentsline {section}{\numberline {5.2}Main\discretionary {-}{}{}Window Class Reference}{11}{section.5.2}
+\contentsline {section}{\numberline {5.2}Crop\discretionary {-}{}{}Images\discretionary {-}{}{}Widget Class Reference}{11}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Detailed Description}{12}{subsection.5.2.1}
 \contentsline {subsection}{\numberline {5.2.2}Constructor \& Destructor Documentation}{12}{subsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.2.1}Main\discretionary {-}{}{}Window}{12}{subsubsection.5.2.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2.2}$\sim $\discretionary {-}{}{}Main\discretionary {-}{}{}Window}{12}{subsubsection.5.2.2.2}
+\contentsline {subsubsection}{\numberline {5.2.2.1}Crop\discretionary {-}{}{}Images\discretionary {-}{}{}Widget}{12}{subsubsection.5.2.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2.2}$\sim $\discretionary {-}{}{}Crop\discretionary {-}{}{}Images\discretionary {-}{}{}Widget}{12}{subsubsection.5.2.2.2}
 \contentsline {subsection}{\numberline {5.2.3}Member Function Documentation}{12}{subsection.5.2.3}
-\contentsline {subsubsection}{\numberline {5.2.3.1}add\discretionary {-}{}{}Images}{12}{subsubsection.5.2.3.1}
-\contentsline {subsubsection}{\numberline {5.2.3.2}add\discretionary {-}{}{}Log\discretionary {-}{}{}Text}{12}{subsubsection.5.2.3.2}
-\contentsline {subsubsection}{\numberline {5.2.3.3}display\discretionary {-}{}{}Selected\discretionary {-}{}{}Image}{12}{subsubsection.5.2.3.3}
-\contentsline {subsubsection}{\numberline {5.2.3.4}get\discretionary {-}{}{}Display\discretionary {-}{}{}Widget}{12}{subsubsection.5.2.3.4}
-\contentsline {subsubsection}{\numberline {5.2.3.5}open\discretionary {-}{}{}Volume\discretionary {-}{}{}Data}{12}{subsubsection.5.2.3.5}
-\contentsline {subsubsection}{\numberline {5.2.3.6}print}{12}{subsubsection.5.2.3.6}
-\contentsline {subsubsection}{\numberline {5.2.3.7}probe\discretionary {-}{}{}Calibration}{12}{subsubsection.5.2.3.7}
-\contentsline {subsubsection}{\numberline {5.2.3.8}volume\discretionary {-}{}{}Reconstruction}{12}{subsubsection.5.2.3.8}
+\contentsline {subsubsection}{\numberline {5.2.3.1}crop}{12}{subsubsection.5.2.3.1}
+\contentsline {subsubsection}{\numberline {5.2.3.2}crop\discretionary {-}{}{}Probe\discretionary {-}{}{}Image}{12}{subsubsection.5.2.3.2}
+\contentsline {subsubsection}{\numberline {5.2.3.3}save}{12}{subsubsection.5.2.3.3}
+\contentsline {subsubsection}{\numberline {5.2.3.4}set\discretionary {-}{}{}Image}{12}{subsubsection.5.2.3.4}
+\contentsline {subsubsection}{\numberline {5.2.3.5}set\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{12}{subsubsection.5.2.3.5}
+\contentsline {subsubsection}{\numberline {5.2.3.6}set\discretionary {-}{}{}Main\discretionary {-}{}{}Window}{12}{subsubsection.5.2.3.6}
 \contentsline {subsection}{\numberline {5.2.4}Member Data Documentation}{12}{subsection.5.2.4}
-\contentsline {subsubsection}{\numberline {5.2.4.1}Connections}{12}{subsubsection.5.2.4.1}
-\contentsline {subsubsection}{\numberline {5.2.4.2}display\discretionary {-}{}{}Widget}{13}{subsubsection.5.2.4.2}
-\contentsline {subsubsection}{\numberline {5.2.4.3}images\discretionary {-}{}{}Filenames}{13}{subsubsection.5.2.4.3}
-\contentsline {subsubsection}{\numberline {5.2.4.4}text\discretionary {-}{}{}On\discretionary {-}{}{}Text\discretionary {-}{}{}Area}{13}{subsubsection.5.2.4.4}
-\contentsline {subsubsection}{\numberline {5.2.4.5}ui}{13}{subsubsection.5.2.4.5}
-\contentsline {subsubsection}{\numberline {5.2.4.6}volume\discretionary {-}{}{}Calibration\discretionary {-}{}{}Data}{13}{subsubsection.5.2.4.6}
-\contentsline {subsubsection}{\numberline {5.2.4.7}volume\discretionary {-}{}{}Images\discretionary {-}{}{}Filenames}{13}{subsubsection.5.2.4.7}
-\contentsline {subsubsection}{\numberline {5.2.4.8}volume\discretionary {-}{}{}Rotation\discretionary {-}{}{}Data}{13}{subsubsection.5.2.4.8}
-\contentsline {subsubsection}{\numberline {5.2.4.9}volume\discretionary {-}{}{}Translation\discretionary {-}{}{}Data}{13}{subsubsection.5.2.4.9}
-\contentsline {section}{\numberline {5.3}Probe\discretionary {-}{}{}Calibration\discretionary {-}{}{}Widget Class Reference}{13}{section.5.3}
+\contentsline {subsubsection}{\numberline {5.2.4.1}crop\discretionary {-}{}{}Image}{13}{subsubsection.5.2.4.1}
+\contentsline {subsubsection}{\numberline {5.2.4.2}crop\discretionary {-}{}{}Stack}{13}{subsubsection.5.2.4.2}
+\contentsline {subsubsection}{\numberline {5.2.4.3}image}{13}{subsubsection.5.2.4.3}
+\contentsline {subsubsection}{\numberline {5.2.4.4}image\discretionary {-}{}{}Stack}{13}{subsubsection.5.2.4.4}
+\contentsline {subsubsection}{\numberline {5.2.4.5}main\discretionary {-}{}{}Window}{13}{subsubsection.5.2.4.5}
+\contentsline {subsubsection}{\numberline {5.2.4.6}ui}{13}{subsubsection.5.2.4.6}
+\contentsline {subsubsection}{\numberline {5.2.4.7}work\discretionary {-}{}{}With\discretionary {-}{}{}Stack}{13}{subsubsection.5.2.4.7}
+\contentsline {section}{\numberline {5.3}Main\discretionary {-}{}{}Window Class Reference}{13}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Detailed Description}{14}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Constructor \& Destructor Documentation}{15}{subsection.5.3.2}
-\contentsline {subsubsection}{\numberline {5.3.2.1}Probe\discretionary {-}{}{}Calibration\discretionary {-}{}{}Widget}{15}{subsubsection.5.3.2.1}
-\contentsline {subsubsection}{\numberline {5.3.2.2}$\sim $\discretionary {-}{}{}Probe\discretionary {-}{}{}Calibration\discretionary {-}{}{}Widget}{15}{subsubsection.5.3.2.2}
-\contentsline {subsection}{\numberline {5.3.3}Member Function Documentation}{15}{subsection.5.3.3}
-\contentsline {subsubsection}{\numberline {5.3.3.1}calibrate}{15}{subsubsection.5.3.3.1}
-\contentsline {subsubsection}{\numberline {5.3.3.2}crop}{15}{subsubsection.5.3.3.2}
-\contentsline {subsubsection}{\numberline {5.3.3.3}crop\discretionary {-}{}{}Probe\discretionary {-}{}{}Image}{15}{subsubsection.5.3.3.3}
-\contentsline {subsubsection}{\numberline {5.3.3.4}get\discretionary {-}{}{}Coordinates}{15}{subsubsection.5.3.3.4}
-\contentsline {subsubsection}{\numberline {5.3.3.5}load\discretionary {-}{}{}Rotations\discretionary {-}{}{}File}{15}{subsubsection.5.3.3.5}
-\contentsline {subsubsection}{\numberline {5.3.3.6}load\discretionary {-}{}{}Translations\discretionary {-}{}{}File}{15}{subsubsection.5.3.3.6}
-\contentsline {subsubsection}{\numberline {5.3.3.7}save\discretionary {-}{}{}Calibration}{15}{subsubsection.5.3.3.7}
-\contentsline {subsubsection}{\numberline {5.3.3.8}set\discretionary {-}{}{}Image}{15}{subsubsection.5.3.3.8}
-\contentsline {subsubsection}{\numberline {5.3.3.9}set\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{15}{subsubsection.5.3.3.9}
-\contentsline {subsubsection}{\numberline {5.3.3.10}set\discretionary {-}{}{}Main\discretionary {-}{}{}Window}{16}{subsubsection.5.3.3.10}
-\contentsline {subsection}{\numberline {5.3.4}Member Data Documentation}{16}{subsection.5.3.4}
-\contentsline {subsubsection}{\numberline {5.3.4.1}calibration\discretionary {-}{}{}Parameters}{16}{subsubsection.5.3.4.1}
-\contentsline {subsubsection}{\numberline {5.3.4.2}coords}{16}{subsubsection.5.3.4.2}
-\contentsline {subsubsection}{\numberline {5.3.4.3}image}{16}{subsubsection.5.3.4.3}
-\contentsline {subsubsection}{\numberline {5.3.4.4}image\discretionary {-}{}{}Stack}{16}{subsubsection.5.3.4.4}
-\contentsline {subsubsection}{\numberline {5.3.4.5}main\discretionary {-}{}{}Window}{16}{subsubsection.5.3.4.5}
-\contentsline {subsubsection}{\numberline {5.3.4.6}rotations}{16}{subsubsection.5.3.4.6}
-\contentsline {subsubsection}{\numberline {5.3.4.7}rotations\discretionary {-}{}{}\_\discretionary {-}{}{}2}{16}{subsubsection.5.3.4.7}
-\contentsline {subsubsection}{\numberline {5.3.4.8}translations}{16}{subsubsection.5.3.4.8}
-\contentsline {subsubsection}{\numberline {5.3.4.9}work\discretionary {-}{}{}With\discretionary {-}{}{}Stack}{16}{subsubsection.5.3.4.9}
-\contentsline {section}{\numberline {5.4}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget Class Reference}{17}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Detailed Description}{19}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Constructor \& Destructor Documentation}{19}{subsection.5.4.2}
-\contentsline {subsubsection}{\numberline {5.4.2.1}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget}{19}{subsubsection.5.4.2.1}
-\contentsline {subsubsection}{\numberline {5.4.2.2}$\sim $\discretionary {-}{}{}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget}{19}{subsubsection.5.4.2.2}
-\contentsline {subsection}{\numberline {5.4.3}Member Function Documentation}{19}{subsection.5.4.3}
-\contentsline {subsubsection}{\numberline {5.4.3.1}compute\discretionary {-}{}{}Transformation}{19}{subsubsection.5.4.3.1}
-\contentsline {subsubsection}{\numberline {5.4.3.2}display\discretionary {-}{}{}Image}{19}{subsubsection.5.4.3.2}
-\contentsline {subsubsection}{\numberline {5.4.3.3}display\discretionary {-}{}{}Selected\discretionary {-}{}{}Image}{19}{subsubsection.5.4.3.3}
-\contentsline {subsubsection}{\numberline {5.4.3.4}display\discretionary {-}{}{}Volume}{19}{subsubsection.5.4.3.4}
-\contentsline {subsubsection}{\numberline {5.4.3.5}display\discretionary {-}{}{}Volume\discretionary {-}{}{}Images}{20}{subsubsection.5.4.3.5}
-\contentsline {subsubsection}{\numberline {5.4.3.6}get\discretionary {-}{}{}Image\discretionary {-}{}{}Displayed\discretionary {-}{}{}Index}{20}{subsubsection.5.4.3.6}
-\contentsline {subsubsection}{\numberline {5.4.3.7}get\discretionary {-}{}{}Image\discretionary {-}{}{}Heigth}{20}{subsubsection.5.4.3.7}
-\contentsline {subsubsection}{\numberline {5.4.3.8}get\discretionary {-}{}{}Image\discretionary {-}{}{}Size}{20}{subsubsection.5.4.3.8}
-\contentsline {subsubsection}{\numberline {5.4.3.9}get\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{20}{subsubsection.5.4.3.9}
-\contentsline {subsubsection}{\numberline {5.4.3.10}get\discretionary {-}{}{}Image\discretionary {-}{}{}Type}{20}{subsubsection.5.4.3.10}
-\contentsline {subsubsection}{\numberline {5.4.3.11}get\discretionary {-}{}{}Image\discretionary {-}{}{}Viewer}{20}{subsubsection.5.4.3.11}
-\contentsline {subsubsection}{\numberline {5.4.3.12}get\discretionary {-}{}{}Image\discretionary {-}{}{}Width}{20}{subsubsection.5.4.3.12}
-\contentsline {subsubsection}{\numberline {5.4.3.13}get\discretionary {-}{}{}Num\discretionary {-}{}{}Of\discretionary {-}{}{}Dimesions}{20}{subsubsection.5.4.3.13}
-\contentsline {subsubsection}{\numberline {5.4.3.14}get\discretionary {-}{}{}Pixel\discretionary {-}{}{}Type}{20}{subsubsection.5.4.3.14}
-\contentsline {subsubsection}{\numberline {5.4.3.15}get\discretionary {-}{}{}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Widget}{20}{subsubsection.5.4.3.15}
-\contentsline {subsubsection}{\numberline {5.4.3.16}get\discretionary {-}{}{}Transform\discretionary {-}{}{}Scale}{21}{subsubsection.5.4.3.16}
-\contentsline {subsubsection}{\numberline {5.4.3.17}get\discretionary {-}{}{}Transform\discretionary {-}{}{}Stack}{21}{subsubsection.5.4.3.17}
-\contentsline {subsubsection}{\numberline {5.4.3.18}get\discretionary {-}{}{}Volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{21}{subsubsection.5.4.3.18}
-\contentsline {subsubsection}{\numberline {5.4.3.19}get\discretionary {-}{}{}X\discretionary {-}{}{}Picked}{21}{subsubsection.5.4.3.19}
-\contentsline {subsubsection}{\numberline {5.4.3.20}get\discretionary {-}{}{}Y\discretionary {-}{}{}Picked}{21}{subsubsection.5.4.3.20}
-\contentsline {subsubsection}{\numberline {5.4.3.21}set\discretionary {-}{}{}And\discretionary {-}{}{}Display\discretionary {-}{}{}Image}{21}{subsubsection.5.4.3.21}
-\contentsline {subsubsection}{\numberline {5.4.3.22}set\discretionary {-}{}{}And\discretionary {-}{}{}Display\discretionary {-}{}{}Image}{21}{subsubsection.5.4.3.22}
-\contentsline {subsubsection}{\numberline {5.4.3.23}set\discretionary {-}{}{}And\discretionary {-}{}{}Display\discretionary {-}{}{}Multiple\discretionary {-}{}{}Images}{21}{subsubsection.5.4.3.23}
-\contentsline {subsubsection}{\numberline {5.4.3.24}set\discretionary {-}{}{}And\discretionary {-}{}{}Display\discretionary {-}{}{}Multiple\discretionary {-}{}{}Images}{22}{subsubsection.5.4.3.24}
-\contentsline {subsubsection}{\numberline {5.4.3.25}set\discretionary {-}{}{}And\discretionary {-}{}{}Display\discretionary {-}{}{}Volume\discretionary {-}{}{}Images}{22}{subsubsection.5.4.3.25}
-\contentsline {subsubsection}{\numberline {5.4.3.26}set\discretionary {-}{}{}Image\discretionary {-}{}{}Properties}{22}{subsubsection.5.4.3.26}
-\contentsline {subsubsection}{\numberline {5.4.3.27}set\discretionary {-}{}{}X\discretionary {-}{}{}Picked}{22}{subsubsection.5.4.3.27}
-\contentsline {subsubsection}{\numberline {5.4.3.28}set\discretionary {-}{}{}Y\discretionary {-}{}{}Picked}{22}{subsubsection.5.4.3.28}
-\contentsline {subsection}{\numberline {5.4.4}Member Data Documentation}{22}{subsection.5.4.4}
-\contentsline {subsubsection}{\numberline {5.4.4.1}corner\discretionary {-}{}{}Annotation}{22}{subsubsection.5.4.4.1}
-\contentsline {subsubsection}{\numberline {5.4.4.2}image\discretionary {-}{}{}Displayed\discretionary {-}{}{}Index}{22}{subsubsection.5.4.4.2}
-\contentsline {subsubsection}{\numberline {5.4.4.3}image\discretionary {-}{}{}Height}{23}{subsubsection.5.4.4.3}
-\contentsline {subsubsection}{\numberline {5.4.4.4}image\discretionary {-}{}{}Stack}{23}{subsubsection.5.4.4.4}
-\contentsline {subsubsection}{\numberline {5.4.4.5}image\discretionary {-}{}{}Type}{23}{subsubsection.5.4.4.5}
-\contentsline {subsubsection}{\numberline {5.4.4.6}image\discretionary {-}{}{}Viewer}{23}{subsubsection.5.4.4.6}
-\contentsline {subsubsection}{\numberline {5.4.4.7}image\discretionary {-}{}{}Width}{23}{subsubsection.5.4.4.7}
-\contentsline {subsubsection}{\numberline {5.4.4.8}is\discretionary {-}{}{}Image\discretionary {-}{}{}Stack\discretionary {-}{}{}Loaded}{23}{subsubsection.5.4.4.8}
-\contentsline {subsubsection}{\numberline {5.4.4.9}is\discretionary {-}{}{}Volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack\discretionary {-}{}{}Loaded}{23}{subsubsection.5.4.4.9}
-\contentsline {subsubsection}{\numberline {5.4.4.10}itk\discretionary {-}{}{}Image}{23}{subsubsection.5.4.4.10}
-\contentsline {subsubsection}{\numberline {5.4.4.11}num\discretionary {-}{}{}Dimensions}{23}{subsubsection.5.4.4.11}
-\contentsline {subsubsection}{\numberline {5.4.4.12}pixel\discretionary {-}{}{}Type}{23}{subsubsection.5.4.4.12}
-\contentsline {subsubsection}{\numberline {5.4.4.13}qvtk\discretionary {-}{}{}Widget}{23}{subsubsection.5.4.4.13}
-\contentsline {subsubsection}{\numberline {5.4.4.14}renderer}{23}{subsubsection.5.4.4.14}
-\contentsline {subsubsection}{\numberline {5.4.4.15}renwin}{24}{subsubsection.5.4.4.15}
-\contentsline {subsubsection}{\numberline {5.4.4.16}rgb\discretionary {-}{}{}Itk\discretionary {-}{}{}Image}{24}{subsubsection.5.4.4.16}
-\contentsline {subsubsection}{\numberline {5.4.4.17}scale}{24}{subsubsection.5.4.4.17}
-\contentsline {subsubsection}{\numberline {5.4.4.18}transform\discretionary {-}{}{}Stack}{24}{subsubsection.5.4.4.18}
-\contentsline {subsubsection}{\numberline {5.4.4.19}volume\discretionary {-}{}{}Data\discretionary {-}{}{}Calibration}{24}{subsubsection.5.4.4.19}
-\contentsline {subsubsection}{\numberline {5.4.4.20}volume\discretionary {-}{}{}Data\discretionary {-}{}{}Rotations}{24}{subsubsection.5.4.4.20}
-\contentsline {subsubsection}{\numberline {5.4.4.21}volume\discretionary {-}{}{}Data\discretionary {-}{}{}Translations}{24}{subsubsection.5.4.4.21}
-\contentsline {subsubsection}{\numberline {5.4.4.22}volume\discretionary {-}{}{}Image\discretionary {-}{}{}Actor\discretionary {-}{}{}Stack}{24}{subsubsection.5.4.4.22}
-\contentsline {subsubsection}{\numberline {5.4.4.23}volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{24}{subsubsection.5.4.4.23}
-\contentsline {subsubsection}{\numberline {5.4.4.24}vtk\discretionary {-}{}{}Image}{24}{subsubsection.5.4.4.24}
-\contentsline {subsubsection}{\numberline {5.4.4.25}x\discretionary {-}{}{}Picked}{24}{subsubsection.5.4.4.25}
-\contentsline {subsubsection}{\numberline {5.4.4.26}x\discretionary {-}{}{}Position}{24}{subsubsection.5.4.4.26}
-\contentsline {subsubsection}{\numberline {5.4.4.27}y\discretionary {-}{}{}Picked}{25}{subsubsection.5.4.4.27}
-\contentsline {subsubsection}{\numberline {5.4.4.28}y\discretionary {-}{}{}Position}{25}{subsubsection.5.4.4.28}
-\contentsline {section}{\numberline {5.5}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget\discretionary {-}{}{}Command Class Reference}{25}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}Detailed Description}{25}{subsection.5.5.1}
-\contentsline {subsection}{\numberline {5.5.2}Constructor \& Destructor Documentation}{25}{subsection.5.5.2}
-\contentsline {subsubsection}{\numberline {5.5.2.1}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget\discretionary {-}{}{}Command}{25}{subsubsection.5.5.2.1}
-\contentsline {subsubsection}{\numberline {5.5.2.2}$\sim $\discretionary {-}{}{}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget\discretionary {-}{}{}Command}{25}{subsubsection.5.5.2.2}
-\contentsline {subsection}{\numberline {5.5.3}Member Function Documentation}{26}{subsection.5.5.3}
-\contentsline {subsubsection}{\numberline {5.5.3.1}Execute}{26}{subsubsection.5.5.3.1}
-\contentsline {subsubsection}{\numberline {5.5.3.2}New}{26}{subsubsection.5.5.3.2}
-\contentsline {subsubsection}{\numberline {5.5.3.3}Set\discretionary {-}{}{}Annotation}{26}{subsubsection.5.5.3.3}
-\contentsline {subsubsection}{\numberline {5.5.3.4}Set\discretionary {-}{}{}Image\discretionary {-}{}{}Widget}{26}{subsubsection.5.5.3.4}
-\contentsline {subsubsection}{\numberline {5.5.3.5}Set\discretionary {-}{}{}Picker}{26}{subsubsection.5.5.3.5}
+\contentsline {subsection}{\numberline {5.3.2}Constructor \& Destructor Documentation}{14}{subsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.2.1}Main\discretionary {-}{}{}Window}{14}{subsubsection.5.3.2.1}
+\contentsline {subsubsection}{\numberline {5.3.2.2}$\sim $\discretionary {-}{}{}Main\discretionary {-}{}{}Window}{14}{subsubsection.5.3.2.2}
+\contentsline {subsection}{\numberline {5.3.3}Member Function Documentation}{14}{subsection.5.3.3}
+\contentsline {subsubsection}{\numberline {5.3.3.1}add\discretionary {-}{}{}Images}{14}{subsubsection.5.3.3.1}
+\contentsline {subsubsection}{\numberline {5.3.3.2}add\discretionary {-}{}{}Log\discretionary {-}{}{}Text}{15}{subsubsection.5.3.3.2}
+\contentsline {subsubsection}{\numberline {5.3.3.3}crop\discretionary {-}{}{}Images}{15}{subsubsection.5.3.3.3}
+\contentsline {subsubsection}{\numberline {5.3.3.4}display\discretionary {-}{}{}Selected\discretionary {-}{}{}Image}{15}{subsubsection.5.3.3.4}
+\contentsline {subsubsection}{\numberline {5.3.3.5}get\discretionary {-}{}{}Display\discretionary {-}{}{}Widget}{15}{subsubsection.5.3.3.5}
+\contentsline {subsubsection}{\numberline {5.3.3.6}open\discretionary {-}{}{}Volume}{15}{subsubsection.5.3.3.6}
+\contentsline {subsubsection}{\numberline {5.3.3.7}open\discretionary {-}{}{}Volume\discretionary {-}{}{}Data}{15}{subsubsection.5.3.3.7}
+\contentsline {subsubsection}{\numberline {5.3.3.8}print}{15}{subsubsection.5.3.3.8}
+\contentsline {subsubsection}{\numberline {5.3.3.9}probe\discretionary {-}{}{}Calibration}{15}{subsubsection.5.3.3.9}
+\contentsline {subsubsection}{\numberline {5.3.3.10}set\discretionary {-}{}{}Selected\discretionary {-}{}{}Opacity}{15}{subsubsection.5.3.3.10}
+\contentsline {subsubsection}{\numberline {5.3.3.11}volume\discretionary {-}{}{}Reconstruction}{15}{subsubsection.5.3.3.11}
+\contentsline {subsection}{\numberline {5.3.4}Member Data Documentation}{15}{subsection.5.3.4}
+\contentsline {subsubsection}{\numberline {5.3.4.1}Connections}{15}{subsubsection.5.3.4.1}
+\contentsline {subsubsection}{\numberline {5.3.4.2}display\discretionary {-}{}{}Widget}{15}{subsubsection.5.3.4.2}
+\contentsline {subsubsection}{\numberline {5.3.4.3}images\discretionary {-}{}{}Filenames}{15}{subsubsection.5.3.4.3}
+\contentsline {subsubsection}{\numberline {5.3.4.4}text\discretionary {-}{}{}On\discretionary {-}{}{}Text\discretionary {-}{}{}Area}{16}{subsubsection.5.3.4.4}
+\contentsline {subsubsection}{\numberline {5.3.4.5}ui}{16}{subsubsection.5.3.4.5}
+\contentsline {subsubsection}{\numberline {5.3.4.6}volume\discretionary {-}{}{}Calibration\discretionary {-}{}{}Data}{16}{subsubsection.5.3.4.6}
+\contentsline {subsubsection}{\numberline {5.3.4.7}volume\discretionary {-}{}{}Filename}{16}{subsubsection.5.3.4.7}
+\contentsline {subsubsection}{\numberline {5.3.4.8}volume\discretionary {-}{}{}Images\discretionary {-}{}{}Filenames}{16}{subsubsection.5.3.4.8}
+\contentsline {subsubsection}{\numberline {5.3.4.9}volume\discretionary {-}{}{}Rotation\discretionary {-}{}{}Data}{16}{subsubsection.5.3.4.9}
+\contentsline {subsubsection}{\numberline {5.3.4.10}volume\discretionary {-}{}{}Translation\discretionary {-}{}{}Data}{16}{subsubsection.5.3.4.10}
+\contentsline {section}{\numberline {5.4}Probe\discretionary {-}{}{}Calibration\discretionary {-}{}{}Widget Class Reference}{16}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Detailed Description}{17}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Constructor \& Destructor Documentation}{17}{subsection.5.4.2}
+\contentsline {subsubsection}{\numberline {5.4.2.1}Probe\discretionary {-}{}{}Calibration\discretionary {-}{}{}Widget}{17}{subsubsection.5.4.2.1}
+\contentsline {subsubsection}{\numberline {5.4.2.2}$\sim $\discretionary {-}{}{}Probe\discretionary {-}{}{}Calibration\discretionary {-}{}{}Widget}{18}{subsubsection.5.4.2.2}
+\contentsline {subsection}{\numberline {5.4.3}Member Function Documentation}{18}{subsection.5.4.3}
+\contentsline {subsubsection}{\numberline {5.4.3.1}calibrate}{18}{subsubsection.5.4.3.1}
+\contentsline {subsubsection}{\numberline {5.4.3.2}crop}{18}{subsubsection.5.4.3.2}
+\contentsline {subsubsection}{\numberline {5.4.3.3}crop\discretionary {-}{}{}Probe\discretionary {-}{}{}Image}{18}{subsubsection.5.4.3.3}
+\contentsline {subsubsection}{\numberline {5.4.3.4}get\discretionary {-}{}{}Coordinates}{18}{subsubsection.5.4.3.4}
+\contentsline {subsubsection}{\numberline {5.4.3.5}load\discretionary {-}{}{}Rotations\discretionary {-}{}{}File}{18}{subsubsection.5.4.3.5}
+\contentsline {subsubsection}{\numberline {5.4.3.6}load\discretionary {-}{}{}Translations\discretionary {-}{}{}File}{18}{subsubsection.5.4.3.6}
+\contentsline {subsubsection}{\numberline {5.4.3.7}save\discretionary {-}{}{}Calibration}{18}{subsubsection.5.4.3.7}
+\contentsline {subsubsection}{\numberline {5.4.3.8}set\discretionary {-}{}{}Image}{18}{subsubsection.5.4.3.8}
+\contentsline {subsubsection}{\numberline {5.4.3.9}set\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{18}{subsubsection.5.4.3.9}
+\contentsline {subsubsection}{\numberline {5.4.3.10}set\discretionary {-}{}{}Main\discretionary {-}{}{}Window}{19}{subsubsection.5.4.3.10}
+\contentsline {subsection}{\numberline {5.4.4}Member Data Documentation}{19}{subsection.5.4.4}
+\contentsline {subsubsection}{\numberline {5.4.4.1}calibration\discretionary {-}{}{}Parameters}{19}{subsubsection.5.4.4.1}
+\contentsline {subsubsection}{\numberline {5.4.4.2}coords}{19}{subsubsection.5.4.4.2}
+\contentsline {subsubsection}{\numberline {5.4.4.3}image}{19}{subsubsection.5.4.4.3}
+\contentsline {subsubsection}{\numberline {5.4.4.4}image\discretionary {-}{}{}Stack}{19}{subsubsection.5.4.4.4}
+\contentsline {subsubsection}{\numberline {5.4.4.5}main\discretionary {-}{}{}Window}{19}{subsubsection.5.4.4.5}
+\contentsline {subsubsection}{\numberline {5.4.4.6}rotations}{19}{subsubsection.5.4.4.6}
+\contentsline {subsubsection}{\numberline {5.4.4.7}rotations\discretionary {-}{}{}\_\discretionary {-}{}{}2}{19}{subsubsection.5.4.4.7}
+\contentsline {subsubsection}{\numberline {5.4.4.8}translations}{19}{subsubsection.5.4.4.8}
+\contentsline {subsubsection}{\numberline {5.4.4.9}work\discretionary {-}{}{}With\discretionary {-}{}{}Stack}{19}{subsubsection.5.4.4.9}
+\contentsline {section}{\numberline {5.5}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget Class Reference}{19}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Detailed Description}{22}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}Constructor \& Destructor Documentation}{22}{subsection.5.5.2}
+\contentsline {subsubsection}{\numberline {5.5.2.1}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget}{22}{subsubsection.5.5.2.1}
+\contentsline {subsubsection}{\numberline {5.5.2.2}$\sim $\discretionary {-}{}{}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget}{22}{subsubsection.5.5.2.2}
+\contentsline {subsection}{\numberline {5.5.3}Member Function Documentation}{22}{subsection.5.5.3}
+\contentsline {subsubsection}{\numberline {5.5.3.1}compute\discretionary {-}{}{}Transformation}{22}{subsubsection.5.5.3.1}
+\contentsline {subsubsection}{\numberline {5.5.3.2}display\discretionary {-}{}{}Image}{22}{subsubsection.5.5.3.2}
+\contentsline {subsubsection}{\numberline {5.5.3.3}display\discretionary {-}{}{}Selected\discretionary {-}{}{}Image}{23}{subsubsection.5.5.3.3}
+\contentsline {subsubsection}{\numberline {5.5.3.4}display\discretionary {-}{}{}Volume}{23}{subsubsection.5.5.3.4}
+\contentsline {subsubsection}{\numberline {5.5.3.5}display\discretionary {-}{}{}Volume\discretionary {-}{}{}Images}{23}{subsubsection.5.5.3.5}
+\contentsline {subsubsection}{\numberline {5.5.3.6}get\discretionary {-}{}{}Image\discretionary {-}{}{}Displayed\discretionary {-}{}{}Index}{23}{subsubsection.5.5.3.6}
+\contentsline {subsubsection}{\numberline {5.5.3.7}get\discretionary {-}{}{}Image\discretionary {-}{}{}Heigth}{23}{subsubsection.5.5.3.7}
+\contentsline {subsubsection}{\numberline {5.5.3.8}get\discretionary {-}{}{}Image\discretionary {-}{}{}Size}{23}{subsubsection.5.5.3.8}
+\contentsline {subsubsection}{\numberline {5.5.3.9}get\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{23}{subsubsection.5.5.3.9}
+\contentsline {subsubsection}{\numberline {5.5.3.10}get\discretionary {-}{}{}Image\discretionary {-}{}{}Type}{23}{subsubsection.5.5.3.10}
+\contentsline {subsubsection}{\numberline {5.5.3.11}get\discretionary {-}{}{}Image\discretionary {-}{}{}Viewer}{23}{subsubsection.5.5.3.11}
+\contentsline {subsubsection}{\numberline {5.5.3.12}get\discretionary {-}{}{}Image\discretionary {-}{}{}Width}{23}{subsubsection.5.5.3.12}
+\contentsline {subsubsection}{\numberline {5.5.3.13}get\discretionary {-}{}{}Num\discretionary {-}{}{}Of\discretionary {-}{}{}Dimesions}{24}{subsubsection.5.5.3.13}
+\contentsline {subsubsection}{\numberline {5.5.3.14}get\discretionary {-}{}{}Pixel\discretionary {-}{}{}Type}{24}{subsubsection.5.5.3.14}
+\contentsline {subsubsection}{\numberline {5.5.3.15}get\discretionary {-}{}{}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Widget}{24}{subsubsection.5.5.3.15}
+\contentsline {subsubsection}{\numberline {5.5.3.16}get\discretionary {-}{}{}Transform\discretionary {-}{}{}Scale}{24}{subsubsection.5.5.3.16}
+\contentsline {subsubsection}{\numberline {5.5.3.17}get\discretionary {-}{}{}Transform\discretionary {-}{}{}Stack}{24}{subsubsection.5.5.3.17}
+\contentsline {subsubsection}{\numberline {5.5.3.18}get\discretionary {-}{}{}Volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{24}{subsubsection.5.5.3.18}
+\contentsline {subsubsection}{\numberline {5.5.3.19}get\discretionary {-}{}{}X\discretionary {-}{}{}Picked}{24}{subsubsection.5.5.3.19}
+\contentsline {subsubsection}{\numberline {5.5.3.20}get\discretionary {-}{}{}Y\discretionary {-}{}{}Picked}{24}{subsubsection.5.5.3.20}
+\contentsline {subsubsection}{\numberline {5.5.3.21}set\discretionary {-}{}{}And\discretionary {-}{}{}Display\discretionary {-}{}{}Image}{24}{subsubsection.5.5.3.21}
+\contentsline {subsubsection}{\numberline {5.5.3.22}set\discretionary {-}{}{}And\discretionary {-}{}{}Display\discretionary {-}{}{}Image}{24}{subsubsection.5.5.3.22}
+\contentsline {subsubsection}{\numberline {5.5.3.23}set\discretionary {-}{}{}And\discretionary {-}{}{}Display\discretionary {-}{}{}Multiple\discretionary {-}{}{}Images}{25}{subsubsection.5.5.3.23}
+\contentsline {subsubsection}{\numberline {5.5.3.24}set\discretionary {-}{}{}And\discretionary {-}{}{}Display\discretionary {-}{}{}Multiple\discretionary {-}{}{}Images}{25}{subsubsection.5.5.3.24}
+\contentsline {subsubsection}{\numberline {5.5.3.25}set\discretionary {-}{}{}And\discretionary {-}{}{}Display\discretionary {-}{}{}Volume}{25}{subsubsection.5.5.3.25}
+\contentsline {subsubsection}{\numberline {5.5.3.26}set\discretionary {-}{}{}And\discretionary {-}{}{}Display\discretionary {-}{}{}Volume}{25}{subsubsection.5.5.3.26}
+\contentsline {subsubsection}{\numberline {5.5.3.27}set\discretionary {-}{}{}And\discretionary {-}{}{}Display\discretionary {-}{}{}Volume\discretionary {-}{}{}Images}{25}{subsubsection.5.5.3.27}
+\contentsline {subsubsection}{\numberline {5.5.3.28}set\discretionary {-}{}{}Image\discretionary {-}{}{}Properties}{26}{subsubsection.5.5.3.28}
+\contentsline {subsubsection}{\numberline {5.5.3.29}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Data}{26}{subsubsection.5.5.3.29}
+\contentsline {subsubsection}{\numberline {5.5.3.30}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Opacity}{26}{subsubsection.5.5.3.30}
+\contentsline {subsubsection}{\numberline {5.5.3.31}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Origin}{26}{subsubsection.5.5.3.31}
+\contentsline {subsubsection}{\numberline {5.5.3.32}set\discretionary {-}{}{}X\discretionary {-}{}{}Picked}{26}{subsubsection.5.5.3.32}
+\contentsline {subsubsection}{\numberline {5.5.3.33}set\discretionary {-}{}{}Y\discretionary {-}{}{}Picked}{26}{subsubsection.5.5.3.33}
 \contentsline {subsection}{\numberline {5.5.4}Member Data Documentation}{26}{subsection.5.5.4}
-\contentsline {subsubsection}{\numberline {5.5.4.1}Annotation}{26}{subsubsection.5.5.4.1}
-\contentsline {subsubsection}{\numberline {5.5.4.2}Image\discretionary {-}{}{}Widget}{26}{subsubsection.5.5.4.2}
-\contentsline {subsubsection}{\numberline {5.5.4.3}Picker}{26}{subsubsection.5.5.4.3}
-\contentsline {section}{\numberline {5.6}Volume\discretionary {-}{}{}Reconstruction Class Reference}{26}{section.5.6}
-\contentsline {subsection}{\numberline {5.6.1}Detailed Description}{27}{subsection.5.6.1}
-\contentsline {subsection}{\numberline {5.6.2}Member Function Documentation}{27}{subsection.5.6.2}
-\contentsline {subsubsection}{\numberline {5.6.2.1}calc\discretionary {-}{}{}Image\discretionary {-}{}{}Plane}{27}{subsubsection.5.6.2.1}
-\contentsline {subsubsection}{\numberline {5.6.2.2}calc\discretionary {-}{}{}Max\discretionary {-}{}{}Distance}{28}{subsubsection.5.6.2.2}
-\contentsline {subsubsection}{\numberline {5.6.2.3}calc\discretionary {-}{}{}Voxel\discretionary {-}{}{}Value}{28}{subsubsection.5.6.2.3}
-\contentsline {subsubsection}{\numberline {5.6.2.4}generate\discretionary {-}{}{}Volume}{28}{subsubsection.5.6.2.4}
-\contentsline {subsubsection}{\numberline {5.6.2.5}New}{28}{subsubsection.5.6.2.5}
-\contentsline {subsubsection}{\numberline {5.6.2.6}set\discretionary {-}{}{}Image\discretionary {-}{}{}Bounds\discretionary {-}{}{}Stack}{28}{subsubsection.5.6.2.6}
-\contentsline {subsubsection}{\numberline {5.6.2.7}set\discretionary {-}{}{}Scale}{28}{subsubsection.5.6.2.7}
-\contentsline {subsubsection}{\numberline {5.6.2.8}set\discretionary {-}{}{}Transform\discretionary {-}{}{}Stack}{28}{subsubsection.5.6.2.8}
-\contentsline {subsubsection}{\numberline {5.6.2.9}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{28}{subsubsection.5.6.2.9}
-\contentsline {subsubsection}{\numberline {5.6.2.10}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Origin}{28}{subsubsection.5.6.2.10}
-\contentsline {subsubsection}{\numberline {5.6.2.11}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Size}{28}{subsubsection.5.6.2.11}
-\contentsline {subsection}{\numberline {5.6.3}Member Data Documentation}{28}{subsection.5.6.3}
-\contentsline {subsubsection}{\numberline {5.6.3.1}image\discretionary {-}{}{}Bounds\discretionary {-}{}{}X\discretionary {-}{}{}Stack}{28}{subsubsection.5.6.3.1}
-\contentsline {subsubsection}{\numberline {5.6.3.2}image\discretionary {-}{}{}Bounds\discretionary {-}{}{}Y\discretionary {-}{}{}Stack}{29}{subsubsection.5.6.3.2}
-\contentsline {subsubsection}{\numberline {5.6.3.3}image\discretionary {-}{}{}Bounds\discretionary {-}{}{}Z\discretionary {-}{}{}Stack}{29}{subsubsection.5.6.3.3}
-\contentsline {subsubsection}{\numberline {5.6.3.4}image\discretionary {-}{}{}Plane\discretionary {-}{}{}Stack}{29}{subsubsection.5.6.3.4}
-\contentsline {subsubsection}{\numberline {5.6.3.5}max\discretionary {-}{}{}Distance}{29}{subsubsection.5.6.3.5}
-\contentsline {subsubsection}{\numberline {5.6.3.6}scale}{29}{subsubsection.5.6.3.6}
-\contentsline {subsubsection}{\numberline {5.6.3.7}transform\discretionary {-}{}{}Stack}{29}{subsubsection.5.6.3.7}
-\contentsline {subsubsection}{\numberline {5.6.3.8}volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{29}{subsubsection.5.6.3.8}
-\contentsline {subsubsection}{\numberline {5.6.3.9}volume\discretionary {-}{}{}Origin}{29}{subsubsection.5.6.3.9}
-\contentsline {subsubsection}{\numberline {5.6.3.10}volume\discretionary {-}{}{}Size}{29}{subsubsection.5.6.3.10}
-\contentsline {section}{\numberline {5.7}Volume\discretionary {-}{}{}Reconstruction\discretionary {-}{}{}Widget Class Reference}{29}{section.5.7}
+\contentsline {subsubsection}{\numberline {5.5.4.1}corner\discretionary {-}{}{}Annotation}{26}{subsubsection.5.5.4.1}
+\contentsline {subsubsection}{\numberline {5.5.4.2}image\discretionary {-}{}{}Displayed\discretionary {-}{}{}Index}{26}{subsubsection.5.5.4.2}
+\contentsline {subsubsection}{\numberline {5.5.4.3}image\discretionary {-}{}{}Height}{26}{subsubsection.5.5.4.3}
+\contentsline {subsubsection}{\numberline {5.5.4.4}image\discretionary {-}{}{}Stack}{26}{subsubsection.5.5.4.4}
+\contentsline {subsubsection}{\numberline {5.5.4.5}image\discretionary {-}{}{}Type}{26}{subsubsection.5.5.4.5}
+\contentsline {subsubsection}{\numberline {5.5.4.6}image\discretionary {-}{}{}Viewer}{26}{subsubsection.5.5.4.6}
+\contentsline {subsubsection}{\numberline {5.5.4.7}image\discretionary {-}{}{}Width}{27}{subsubsection.5.5.4.7}
+\contentsline {subsubsection}{\numberline {5.5.4.8}is\discretionary {-}{}{}Image\discretionary {-}{}{}Stack\discretionary {-}{}{}Loaded}{27}{subsubsection.5.5.4.8}
+\contentsline {subsubsection}{\numberline {5.5.4.9}is\discretionary {-}{}{}Volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack\discretionary {-}{}{}Loaded}{27}{subsubsection.5.5.4.9}
+\contentsline {subsubsection}{\numberline {5.5.4.10}itk\discretionary {-}{}{}Image}{27}{subsubsection.5.5.4.10}
+\contentsline {subsubsection}{\numberline {5.5.4.11}num\discretionary {-}{}{}Dimensions}{27}{subsubsection.5.5.4.11}
+\contentsline {subsubsection}{\numberline {5.5.4.12}opacity\discretionary {-}{}{}Point}{27}{subsubsection.5.5.4.12}
+\contentsline {subsubsection}{\numberline {5.5.4.13}pixel\discretionary {-}{}{}Type}{27}{subsubsection.5.5.4.13}
+\contentsline {subsubsection}{\numberline {5.5.4.14}qvtk\discretionary {-}{}{}Widget}{27}{subsubsection.5.5.4.14}
+\contentsline {subsubsection}{\numberline {5.5.4.15}renderer}{27}{subsubsection.5.5.4.15}
+\contentsline {subsubsection}{\numberline {5.5.4.16}renwin}{27}{subsubsection.5.5.4.16}
+\contentsline {subsubsection}{\numberline {5.5.4.17}rgb\discretionary {-}{}{}Itk\discretionary {-}{}{}Image}{27}{subsubsection.5.5.4.17}
+\contentsline {subsubsection}{\numberline {5.5.4.18}scale}{27}{subsubsection.5.5.4.18}
+\contentsline {subsubsection}{\numberline {5.5.4.19}transform\discretionary {-}{}{}Stack}{27}{subsubsection.5.5.4.19}
+\contentsline {subsubsection}{\numberline {5.5.4.20}volume}{28}{subsubsection.5.5.4.20}
+\contentsline {subsubsection}{\numberline {5.5.4.21}volume\discretionary {-}{}{}Data}{28}{subsubsection.5.5.4.21}
+\contentsline {subsubsection}{\numberline {5.5.4.22}volume\discretionary {-}{}{}Data\discretionary {-}{}{}Calibration}{28}{subsubsection.5.5.4.22}
+\contentsline {subsubsection}{\numberline {5.5.4.23}volume\discretionary {-}{}{}Data\discretionary {-}{}{}Rotations}{28}{subsubsection.5.5.4.23}
+\contentsline {subsubsection}{\numberline {5.5.4.24}volume\discretionary {-}{}{}Data\discretionary {-}{}{}Translations}{28}{subsubsection.5.5.4.24}
+\contentsline {subsubsection}{\numberline {5.5.4.25}volume\discretionary {-}{}{}Image\discretionary {-}{}{}Actor\discretionary {-}{}{}Stack}{28}{subsubsection.5.5.4.25}
+\contentsline {subsubsection}{\numberline {5.5.4.26}volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{28}{subsubsection.5.5.4.26}
+\contentsline {subsubsection}{\numberline {5.5.4.27}volume\discretionary {-}{}{}Property}{28}{subsubsection.5.5.4.27}
+\contentsline {subsubsection}{\numberline {5.5.4.28}volume\discretionary {-}{}{}Scalar\discretionary {-}{}{}Opacity}{28}{subsubsection.5.5.4.28}
+\contentsline {subsubsection}{\numberline {5.5.4.29}vtk\discretionary {-}{}{}Image}{28}{subsubsection.5.5.4.29}
+\contentsline {subsubsection}{\numberline {5.5.4.30}x\discretionary {-}{}{}Picked}{28}{subsubsection.5.5.4.30}
+\contentsline {subsubsection}{\numberline {5.5.4.31}x\discretionary {-}{}{}Position}{28}{subsubsection.5.5.4.31}
+\contentsline {subsubsection}{\numberline {5.5.4.32}y\discretionary {-}{}{}Picked}{29}{subsubsection.5.5.4.32}
+\contentsline {subsubsection}{\numberline {5.5.4.33}y\discretionary {-}{}{}Position}{29}{subsubsection.5.5.4.33}
+\contentsline {section}{\numberline {5.6}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget\discretionary {-}{}{}Command Class Reference}{29}{section.5.6}
+\contentsline {subsection}{\numberline {5.6.1}Detailed Description}{29}{subsection.5.6.1}
+\contentsline {subsection}{\numberline {5.6.2}Constructor \& Destructor Documentation}{29}{subsection.5.6.2}
+\contentsline {subsubsection}{\numberline {5.6.2.1}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget\discretionary {-}{}{}Command}{29}{subsubsection.5.6.2.1}
+\contentsline {subsubsection}{\numberline {5.6.2.2}$\sim $\discretionary {-}{}{}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget\discretionary {-}{}{}Command}{29}{subsubsection.5.6.2.2}
+\contentsline {subsection}{\numberline {5.6.3}Member Function Documentation}{30}{subsection.5.6.3}
+\contentsline {subsubsection}{\numberline {5.6.3.1}Execute}{30}{subsubsection.5.6.3.1}
+\contentsline {subsubsection}{\numberline {5.6.3.2}New}{30}{subsubsection.5.6.3.2}
+\contentsline {subsubsection}{\numberline {5.6.3.3}Set\discretionary {-}{}{}Annotation}{30}{subsubsection.5.6.3.3}
+\contentsline {subsubsection}{\numberline {5.6.3.4}Set\discretionary {-}{}{}Image\discretionary {-}{}{}Widget}{30}{subsubsection.5.6.3.4}
+\contentsline {subsubsection}{\numberline {5.6.3.5}Set\discretionary {-}{}{}Picker}{30}{subsubsection.5.6.3.5}
+\contentsline {subsection}{\numberline {5.6.4}Member Data Documentation}{30}{subsection.5.6.4}
+\contentsline {subsubsection}{\numberline {5.6.4.1}Annotation}{30}{subsubsection.5.6.4.1}
+\contentsline {subsubsection}{\numberline {5.6.4.2}Image\discretionary {-}{}{}Widget}{30}{subsubsection.5.6.4.2}
+\contentsline {subsubsection}{\numberline {5.6.4.3}Picker}{30}{subsubsection.5.6.4.3}
+\contentsline {section}{\numberline {5.7}Volume\discretionary {-}{}{}Reconstruction Class Reference}{30}{section.5.7}
 \contentsline {subsection}{\numberline {5.7.1}Detailed Description}{31}{subsection.5.7.1}
-\contentsline {subsection}{\numberline {5.7.2}Constructor \& Destructor Documentation}{31}{subsection.5.7.2}
-\contentsline {subsubsection}{\numberline {5.7.2.1}Volume\discretionary {-}{}{}Reconstruction\discretionary {-}{}{}Widget}{31}{subsubsection.5.7.2.1}
-\contentsline {subsubsection}{\numberline {5.7.2.2}$\sim $\discretionary {-}{}{}Volume\discretionary {-}{}{}Reconstruction\discretionary {-}{}{}Widget}{31}{subsubsection.5.7.2.2}
-\contentsline {subsection}{\numberline {5.7.3}Member Function Documentation}{31}{subsection.5.7.3}
-\contentsline {subsubsection}{\numberline {5.7.3.1}calc\discretionary {-}{}{}Image\discretionary {-}{}{}Bounds}{31}{subsubsection.5.7.3.1}
-\contentsline {subsubsection}{\numberline {5.7.3.2}calc\discretionary {-}{}{}Image\discretionary {-}{}{}Coords}{31}{subsubsection.5.7.3.2}
-\contentsline {subsubsection}{\numberline {5.7.3.3}calc\discretionary {-}{}{}Volume\discretionary {-}{}{}Size}{31}{subsubsection.5.7.3.3}
-\contentsline {subsubsection}{\numberline {5.7.3.4}display\discretionary {-}{}{}Volume}{31}{subsubsection.5.7.3.4}
-\contentsline {subsubsection}{\numberline {5.7.3.5}generate}{31}{subsubsection.5.7.3.5}
-\contentsline {subsubsection}{\numberline {5.7.3.6}invert}{31}{subsubsection.5.7.3.6}
-\contentsline {subsubsection}{\numberline {5.7.3.7}save}{32}{subsubsection.5.7.3.7}
-\contentsline {subsubsection}{\numberline {5.7.3.8}set\discretionary {-}{}{}Display\discretionary {-}{}{}Properties}{32}{subsubsection.5.7.3.8}
-\contentsline {subsubsection}{\numberline {5.7.3.9}set\discretionary {-}{}{}Main\discretionary {-}{}{}Window}{32}{subsubsection.5.7.3.9}
-\contentsline {subsubsection}{\numberline {5.7.3.10}set\discretionary {-}{}{}Transform\discretionary {-}{}{}Stack}{32}{subsubsection.5.7.3.10}
-\contentsline {subsubsection}{\numberline {5.7.3.11}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Color\discretionary {-}{}{}Map}{32}{subsubsection.5.7.3.11}
-\contentsline {subsubsection}{\numberline {5.7.3.12}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{32}{subsubsection.5.7.3.12}
-\contentsline {subsubsection}{\numberline {5.7.3.13}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Opacity}{32}{subsubsection.5.7.3.13}
-\contentsline {subsubsection}{\numberline {5.7.3.14}transparency}{32}{subsubsection.5.7.3.14}
-\contentsline {subsection}{\numberline {5.7.4}Member Data Documentation}{32}{subsection.5.7.4}
-\contentsline {subsubsection}{\numberline {5.7.4.1}image\discretionary {-}{}{}Bounds\discretionary {-}{}{}X\discretionary {-}{}{}Stack}{32}{subsubsection.5.7.4.1}
-\contentsline {subsubsection}{\numberline {5.7.4.2}image\discretionary {-}{}{}Bounds\discretionary {-}{}{}Y\discretionary {-}{}{}Stack}{32}{subsubsection.5.7.4.2}
-\contentsline {subsubsection}{\numberline {5.7.4.3}image\discretionary {-}{}{}Bounds\discretionary {-}{}{}Z\discretionary {-}{}{}Stack}{32}{subsubsection.5.7.4.3}
-\contentsline {subsubsection}{\numberline {5.7.4.4}image\discretionary {-}{}{}Coords\discretionary {-}{}{}X\discretionary {-}{}{}Stack}{33}{subsubsection.5.7.4.4}
-\contentsline {subsubsection}{\numberline {5.7.4.5}image\discretionary {-}{}{}Coords\discretionary {-}{}{}Y\discretionary {-}{}{}Stack}{33}{subsubsection.5.7.4.5}
-\contentsline {subsubsection}{\numberline {5.7.4.6}image\discretionary {-}{}{}Coords\discretionary {-}{}{}Z\discretionary {-}{}{}Stack}{33}{subsubsection.5.7.4.6}
-\contentsline {subsubsection}{\numberline {5.7.4.7}invert\discretionary {-}{}{}Colors}{33}{subsubsection.5.7.4.7}
-\contentsline {subsubsection}{\numberline {5.7.4.8}main\discretionary {-}{}{}Window}{33}{subsubsection.5.7.4.8}
-\contentsline {subsubsection}{\numberline {5.7.4.9}scale}{33}{subsubsection.5.7.4.9}
-\contentsline {subsubsection}{\numberline {5.7.4.10}transform\discretionary {-}{}{}Stack}{33}{subsubsection.5.7.4.10}
-\contentsline {subsubsection}{\numberline {5.7.4.11}ui}{33}{subsubsection.5.7.4.11}
-\contentsline {subsubsection}{\numberline {5.7.4.12}volume}{33}{subsubsection.5.7.4.12}
-\contentsline {subsubsection}{\numberline {5.7.4.13}volume\discretionary {-}{}{}Data}{33}{subsubsection.5.7.4.13}
-\contentsline {subsubsection}{\numberline {5.7.4.14}volume\discretionary {-}{}{}Final}{33}{subsubsection.5.7.4.14}
-\contentsline {subsubsection}{\numberline {5.7.4.15}volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{33}{subsubsection.5.7.4.15}
-\contentsline {subsubsection}{\numberline {5.7.4.16}volume\discretionary {-}{}{}Origin}{33}{subsubsection.5.7.4.16}
-\contentsline {subsubsection}{\numberline {5.7.4.17}volume\discretionary {-}{}{}Property}{34}{subsubsection.5.7.4.17}
-\contentsline {subsubsection}{\numberline {5.7.4.18}volume\discretionary {-}{}{}Size}{34}{subsubsection.5.7.4.18}
-\contentsline {chapter}{\numberline {6}File Documentation}{35}{chapter.6}
-\contentsline {section}{\numberline {6.1}Calibration.\discretionary {-}{}{}cpp File Reference}{35}{section.6.1}
-\contentsline {section}{\numberline {6.2}Calibration.\discretionary {-}{}{}h File Reference}{35}{section.6.2}
-\contentsline {section}{\numberline {6.3}main.\discretionary {-}{}{}cpp File Reference}{35}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Function Documentation}{35}{subsection.6.3.1}
-\contentsline {subsubsection}{\numberline {6.3.1.1}main}{35}{subsubsection.6.3.1.1}
-\contentsline {section}{\numberline {6.4}mainwindow.\discretionary {-}{}{}cpp File Reference}{35}{section.6.4}
-\contentsline {section}{\numberline {6.5}mainwindow.\discretionary {-}{}{}h File Reference}{36}{section.6.5}
-\contentsline {section}{\numberline {6.6}Probe\discretionary {-}{}{}Calibration\discretionary {-}{}{}Widget.\discretionary {-}{}{}cpp File Reference}{36}{section.6.6}
-\contentsline {subsection}{\numberline {6.6.1}Variable Documentation}{36}{subsection.6.6.1}
-\contentsline {subsubsection}{\numberline {6.6.1.1}set\discretionary {-}{}{}Coords\discretionary {-}{}{}Size}{36}{subsubsection.6.6.1.1}
-\contentsline {section}{\numberline {6.7}Probe\discretionary {-}{}{}Calibration\discretionary {-}{}{}Widget.\discretionary {-}{}{}h File Reference}{36}{section.6.7}
-\contentsline {section}{\numberline {6.8}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget.\discretionary {-}{}{}cpp File Reference}{37}{section.6.8}
-\contentsline {section}{\numberline {6.9}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget.\discretionary {-}{}{}h File Reference}{37}{section.6.9}
-\contentsline {subsection}{\numberline {6.9.1}Typedef Documentation}{38}{subsection.6.9.1}
-\contentsline {subsubsection}{\numberline {6.9.1.1}Image\discretionary {-}{}{}Type}{38}{subsubsection.6.9.1.1}
-\contentsline {subsubsection}{\numberline {6.9.1.2}R\discretionary {-}{}{}G\discretionary {-}{}{}B\discretionary {-}{}{}Image\discretionary {-}{}{}Type}{38}{subsubsection.6.9.1.2}
-\contentsline {subsubsection}{\numberline {6.9.1.3}R\discretionary {-}{}{}G\discretionary {-}{}{}B\discretionary {-}{}{}Pixel\discretionary {-}{}{}Type}{38}{subsubsection.6.9.1.3}
-\contentsline {section}{\numberline {6.10}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget\discretionary {-}{}{}Command.\discretionary {-}{}{}cpp File Reference}{38}{section.6.10}
-\contentsline {section}{\numberline {6.11}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget\discretionary {-}{}{}Command.\discretionary {-}{}{}h File Reference}{39}{section.6.11}
-\contentsline {section}{\numberline {6.12}Volume\discretionary {-}{}{}Reconstruction.\discretionary {-}{}{}cpp File Reference}{39}{section.6.12}
-\contentsline {section}{\numberline {6.13}Volume\discretionary {-}{}{}Reconstruction.\discretionary {-}{}{}h File Reference}{39}{section.6.13}
-\contentsline {section}{\numberline {6.14}Volume\discretionary {-}{}{}Reconstruction\discretionary {-}{}{}Widget.\discretionary {-}{}{}cpp File Reference}{39}{section.6.14}
-\contentsline {section}{\numberline {6.15}Volume\discretionary {-}{}{}Reconstruction\discretionary {-}{}{}Widget.\discretionary {-}{}{}h File Reference}{39}{section.6.15}
+\contentsline {subsection}{\numberline {5.7.2}Member Function Documentation}{31}{subsection.5.7.2}
+\contentsline {subsubsection}{\numberline {5.7.2.1}calc\discretionary {-}{}{}Image\discretionary {-}{}{}Plane}{31}{subsubsection.5.7.2.1}
+\contentsline {subsubsection}{\numberline {5.7.2.2}calc\discretionary {-}{}{}Max\discretionary {-}{}{}Distance}{32}{subsubsection.5.7.2.2}
+\contentsline {subsubsection}{\numberline {5.7.2.3}calc\discretionary {-}{}{}Voxel\discretionary {-}{}{}Value}{32}{subsubsection.5.7.2.3}
+\contentsline {subsubsection}{\numberline {5.7.2.4}generate\discretionary {-}{}{}Volume}{32}{subsubsection.5.7.2.4}
+\contentsline {subsubsection}{\numberline {5.7.2.5}New}{32}{subsubsection.5.7.2.5}
+\contentsline {subsubsection}{\numberline {5.7.2.6}set\discretionary {-}{}{}Image\discretionary {-}{}{}Bounds\discretionary {-}{}{}Stack}{32}{subsubsection.5.7.2.6}
+\contentsline {subsubsection}{\numberline {5.7.2.7}set\discretionary {-}{}{}Scale}{32}{subsubsection.5.7.2.7}
+\contentsline {subsubsection}{\numberline {5.7.2.8}set\discretionary {-}{}{}Transform\discretionary {-}{}{}Stack}{32}{subsubsection.5.7.2.8}
+\contentsline {subsubsection}{\numberline {5.7.2.9}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{32}{subsubsection.5.7.2.9}
+\contentsline {subsubsection}{\numberline {5.7.2.10}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Origin}{32}{subsubsection.5.7.2.10}
+\contentsline {subsubsection}{\numberline {5.7.2.11}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Size}{32}{subsubsection.5.7.2.11}
+\contentsline {subsection}{\numberline {5.7.3}Member Data Documentation}{32}{subsection.5.7.3}
+\contentsline {subsubsection}{\numberline {5.7.3.1}image\discretionary {-}{}{}Bounds\discretionary {-}{}{}X\discretionary {-}{}{}Stack}{32}{subsubsection.5.7.3.1}
+\contentsline {subsubsection}{\numberline {5.7.3.2}image\discretionary {-}{}{}Bounds\discretionary {-}{}{}Y\discretionary {-}{}{}Stack}{33}{subsubsection.5.7.3.2}
+\contentsline {subsubsection}{\numberline {5.7.3.3}image\discretionary {-}{}{}Bounds\discretionary {-}{}{}Z\discretionary {-}{}{}Stack}{33}{subsubsection.5.7.3.3}
+\contentsline {subsubsection}{\numberline {5.7.3.4}image\discretionary {-}{}{}Plane\discretionary {-}{}{}Stack}{33}{subsubsection.5.7.3.4}
+\contentsline {subsubsection}{\numberline {5.7.3.5}max\discretionary {-}{}{}Distance}{33}{subsubsection.5.7.3.5}
+\contentsline {subsubsection}{\numberline {5.7.3.6}scale}{33}{subsubsection.5.7.3.6}
+\contentsline {subsubsection}{\numberline {5.7.3.7}transform\discretionary {-}{}{}Stack}{33}{subsubsection.5.7.3.7}
+\contentsline {subsubsection}{\numberline {5.7.3.8}volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{33}{subsubsection.5.7.3.8}
+\contentsline {subsubsection}{\numberline {5.7.3.9}volume\discretionary {-}{}{}Origin}{33}{subsubsection.5.7.3.9}
+\contentsline {subsubsection}{\numberline {5.7.3.10}volume\discretionary {-}{}{}Size}{33}{subsubsection.5.7.3.10}
+\contentsline {section}{\numberline {5.8}Volume\discretionary {-}{}{}Reconstruction\discretionary {-}{}{}Widget Class Reference}{33}{section.5.8}
+\contentsline {subsection}{\numberline {5.8.1}Detailed Description}{35}{subsection.5.8.1}
+\contentsline {subsection}{\numberline {5.8.2}Constructor \& Destructor Documentation}{35}{subsection.5.8.2}
+\contentsline {subsubsection}{\numberline {5.8.2.1}Volume\discretionary {-}{}{}Reconstruction\discretionary {-}{}{}Widget}{35}{subsubsection.5.8.2.1}
+\contentsline {subsubsection}{\numberline {5.8.2.2}$\sim $\discretionary {-}{}{}Volume\discretionary {-}{}{}Reconstruction\discretionary {-}{}{}Widget}{35}{subsubsection.5.8.2.2}
+\contentsline {subsection}{\numberline {5.8.3}Member Function Documentation}{35}{subsection.5.8.3}
+\contentsline {subsubsection}{\numberline {5.8.3.1}calc\discretionary {-}{}{}Image\discretionary {-}{}{}Bounds}{35}{subsubsection.5.8.3.1}
+\contentsline {subsubsection}{\numberline {5.8.3.2}calc\discretionary {-}{}{}Image\discretionary {-}{}{}Coords}{35}{subsubsection.5.8.3.2}
+\contentsline {subsubsection}{\numberline {5.8.3.3}calc\discretionary {-}{}{}Volume\discretionary {-}{}{}Size}{35}{subsubsection.5.8.3.3}
+\contentsline {subsubsection}{\numberline {5.8.3.4}display\discretionary {-}{}{}Volume}{35}{subsubsection.5.8.3.4}
+\contentsline {subsubsection}{\numberline {5.8.3.5}generate}{35}{subsubsection.5.8.3.5}
+\contentsline {subsubsection}{\numberline {5.8.3.6}save}{35}{subsubsection.5.8.3.6}
+\contentsline {subsubsection}{\numberline {5.8.3.7}set\discretionary {-}{}{}Display\discretionary {-}{}{}Properties}{35}{subsubsection.5.8.3.7}
+\contentsline {subsubsection}{\numberline {5.8.3.8}set\discretionary {-}{}{}Main\discretionary {-}{}{}Window}{35}{subsubsection.5.8.3.8}
+\contentsline {subsubsection}{\numberline {5.8.3.9}set\discretionary {-}{}{}Transform\discretionary {-}{}{}Stack}{36}{subsubsection.5.8.3.9}
+\contentsline {subsubsection}{\numberline {5.8.3.10}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Color\discretionary {-}{}{}Map}{36}{subsubsection.5.8.3.10}
+\contentsline {subsubsection}{\numberline {5.8.3.11}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{36}{subsubsection.5.8.3.11}
+\contentsline {subsubsection}{\numberline {5.8.3.12}set\discretionary {-}{}{}Volume\discretionary {-}{}{}Opacity}{36}{subsubsection.5.8.3.12}
+\contentsline {subsection}{\numberline {5.8.4}Member Data Documentation}{36}{subsection.5.8.4}
+\contentsline {subsubsection}{\numberline {5.8.4.1}image\discretionary {-}{}{}Bounds\discretionary {-}{}{}X\discretionary {-}{}{}Stack}{36}{subsubsection.5.8.4.1}
+\contentsline {subsubsection}{\numberline {5.8.4.2}image\discretionary {-}{}{}Bounds\discretionary {-}{}{}Y\discretionary {-}{}{}Stack}{36}{subsubsection.5.8.4.2}
+\contentsline {subsubsection}{\numberline {5.8.4.3}image\discretionary {-}{}{}Bounds\discretionary {-}{}{}Z\discretionary {-}{}{}Stack}{36}{subsubsection.5.8.4.3}
+\contentsline {subsubsection}{\numberline {5.8.4.4}image\discretionary {-}{}{}Coords\discretionary {-}{}{}X\discretionary {-}{}{}Stack}{36}{subsubsection.5.8.4.4}
+\contentsline {subsubsection}{\numberline {5.8.4.5}image\discretionary {-}{}{}Coords\discretionary {-}{}{}Y\discretionary {-}{}{}Stack}{36}{subsubsection.5.8.4.5}
+\contentsline {subsubsection}{\numberline {5.8.4.6}image\discretionary {-}{}{}Coords\discretionary {-}{}{}Z\discretionary {-}{}{}Stack}{36}{subsubsection.5.8.4.6}
+\contentsline {subsubsection}{\numberline {5.8.4.7}main\discretionary {-}{}{}Window}{36}{subsubsection.5.8.4.7}
+\contentsline {subsubsection}{\numberline {5.8.4.8}scale}{37}{subsubsection.5.8.4.8}
+\contentsline {subsubsection}{\numberline {5.8.4.9}transform\discretionary {-}{}{}Stack}{37}{subsubsection.5.8.4.9}
+\contentsline {subsubsection}{\numberline {5.8.4.10}ui}{37}{subsubsection.5.8.4.10}
+\contentsline {subsubsection}{\numberline {5.8.4.11}volume}{37}{subsubsection.5.8.4.11}
+\contentsline {subsubsection}{\numberline {5.8.4.12}volume\discretionary {-}{}{}Data}{37}{subsubsection.5.8.4.12}
+\contentsline {subsubsection}{\numberline {5.8.4.13}volume\discretionary {-}{}{}Final}{37}{subsubsection.5.8.4.13}
+\contentsline {subsubsection}{\numberline {5.8.4.14}volume\discretionary {-}{}{}Image\discretionary {-}{}{}Stack}{37}{subsubsection.5.8.4.14}
+\contentsline {subsubsection}{\numberline {5.8.4.15}volume\discretionary {-}{}{}Origin}{37}{subsubsection.5.8.4.15}
+\contentsline {subsubsection}{\numberline {5.8.4.16}volume\discretionary {-}{}{}Property}{37}{subsubsection.5.8.4.16}
+\contentsline {subsubsection}{\numberline {5.8.4.17}volume\discretionary {-}{}{}Size}{37}{subsubsection.5.8.4.17}
+\contentsline {chapter}{\numberline {6}File Documentation}{39}{chapter.6}
+\contentsline {section}{\numberline {6.1}Calibration.\discretionary {-}{}{}cpp File Reference}{39}{section.6.1}
+\contentsline {section}{\numberline {6.2}Calibration.\discretionary {-}{}{}h File Reference}{39}{section.6.2}
+\contentsline {section}{\numberline {6.3}Crop\discretionary {-}{}{}Images\discretionary {-}{}{}Widget.\discretionary {-}{}{}cpp File Reference}{39}{section.6.3}
+\contentsline {section}{\numberline {6.4}Crop\discretionary {-}{}{}Images\discretionary {-}{}{}Widget.\discretionary {-}{}{}h File Reference}{39}{section.6.4}
+\contentsline {section}{\numberline {6.5}main.\discretionary {-}{}{}cpp File Reference}{40}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Function Documentation}{40}{subsection.6.5.1}
+\contentsline {subsubsection}{\numberline {6.5.1.1}main}{40}{subsubsection.6.5.1.1}
+\contentsline {section}{\numberline {6.6}mainwindow.\discretionary {-}{}{}cpp File Reference}{40}{section.6.6}
+\contentsline {section}{\numberline {6.7}mainwindow.\discretionary {-}{}{}h File Reference}{40}{section.6.7}
+\contentsline {section}{\numberline {6.8}Probe\discretionary {-}{}{}Calibration\discretionary {-}{}{}Widget.\discretionary {-}{}{}cpp File Reference}{41}{section.6.8}
+\contentsline {subsection}{\numberline {6.8.1}Variable Documentation}{41}{subsection.6.8.1}
+\contentsline {subsubsection}{\numberline {6.8.1.1}set\discretionary {-}{}{}Coords\discretionary {-}{}{}Size}{41}{subsubsection.6.8.1.1}
+\contentsline {section}{\numberline {6.9}Probe\discretionary {-}{}{}Calibration\discretionary {-}{}{}Widget.\discretionary {-}{}{}h File Reference}{41}{section.6.9}
+\contentsline {section}{\numberline {6.10}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget.\discretionary {-}{}{}cpp File Reference}{41}{section.6.10}
+\contentsline {section}{\numberline {6.11}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget.\discretionary {-}{}{}h File Reference}{42}{section.6.11}
+\contentsline {subsection}{\numberline {6.11.1}Typedef Documentation}{43}{subsection.6.11.1}
+\contentsline {subsubsection}{\numberline {6.11.1.1}Image\discretionary {-}{}{}Type}{43}{subsubsection.6.11.1.1}
+\contentsline {subsubsection}{\numberline {6.11.1.2}R\discretionary {-}{}{}G\discretionary {-}{}{}B\discretionary {-}{}{}Image\discretionary {-}{}{}Type}{43}{subsubsection.6.11.1.2}
+\contentsline {subsubsection}{\numberline {6.11.1.3}R\discretionary {-}{}{}G\discretionary {-}{}{}B\discretionary {-}{}{}Pixel\discretionary {-}{}{}Type}{43}{subsubsection.6.11.1.3}
+\contentsline {section}{\numberline {6.12}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget\discretionary {-}{}{}Command.\discretionary {-}{}{}cpp File Reference}{43}{section.6.12}
+\contentsline {section}{\numberline {6.13}Q\discretionary {-}{}{}V\discretionary {-}{}{}T\discretionary {-}{}{}K\discretionary {-}{}{}Image\discretionary {-}{}{}Widget\discretionary {-}{}{}Command.\discretionary {-}{}{}h File Reference}{43}{section.6.13}
+\contentsline {section}{\numberline {6.14}Volume\discretionary {-}{}{}Reconstruction.\discretionary {-}{}{}cpp File Reference}{43}{section.6.14}
+\contentsline {section}{\numberline {6.15}Volume\discretionary {-}{}{}Reconstruction.\discretionary {-}{}{}h File Reference}{44}{section.6.15}
+\contentsline {section}{\numberline {6.16}Volume\discretionary {-}{}{}Reconstruction\discretionary {-}{}{}Widget.\discretionary {-}{}{}cpp File Reference}{44}{section.6.16}
+\contentsline {section}{\numberline {6.17}Volume\discretionary {-}{}{}Reconstruction\discretionary {-}{}{}Widget.\discretionary {-}{}{}h File Reference}{44}{section.6.17}

@@ -1,0 +1,208 @@
+\hypertarget{class_crop_images_widget}{\section{Crop\-Images\-Widget Class Reference}
+\label{d0/d3c/class_crop_images_widget}\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}}
+}
+
+
+Crop images.  
+
+
+
+
+{\ttfamily \#include $<$Crop\-Images\-Widget.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_crop_images_widget_aae1d29894906efd2551175b48d063132}{Crop\-Images\-Widget} (Q\-Widget $\ast$parent=0)
+\item 
+\hyperlink{class_crop_images_widget_ac8d6f0816d821f23169f8a64e36e1cf4}{$\sim$\-Crop\-Images\-Widget} ()
+\item 
+void \hyperlink{class_crop_images_widget_a5313314b9fc24e002b8af6ecf4e4fda5}{set\-Image\-Stack} (std\-::vector$<$ vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ $>$ \hyperlink{class_crop_images_widget_a924d245cce06a0c16d6c4bd8a3762a67}{image\-Stack})
+\begin{DoxyCompactList}\small\item\em Set this stack of vtk\-Image\-Data. \end{DoxyCompactList}\item 
+void \hyperlink{class_crop_images_widget_a3d703f7443ec0b8143a8422ccd53661d}{set\-Image} (vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ \hyperlink{class_crop_images_widget_ab160815d191ed30e0c6b8a905818ab3b}{image})
+\begin{DoxyCompactList}\small\item\em Set this vtk\-Image\-Data. \end{DoxyCompactList}\item 
+void \hyperlink{class_crop_images_widget_a5c67bd8dc0159deaac57a58c6182efa9}{set\-Main\-Window} (\hyperlink{class_main_window}{Main\-Window} $\ast$mainwindow)
+\begin{DoxyCompactList}\small\item\em Set the window to display the crop images. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_crop_images_widget_a8d459309b0788c1ba54bc4fb9af23b4f}{crop} ()
+\begin{DoxyCompactList}\small\item\em calls the crop method when the crop buttom is clicked \end{DoxyCompactList}\item 
+void \hyperlink{class_crop_images_widget_aa460a3fff6b20304c5629d6ed0cb8bed}{save} ()
+\begin{DoxyCompactList}\small\item\em Save the cropped images in a folder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ \hyperlink{class_crop_images_widget_a2e6cc0f4bf2954d17ccc126e08648f48}{crop\-Probe\-Image} (vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ \hyperlink{class_crop_images_widget_ab160815d191ed30e0c6b8a905818ab3b}{image}, int depth\-Type)
+\begin{DoxyCompactList}\small\item\em Crop ultrasound image depnding of the depth type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ui\-::\-Crop\-Images\-Widget $\ast$ \hyperlink{class_crop_images_widget_adc7928104c839cc22de3d73b286b1fad}{ui}
+\item 
+bool \hyperlink{class_crop_images_widget_afaead54d7c3cf3549137e3177db95385}{work\-With\-Stack}
+\begin{DoxyCompactList}\small\item\em if there are multiple images to work with \end{DoxyCompactList}\item 
+std\-::vector$<$ vtk\-Smart\-Pointer\\*
+$<$ vtk\-Image\-Data $>$ $>$ \hyperlink{class_crop_images_widget_a924d245cce06a0c16d6c4bd8a3762a67}{image\-Stack}
+\begin{DoxyCompactList}\small\item\em an Array of vtk\-Image\-Data to work \end{DoxyCompactList}\item 
+\hyperlink{class_main_window}{Main\-Window} $\ast$ \hyperlink{class_crop_images_widget_a1fa1df3ba49de9524eac0a15875f57d5}{main\-Window}
+\item 
+vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ \hyperlink{class_crop_images_widget_ab160815d191ed30e0c6b8a905818ab3b}{image}
+\begin{DoxyCompactList}\small\item\em the vtk\-Image\-Data to work \end{DoxyCompactList}\item 
+vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ \hyperlink{class_crop_images_widget_afafb6d17550677101da809f2d2b795dc}{crop\-Image}
+\begin{DoxyCompactList}\small\item\em the cropped image \end{DoxyCompactList}\item 
+std\-::vector$<$ vtk\-Smart\-Pointer\\*
+$<$ vtk\-Image\-Data $>$ $>$ \hyperlink{class_crop_images_widget_a03f87c8aabe879b16e585dae60d4415b}{crop\-Stack}
+\begin{DoxyCompactList}\small\item\em the cropped image\-Stack \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Crop images. 
+
+This class crop one or multiple images deppendng on which range of the ultrasound machine was used. It can crop images in ranges 4, 5, 6 and 8. Images can be saved in a folder or used to calibrate the U\-S probe. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_crop_images_widget_aae1d29894906efd2551175b48d063132}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!Crop\-Images\-Widget@{Crop\-Images\-Widget}}
+\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{Crop\-Images\-Widget}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Crop\-Images\-Widget\-::\-Crop\-Images\-Widget} (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}explicit\mbox{]}}}}\label{d0/d3c/class_crop_images_widget_aae1d29894906efd2551175b48d063132}
+\hypertarget{class_crop_images_widget_ac8d6f0816d821f23169f8a64e36e1cf4}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!$\sim$\-Crop\-Images\-Widget@{$\sim$\-Crop\-Images\-Widget}}
+\index{$\sim$\-Crop\-Images\-Widget@{$\sim$\-Crop\-Images\-Widget}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{$\sim$\-Crop\-Images\-Widget}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Crop\-Images\-Widget\-::$\sim$\-Crop\-Images\-Widget} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{d0/d3c/class_crop_images_widget_ac8d6f0816d821f23169f8a64e36e1cf4}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_crop_images_widget_a8d459309b0788c1ba54bc4fb9af23b4f}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!crop@{crop}}
+\index{crop@{crop}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{crop}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Crop\-Images\-Widget\-::crop} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private, slot\mbox{]}}}}\label{d0/d3c/class_crop_images_widget_a8d459309b0788c1ba54bc4fb9af23b4f}
+
+
+calls the crop method when the crop buttom is clicked 
+
+\hypertarget{class_crop_images_widget_a2e6cc0f4bf2954d17ccc126e08648f48}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!crop\-Probe\-Image@{crop\-Probe\-Image}}
+\index{crop\-Probe\-Image@{crop\-Probe\-Image}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{crop\-Probe\-Image}]{\setlength{\rightskip}{0pt plus 5cm}vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ {\bf Crop\-Images\-Widget\-::crop\-Probe\-Image} (
+\begin{DoxyParamCaption}
+\item[{vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$}]{image, }
+\item[{int}]{depth\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d3c/class_crop_images_widget_a2e6cc0f4bf2954d17ccc126e08648f48}
+
+
+Crop ultrasound image depnding of the depth type. 
+
+\hypertarget{class_crop_images_widget_aa460a3fff6b20304c5629d6ed0cb8bed}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!save@{save}}
+\index{save@{save}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Crop\-Images\-Widget\-::save} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private, slot\mbox{]}}}}\label{d0/d3c/class_crop_images_widget_aa460a3fff6b20304c5629d6ed0cb8bed}
+
+
+Save the cropped images in a folder. 
+
+\hypertarget{class_crop_images_widget_a3d703f7443ec0b8143a8422ccd53661d}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!set\-Image@{set\-Image}}
+\index{set\-Image@{set\-Image}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{set\-Image}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Crop\-Images\-Widget\-::set\-Image} (
+\begin{DoxyParamCaption}
+\item[{vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$}]{image}
+\end{DoxyParamCaption}
+)}}\label{d0/d3c/class_crop_images_widget_a3d703f7443ec0b8143a8422ccd53661d}
+
+
+Set this vtk\-Image\-Data. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & smart Pointer of vtk\-Image\-Data \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_crop_images_widget_a5313314b9fc24e002b8af6ecf4e4fda5}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!set\-Image\-Stack@{set\-Image\-Stack}}
+\index{set\-Image\-Stack@{set\-Image\-Stack}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{set\-Image\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Crop\-Images\-Widget\-::set\-Image\-Stack} (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ $>$}]{image\-Stack}
+\end{DoxyParamCaption}
+)}}\label{d0/d3c/class_crop_images_widget_a5313314b9fc24e002b8af6ecf4e4fda5}
+
+
+Set this stack of vtk\-Image\-Data. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & std Vector of vtk\-Image\-Data \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_crop_images_widget_a5c67bd8dc0159deaac57a58c6182efa9}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!set\-Main\-Window@{set\-Main\-Window}}
+\index{set\-Main\-Window@{set\-Main\-Window}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{set\-Main\-Window}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Crop\-Images\-Widget\-::set\-Main\-Window} (
+\begin{DoxyParamCaption}
+\item[{{\bf Main\-Window} $\ast$}]{mainwindow}
+\end{DoxyParamCaption}
+)}}\label{d0/d3c/class_crop_images_widget_a5c67bd8dc0159deaac57a58c6182efa9}
+
+
+Set the window to display the crop images. 
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_crop_images_widget_afafb6d17550677101da809f2d2b795dc}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!crop\-Image@{crop\-Image}}
+\index{crop\-Image@{crop\-Image}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{crop\-Image}]{\setlength{\rightskip}{0pt plus 5cm}vtk\-Smart\-Pointer$<$vtk\-Image\-Data$>$ {\bf Crop\-Images\-Widget\-::crop\-Image}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d3c/class_crop_images_widget_afafb6d17550677101da809f2d2b795dc}
+
+
+the cropped image 
+
+\hypertarget{class_crop_images_widget_a03f87c8aabe879b16e585dae60d4415b}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!crop\-Stack@{crop\-Stack}}
+\index{crop\-Stack@{crop\-Stack}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{crop\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vtk\-Smart\-Pointer$<$vtk\-Image\-Data$>$ $>$ {\bf Crop\-Images\-Widget\-::crop\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d3c/class_crop_images_widget_a03f87c8aabe879b16e585dae60d4415b}
+
+
+the cropped image\-Stack 
+
+\hypertarget{class_crop_images_widget_ab160815d191ed30e0c6b8a905818ab3b}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!image@{image}}
+\index{image@{image}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{image}]{\setlength{\rightskip}{0pt plus 5cm}vtk\-Smart\-Pointer$<$vtk\-Image\-Data$>$ {\bf Crop\-Images\-Widget\-::image}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d3c/class_crop_images_widget_ab160815d191ed30e0c6b8a905818ab3b}
+
+
+the vtk\-Image\-Data to work 
+
+\hypertarget{class_crop_images_widget_a924d245cce06a0c16d6c4bd8a3762a67}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!image\-Stack@{image\-Stack}}
+\index{image\-Stack@{image\-Stack}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{image\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vtk\-Smart\-Pointer$<$vtk\-Image\-Data$>$ $>$ {\bf Crop\-Images\-Widget\-::image\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d3c/class_crop_images_widget_a924d245cce06a0c16d6c4bd8a3762a67}
+
+
+an Array of vtk\-Image\-Data to work 
+
+\hypertarget{class_crop_images_widget_a1fa1df3ba49de9524eac0a15875f57d5}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!main\-Window@{main\-Window}}
+\index{main\-Window@{main\-Window}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{main\-Window}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Main\-Window}$\ast$ {\bf Crop\-Images\-Widget\-::main\-Window}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d3c/class_crop_images_widget_a1fa1df3ba49de9524eac0a15875f57d5}
+the main window to call it \hypertarget{class_crop_images_widget_adc7928104c839cc22de3d73b286b1fad}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!ui@{ui}}
+\index{ui@{ui}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{ui}]{\setlength{\rightskip}{0pt plus 5cm}Ui\-::\-Crop\-Images\-Widget$\ast$ {\bf Crop\-Images\-Widget\-::ui}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d3c/class_crop_images_widget_adc7928104c839cc22de3d73b286b1fad}
+\hypertarget{class_crop_images_widget_afaead54d7c3cf3549137e3177db95385}{\index{Crop\-Images\-Widget@{Crop\-Images\-Widget}!work\-With\-Stack@{work\-With\-Stack}}
+\index{work\-With\-Stack@{work\-With\-Stack}!CropImagesWidget@{Crop\-Images\-Widget}}
+\subsubsection[{work\-With\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Crop\-Images\-Widget\-::work\-With\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d0/d3c/class_crop_images_widget_afaead54d7c3cf3549137e3177db95385}
+
+
+if there are multiple images to work with 
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_crop_images_widget_8h}{Crop\-Images\-Widget.\-h}\item 
+\hyperlink{_crop_images_widget_8cpp}{Crop\-Images\-Widget.\-cpp}\end{DoxyCompactItemize}

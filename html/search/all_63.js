@@ -17,6 +17,12 @@ var searchData=
   ['connections',['Connections',['../d9/dc6/class_main_window.html#a2581229148c6c597849b827689e58a12',1,'MainWindow']]],
   ['coords',['coords',['../d2/d39/class_probe_calibration_widget.html#a38ce67d5acddadf91da9b7cf64cbbc30',1,'ProbeCalibrationWidget']]],
   ['cornerannotation',['cornerAnnotation',['../d8/dd7/class_q_v_t_k_image_widget.html#a4c5a9fab33dfc90a74abe775fb6c50f5',1,'QVTKImageWidget']]],
-  ['crop',['crop',['../d2/d39/class_probe_calibration_widget.html#aee10394430b33e5c67faffc0711aa72c',1,'ProbeCalibrationWidget']]],
-  ['cropprobeimage',['cropProbeImage',['../d2/d39/class_probe_calibration_widget.html#a87d9b425235afcabde1a9de067ba8d2d',1,'ProbeCalibrationWidget']]]
+  ['crop',['crop',['../d0/d3c/class_crop_images_widget.html#a8d459309b0788c1ba54bc4fb9af23b4f',1,'CropImagesWidget::crop()'],['../d2/d39/class_probe_calibration_widget.html#aee10394430b33e5c67faffc0711aa72c',1,'ProbeCalibrationWidget::crop()']]],
+  ['cropimage',['cropImage',['../d0/d3c/class_crop_images_widget.html#afafb6d17550677101da809f2d2b795dc',1,'CropImagesWidget']]],
+  ['cropimages',['cropImages',['../d9/dc6/class_main_window.html#ab821280b066f71fcb1a6b0390d99174c',1,'MainWindow']]],
+  ['cropimageswidget',['CropImagesWidget',['../d0/d3c/class_crop_images_widget.html',1,'CropImagesWidget'],['../d0/d3c/class_crop_images_widget.html#aae1d29894906efd2551175b48d063132',1,'CropImagesWidget::CropImagesWidget()']]],
+  ['cropimageswidget_2ecpp',['CropImagesWidget.cpp',['../d3/d5e/_crop_images_widget_8cpp.html',1,'']]],
+  ['cropimageswidget_2eh',['CropImagesWidget.h',['../d2/de7/_crop_images_widget_8h.html',1,'']]],
+  ['cropprobeimage',['cropProbeImage',['../d0/d3c/class_crop_images_widget.html#a2e6cc0f4bf2954d17ccc126e08648f48',1,'CropImagesWidget::cropProbeImage()'],['../d2/d39/class_probe_calibration_widget.html#a87d9b425235afcabde1a9de067ba8d2d',1,'ProbeCalibrationWidget::cropProbeImage()']]],
+  ['cropstack',['cropStack',['../d0/d3c/class_crop_images_widget.html#a03f87c8aabe879b16e585dae60d4415b',1,'CropImagesWidget']]]
 ];

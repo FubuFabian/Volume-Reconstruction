@@ -119,11 +119,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:acd43450864ef2c0cdd7b8d37f045d8fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set and display multiple images from a given images filenames. Display the image corresponding to the first element on the filenmaes list.  <a href="#acd43450864ef2c0cdd7b8d37f045d8fd"></a><br/></td></tr>
 <tr class="memitem:ad605fe552c806d21e6729b66f648600a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#ad605fe552c806d21e6729b66f648600a">setAndDisplayVolumeImages</a> (QStringList ImagesFilenames, QString rotationFilename, QString translatoinFilename, QString calibrationFilename)</td></tr>
 <tr class="memdesc:ad605fe552c806d21e6729b66f648600a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set and display images from a given images filenames that represent the volume data. Display the image corresponding to the first element on the filenames list.  <a href="#ad605fe552c806d21e6729b66f648600a"></a><br/></td></tr>
+<tr class="memitem:ade574690f481377265c548816d7fd944"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#ade574690f481377265c548816d7fd944">setAndDisplayVolume</a> (QString volumeFilename)</td></tr>
+<tr class="memdesc:ade574690f481377265c548816d7fd944"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set and display volume data.  <a href="#ade574690f481377265c548816d7fd944"></a><br/></td></tr>
+<tr class="memitem:a3b0b5b058b7ce1b89bc25337cf30c29e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a3b0b5b058b7ce1b89bc25337cf30c29e">setAndDisplayVolume</a> (vtkSmartPointer&lt; vtkImageData &gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a5e2dcad8b7ea1a85c4b8052e9452844c">volumeData</a>)</td></tr>
+<tr class="memdesc:a3b0b5b058b7ce1b89bc25337cf30c29e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set and display volume data.  <a href="#a3b0b5b058b7ce1b89bc25337cf30c29e"></a><br/></td></tr>
 <tr class="memitem:ae2b3f8c58a1c1162ce506b6da4a49e4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#ae2b3f8c58a1c1162ce506b6da4a49e4c">setAndDisplayMultipleImages</a> (std::vector&lt; vtkSmartPointer&lt; vtkImageData &gt; &gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a336708e27578dab885b069f12c120138">imageStack</a>)</td></tr>
 <tr class="memdesc:ae2b3f8c58a1c1162ce506b6da4a49e4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set and display multiple images from a given vtkImageData Array.  <a href="#ae2b3f8c58a1c1162ce506b6da4a49e4c"></a><br/></td></tr>
 <tr class="memitem:a74232311be68637533974b68b4d63bc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a74232311be68637533974b68b4d63bc5">displaySelectedImage</a> (int idx)</td></tr>
 <tr class="memdesc:a74232311be68637533974b68b4d63bc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">display an image stored in this imageStack.  <a href="#a74232311be68637533974b68b4d63bc5"></a><br/></td></tr>
-<tr class="memitem:af5a9192eb09b6db8582160aa527fc685"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#af5a9192eb09b6db8582160aa527fc685">displayVolume</a> (vtkSmartPointer&lt; vtkVolume &gt; volume)</td></tr>
 <tr class="memitem:acb6c70c4b6e1394b0054d0902e72fcbf"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#acb6c70c4b6e1394b0054d0902e72fcbf">getPixelType</a> ()</td></tr>
 <tr class="memdesc:acb6c70c4b6e1394b0054d0902e72fcbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the pixel type in loaded images.  <a href="#acb6c70c4b6e1394b0054d0902e72fcbf"></a><br/></td></tr>
 <tr class="memitem:af0626a3fda57807caecbbe115e95d409"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#af0626a3fda57807caecbbe115e95d409">getImageType</a> ()</td></tr>
@@ -150,6 +153,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a088f422bce686308654f8c0899c1780f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the mouse x coordinate position when mouse left button is pressed.  <a href="#a088f422bce686308654f8c0899c1780f"></a><br/></td></tr>
 <tr class="memitem:a33c482cc6629c52762f27649e39f6006"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a33c482cc6629c52762f27649e39f6006">setYPicked</a> (int <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a6724caff3a614db8321deaa70532255c">yPosition</a>)</td></tr>
 <tr class="memdesc:a33c482cc6629c52762f27649e39f6006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the mouse y coordinate position when mouse left button is pressed.  <a href="#a33c482cc6629c52762f27649e39f6006"></a><br/></td></tr>
+<tr class="memitem:aef9c08064cc4c9c854a083bd3fb3354f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#aef9c08064cc4c9c854a083bd3fb3354f">setVolumeData</a> (vtkSmartPointer&lt; vtkImageData &gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a5e2dcad8b7ea1a85c4b8052e9452844c">volumeData</a>)</td></tr>
+<tr class="memdesc:aef9c08064cc4c9c854a083bd3fb3354f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the data of the display volume.  <a href="#aef9c08064cc4c9c854a083bd3fb3354f"></a><br/></td></tr>
+<tr class="memitem:a3ffaadb9dfa3b4f12e1076eaed9b617e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a3ffaadb9dfa3b4f12e1076eaed9b617e">setVolumeOpacity</a> (int opacity)</td></tr>
+<tr class="memdesc:a3ffaadb9dfa3b4f12e1076eaed9b617e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the opacity for the displayed volume.  <a href="#a3ffaadb9dfa3b4f12e1076eaed9b617e"></a><br/></td></tr>
+<tr class="memitem:adb0713deec444a097e8624de90a84bb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#adb0713deec444a097e8624de90a84bb1">setVolumeOrigin</a> (vnl_vector&lt; double &gt; volumeOrigin)</td></tr>
 <tr class="memitem:aaa03d39486c547c29d54127cf936c884"><td class="memItemLeft" align="right" valign="top">vtkSmartPointer&lt; vtkImageViewer2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#aaa03d39486c547c29d54127cf936c884">getImageViewer</a> ()</td></tr>
 <tr class="memdesc:aaa03d39486c547c29d54127cf936c884"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return this widget image viewer.  <a href="#aaa03d39486c547c29d54127cf936c884"></a><br/></td></tr>
 <tr class="memitem:a41d916b555961f04dbdb571d8263c515"><td class="memItemLeft" align="right" valign="top">QVTKWidget *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a41d916b555961f04dbdb571d8263c515">getQVTKWidget</a> ()</td></tr>
@@ -167,6 +175,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a148e0e9402c79f81afd1079754aec7d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a148e0e9402c79f81afd1079754aec7d2">setImageProperties</a> (bool verbose)</td></tr>
 <tr class="memitem:a48d0dad3ffc56126e2f3cbf14ee0fe98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a48d0dad3ffc56126e2f3cbf14ee0fe98">displayImage</a> (vtkImageData *image)</td></tr>
 <tr class="memitem:a0078c9008605b2123ef6e99a71db4cd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a0078c9008605b2123ef6e99a71db4cd3">displayVolumeImages</a> (std::vector&lt; vtkSmartPointer&lt; vtkImageData &gt; &gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a2b96df48cde8c89ddb4a2a76c0b619c3">volumeImageStack</a>, vnl_matrix&lt; double &gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#ab9aba72f9fc8e922555b96f30bd1dba3">volumeDataRotations</a>, vnl_matrix&lt; double &gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a039e71a63cbbba8d95894df141fa6986">volumeDataTranslations</a>, std::vector&lt; double &gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#ad5069809b7e74c437884499f2aaaf0a0">volumeDataCalibration</a>)</td></tr>
+<tr class="memitem:af5a9192eb09b6db8582160aa527fc685"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#af5a9192eb09b6db8582160aa527fc685">displayVolume</a> (vtkSmartPointer&lt; vtkVolume &gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a37424d6e8fd36a77aa8ab79e4aee5acf">volume</a>)</td></tr>
 <tr class="memitem:a018d108cf5dbc574dcecf78fe6904a8d"><td class="memItemLeft" align="right" valign="top">vnl_matrix&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a018d108cf5dbc574dcecf78fe6904a8d">computeTransformation</a> (vnl_vector&lt; double &gt; quaternion, vnl_vector&lt; double &gt; translation, std::vector&lt; double &gt; calibration)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -176,14 +185,21 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aa55aaf6e037ee4d789449ff3d365201b"><td class="memItemLeft" align="right" valign="top">vtkSmartPointer&lt; vtkImageData &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#aa55aaf6e037ee4d789449ff3d365201b">vtkImage</a></td></tr>
 <tr class="memitem:a1ffdb2716a14bd2cb4dc845c50fc474c"><td class="memItemLeft" align="right" valign="top">vtkSmartPointer&lt; vtkRenderWindow &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a1ffdb2716a14bd2cb4dc845c50fc474c">renwin</a></td></tr>
 <tr class="memitem:a06c273e6e390e8e860fa4c0c932a2cf8"><td class="memItemLeft" align="right" valign="top">vtkSmartPointer&lt; vtkRenderer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a06c273e6e390e8e860fa4c0c932a2cf8">renderer</a></td></tr>
+<tr class="memitem:a37424d6e8fd36a77aa8ab79e4aee5acf"><td class="memItemLeft" align="right" valign="top">vtkSmartPointer&lt; vtkVolume &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a37424d6e8fd36a77aa8ab79e4aee5acf">volume</a></td></tr>
+<tr class="memitem:a5e2dcad8b7ea1a85c4b8052e9452844c"><td class="memItemLeft" align="right" valign="top">vtkSmartPointer&lt; vtkImageData &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a5e2dcad8b7ea1a85c4b8052e9452844c">volumeData</a></td></tr>
+<tr class="memitem:afd1074dad297031f5f2171681b8c85fc"><td class="memItemLeft" align="right" valign="top">vtkSmartPointer<br class="typebreak"/>
+&lt; vtkPiecewiseFunction &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#afd1074dad297031f5f2171681b8c85fc">volumeScalarOpacity</a></td></tr>
+<tr class="memitem:ab354f6ff492086cf9abd53a371fa79f7"><td class="memItemLeft" align="right" valign="top">vtkSmartPointer<br class="typebreak"/>
+&lt; vtkVolumeProperty &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#ab354f6ff492086cf9abd53a371fa79f7">volumeProperty</a></td></tr>
+<tr class="memitem:a70f1f3fa834da5feccd14b9373c3b2c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a70f1f3fa834da5feccd14b9373c3b2c0">opacityPoint</a></td></tr>
 <tr class="memitem:a336708e27578dab885b069f12c120138"><td class="memItemLeft" align="right" valign="top">std::vector&lt; vtkSmartPointer<br class="typebreak"/>
 &lt; vtkImageData &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a336708e27578dab885b069f12c120138">imageStack</a></td></tr>
 <tr class="memdesc:a336708e27578dab885b069f12c120138"><td class="mdescLeft">&#160;</td><td class="mdescRight">A vtkImageData Vector for keep the image references when load an image stack.  <a href="#a336708e27578dab885b069f12c120138"></a><br/></td></tr>
 <tr class="memitem:a2b96df48cde8c89ddb4a2a76c0b619c3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; vtkSmartPointer<br class="typebreak"/>
 &lt; vtkImageData &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a2b96df48cde8c89ddb4a2a76c0b619c3">volumeImageStack</a></td></tr>
 <tr class="memdesc:a2b96df48cde8c89ddb4a2a76c0b619c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">A vtkImageData Vector for keep the volume image references when load an image stack.  <a href="#a2b96df48cde8c89ddb4a2a76c0b619c3"></a><br/></td></tr>
-<tr class="memitem:a77de3bb5e2ca81b3c66ca5864003d02d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; vnl_matrix&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a77de3bb5e2ca81b3c66ca5864003d02d">transformStack</a></td></tr>
-<tr class="memdesc:a77de3bb5e2ca81b3c66ca5864003d02d"><td class="mdescLeft">&#160;</td><td class="mdescRight">A vtkImageData Vector for keep the volume image references when load an image stack Transformed.  <a href="#a77de3bb5e2ca81b3c66ca5864003d02d"></a><br/></td></tr>
+<tr class="memitem:a39502e633f132da83233e9cbb1306196"><td class="memItemLeft" align="right" valign="top">std::vector&lt; vnl_matrix&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a39502e633f132da83233e9cbb1306196">transformStack</a></td></tr>
+<tr class="memdesc:a39502e633f132da83233e9cbb1306196"><td class="mdescLeft">&#160;</td><td class="mdescRight">A vtkImageData Vector for keep the volume image references when load an image stack Transformed.  <a href="#a39502e633f132da83233e9cbb1306196"></a><br/></td></tr>
 <tr class="memitem:a0cdd7ea88a31d89a60352c27dc8bd556"><td class="memItemLeft" align="right" valign="top">std::vector&lt; vtkSmartPointer<br class="typebreak"/>
 &lt; vtkImageActor &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a0cdd7ea88a31d89a60352c27dc8bd556">volumeImageActorStack</a></td></tr>
 <tr class="memdesc:a0cdd7ea88a31d89a60352c27dc8bd556"><td class="mdescLeft">&#160;</td><td class="mdescRight">A vtkImageData Vector for keep the volume image actor references when load an image stack.  <a href="#a0cdd7ea88a31d89a60352c27dc8bd556"></a><br/></td></tr>
@@ -334,11 +350,12 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">vtkSmartPointer&lt; vtkVolume &gt;&#160;</td>
           <td class="paramname"><em>volume</em></td><td>)</td>
-          <td></td>
+          <td><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Display the given volume </p>
 
 </div>
 </div>
@@ -764,6 +781,56 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ade574690f481377265c548816d7fd944"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#ade574690f481377265c548816d7fd944">QVTKImageWidget::setAndDisplayVolume</a> </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>volumeFilename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set and display volume data. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>QString that contain the filename of the volume </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a3b0b5b058b7ce1b89bc25337cf30c29e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#ade574690f481377265c548816d7fd944">QVTKImageWidget::setAndDisplayVolume</a> </td>
+          <td>(</td>
+          <td class="paramtype">vtkSmartPointer&lt; vtkImageData &gt;&#160;</td>
+          <td class="paramname"><em>volumeData</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set and display volume data. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>vtkImageData generated by <a class="el" href="../../da/d98/_volume_reconstruction_8h.html">VolumeReconstruction.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ad605fe552c806d21e6729b66f648600a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -829,6 +896,61 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aef9c08064cc4c9c854a083bd3fb3354f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#aef9c08064cc4c9c854a083bd3fb3354f">QVTKImageWidget::setVolumeData</a> </td>
+          <td>(</td>
+          <td class="paramtype">vtkSmartPointer&lt; vtkImageData &gt;&#160;</td>
+          <td class="paramname"><em>volumeData</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set the data of the display volume. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3ffaadb9dfa3b4f12e1076eaed9b617e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a3ffaadb9dfa3b4f12e1076eaed9b617e">QVTKImageWidget::setVolumeOpacity</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>opacity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set the opacity for the displayed volume. </p>
+
+</div>
+</div>
+<a class="anchor" id="adb0713deec444a097e8624de90a84bb1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#adb0713deec444a097e8624de90a84bb1">QVTKImageWidget::setVolumeOrigin</a> </td>
+          <td>(</td>
+          <td class="paramtype">vnl_vector&lt; double &gt;&#160;</td>
+          <td class="paramname"><em>volumeOrigin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a088f422bce686308654f8c0899c1780f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -845,12 +967,6 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Set the mouse x coordinate position when mouse left button is pressed. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">int</td><td>x position </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -870,12 +986,6 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Set the mouse y coordinate position when mouse left button is pressed. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">int</td><td>y position </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -1038,6 +1148,19 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a70f1f3fa834da5feccd14b9373c3b2c0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a70f1f3fa834da5feccd14b9373c3b2c0">QVTKImageWidget::opacityPoint</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a067b78e68ed458d840ad1cf0d16b4ad6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1122,18 +1245,46 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a77de3bb5e2ca81b3c66ca5864003d02d"></a>
+<a class="anchor" id="a39502e633f132da83233e9cbb1306196"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;vnl_matrix&lt;double&gt; &gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a77de3bb5e2ca81b3c66ca5864003d02d">QVTKImageWidget::transformStack</a><code> [private]</code></td>
+          <td class="memname">std::vector&lt; vnl_matrix&lt;double&gt; &gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a39502e633f132da83233e9cbb1306196">QVTKImageWidget::transformStack</a><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>A vtkImageData Vector for keep the volume image references when load an image stack Transformed. </p>
+
+</div>
+</div>
+<a class="anchor" id="a37424d6e8fd36a77aa8ab79e4aee5acf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vtkSmartPointer&lt;vtkVolume&gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a37424d6e8fd36a77aa8ab79e4aee5acf">QVTKImageWidget::volume</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>The displayed volume data </p>
+
+</div>
+</div>
+<a class="anchor" id="a5e2dcad8b7ea1a85c4b8052e9452844c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vtkSmartPointer&lt;vtkImageData&gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#a5e2dcad8b7ea1a85c4b8052e9452844c">QVTKImageWidget::volumeData</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>The displayed volume data </p>
 
 </div>
 </div>
@@ -1208,6 +1359,34 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>A vtkImageData Vector for keep the volume image references when load an image stack. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab354f6ff492086cf9abd53a371fa79f7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vtkSmartPointer&lt;vtkVolumeProperty&gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#ab354f6ff492086cf9abd53a371fa79f7">QVTKImageWidget::volumeProperty</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>The displayed volume properties </p>
+
+</div>
+</div>
+<a class="anchor" id="afd1074dad297031f5f2171681b8c85fc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vtkSmartPointer&lt;vtkPiecewiseFunction&gt; <a class="el" href="../../d8/dd7/class_q_v_t_k_image_widget.html#afd1074dad297031f5f2171681b8c85fc">QVTKImageWidget::volumeScalarOpacity</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>The displayed volume opacity </p>
 
 </div>
 </div>
@@ -1289,7 +1468,7 @@ Private Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 17 2012 18:03:12 for Volume Reconstruction by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 23 2012 15:08:35 for Volume Reconstruction by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

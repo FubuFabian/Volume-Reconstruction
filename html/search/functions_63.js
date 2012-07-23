@@ -10,6 +10,8 @@ var searchData=
   ['clearimagepoints',['ClearImagePoints',['../d2/d40/class_calibration.html#a87978d8b81b28411e6e1bd8f8db32bb8',1,'Calibration']]],
   ['cleartransformations',['ClearTransformations',['../d2/d40/class_calibration.html#adcd2af289aafc20b7dfd3adf3aa066e4',1,'Calibration']]],
   ['computetransformation',['computeTransformation',['../d8/dd7/class_q_v_t_k_image_widget.html#a018d108cf5dbc574dcecf78fe6904a8d',1,'QVTKImageWidget']]],
-  ['crop',['crop',['../d2/d39/class_probe_calibration_widget.html#aee10394430b33e5c67faffc0711aa72c',1,'ProbeCalibrationWidget']]],
-  ['cropprobeimage',['cropProbeImage',['../d2/d39/class_probe_calibration_widget.html#a87d9b425235afcabde1a9de067ba8d2d',1,'ProbeCalibrationWidget']]]
+  ['crop',['crop',['../d0/d3c/class_crop_images_widget.html#a8d459309b0788c1ba54bc4fb9af23b4f',1,'CropImagesWidget::crop()'],['../d2/d39/class_probe_calibration_widget.html#aee10394430b33e5c67faffc0711aa72c',1,'ProbeCalibrationWidget::crop()']]],
+  ['cropimages',['cropImages',['../d9/dc6/class_main_window.html#ab821280b066f71fcb1a6b0390d99174c',1,'MainWindow']]],
+  ['cropimageswidget',['CropImagesWidget',['../d0/d3c/class_crop_images_widget.html#aae1d29894906efd2551175b48d063132',1,'CropImagesWidget']]],
+  ['cropprobeimage',['cropProbeImage',['../d0/d3c/class_crop_images_widget.html#a2e6cc0f4bf2954d17ccc126e08648f48',1,'CropImagesWidget::cropProbeImage()'],['../d2/d39/class_probe_calibration_widget.html#a87d9b425235afcabde1a9de067ba8d2d',1,'ProbeCalibrationWidget::cropProbeImage()']]]
 ];

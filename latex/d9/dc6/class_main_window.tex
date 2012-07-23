@@ -28,6 +28,8 @@ void \hyperlink{class_main_window_afdd9e98dfe3d68ab08aed2df37e8c1dc}{add\-Images
 \begin{DoxyCompactList}\small\item\em Add image folder to application. \end{DoxyCompactList}\item 
 void \hyperlink{class_main_window_a67ec1c2d082b1b5a63347df9660275f1}{display\-Selected\-Image} (int idx)
 \begin{DoxyCompactList}\small\item\em Display selected image with the image slider. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a65b1fde248d1db6fab4ddb58315d3802}{set\-Selected\-Opacity} (int idx)
+\begin{DoxyCompactList}\small\item\em Set selected opacity for the displayed volume. \end{DoxyCompactList}\item 
 void \hyperlink{class_main_window_a7a01aa3ba0210c1915d53d37d7272a13}{probe\-Calibration} ()
 \begin{DoxyCompactList}\small\item\em Implements a ultrasound 3\-D probe calibration, for navigate with the probe. \end{DoxyCompactList}\item 
 void \hyperlink{class_main_window_a66293ccc95d836b4b014e6bdc5e2ae9f}{open\-Volume\-Data} ()
@@ -35,7 +37,11 @@ void \hyperlink{class_main_window_a66293ccc95d836b4b014e6bdc5e2ae9f}{open\-Volum
 void \hyperlink{class_main_window_a873aaee370c1456b99f1a2399ff13691}{print} ()
 \begin{DoxyCompactList}\small\item\em Print message in logger. \end{DoxyCompactList}\item 
 void \hyperlink{class_main_window_a51a6d66666f907cee479298f561a87c6}{volume\-Reconstruction} ()
-\begin{DoxyCompactList}\small\item\em Calls the \hyperlink{_volume_reconstruction_widget_8h}{Volume\-Reconstruction\-Widget.\-h} to generate a new volume $\ast$with the loaded data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Calls the \hyperlink{_volume_reconstruction_widget_8h}{Volume\-Reconstruction\-Widget.\-h} to generate a new volume $\ast$with the loaded data. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a8e8ac6f589b710d984e918f63c64e7da}{open\-Volume} ()
+\begin{DoxyCompactList}\small\item\em Set a volume filename. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ab821280b066f71fcb1a6b0390d99174c}{crop\-Images} ()
+\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,6 +57,8 @@ Q\-String \hyperlink{class_main_window_aec94bc06393ad4a2fc014d71fbeddbd3}{volume
 \begin{DoxyCompactList}\small\item\em The filename of the translation data for each image. \end{DoxyCompactList}\item 
 Q\-String \hyperlink{class_main_window_ae44a1faf67f60347fd55e2ceebe874c3}{volume\-Calibration\-Data}
 \begin{DoxyCompactList}\small\item\em The filename of the estimated parameters in the calibration. \end{DoxyCompactList}\item 
+Q\-String \hyperlink{class_main_window_ae2defb97ae56b28261ea646b533c5b10}{volume\-Filename}
+\begin{DoxyCompactList}\small\item\em The filename of the selected volume. \end{DoxyCompactList}\item 
 Q\-String \hyperlink{class_main_window_aac7c4f4184a77a56eef59fff591c9521}{text\-On\-Text\-Area}
 \item 
 \hyperlink{class_q_v_t_k_image_widget}{Q\-V\-T\-K\-Image\-Widget} $\ast$ \hyperlink{class_main_window_a79daf435968c77e526ddf286bcc86a8f}{display\-Widget}
@@ -101,6 +109,13 @@ Add image folder to application.
 \item[{Q\-String}]{str}
 \end{DoxyParamCaption}
 )}}\label{d9/dc6/class_main_window_a02dc93b38c4cf808db9d26e59521ec0b}
+\hypertarget{class_main_window_ab821280b066f71fcb1a6b0390d99174c}{\index{Main\-Window@{Main\-Window}!crop\-Images@{crop\-Images}}
+\index{crop\-Images@{crop\-Images}!MainWindow@{Main\-Window}}
+\subsubsection[{crop\-Images}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Main\-Window\-::crop\-Images} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private, slot\mbox{]}}}}\label{d9/dc6/class_main_window_ab821280b066f71fcb1a6b0390d99174c}
 \hypertarget{class_main_window_a67ec1c2d082b1b5a63347df9660275f1}{\index{Main\-Window@{Main\-Window}!display\-Selected\-Image@{display\-Selected\-Image}}
 \index{display\-Selected\-Image@{display\-Selected\-Image}!MainWindow@{Main\-Window}}
 \subsubsection[{display\-Selected\-Image}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Main\-Window\-::display\-Selected\-Image} (
@@ -128,6 +143,17 @@ return this display widget
 \mbox{\tt out}  & {\em this} & display widget \\
 \hline
 \end{DoxyParams}
+\hypertarget{class_main_window_a8e8ac6f589b710d984e918f63c64e7da}{\index{Main\-Window@{Main\-Window}!open\-Volume@{open\-Volume}}
+\index{open\-Volume@{open\-Volume}!MainWindow@{Main\-Window}}
+\subsubsection[{open\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Main\-Window\-::open\-Volume} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private, slot\mbox{]}}}}\label{d9/dc6/class_main_window_a8e8ac6f589b710d984e918f63c64e7da}
+
+
+Set a volume filename. 
+
 \hypertarget{class_main_window_a66293ccc95d836b4b014e6bdc5e2ae9f}{\index{Main\-Window@{Main\-Window}!open\-Volume\-Data@{open\-Volume\-Data}}
 \index{open\-Volume\-Data@{open\-Volume\-Data}!MainWindow@{Main\-Window}}
 \subsubsection[{open\-Volume\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Main\-Window\-::open\-Volume\-Data} (
@@ -160,6 +186,17 @@ Print message in logger.
 
 
 Implements a ultrasound 3\-D probe calibration, for navigate with the probe. 
+
+\hypertarget{class_main_window_a65b1fde248d1db6fab4ddb58315d3802}{\index{Main\-Window@{Main\-Window}!set\-Selected\-Opacity@{set\-Selected\-Opacity}}
+\index{set\-Selected\-Opacity@{set\-Selected\-Opacity}!MainWindow@{Main\-Window}}
+\subsubsection[{set\-Selected\-Opacity}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Main\-Window\-::set\-Selected\-Opacity} (
+\begin{DoxyParamCaption}
+\item[{int}]{idx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private, slot\mbox{]}}}}\label{d9/dc6/class_main_window_a65b1fde248d1db6fab4ddb58315d3802}
+
+
+Set selected opacity for the displayed volume. 
 
 \hypertarget{class_main_window_a51a6d66666f907cee479298f561a87c6}{\index{Main\-Window@{Main\-Window}!volume\-Reconstruction@{volume\-Reconstruction}}
 \index{volume\-Reconstruction@{volume\-Reconstruction}!MainWindow@{Main\-Window}}
@@ -201,28 +238,35 @@ The filename of each selected image.
 
 The filename of the estimated parameters in the calibration. 
 
-\hyperlink{class_calibration}{Calibration} data filename \hypertarget{class_main_window_a1a88d2961b59b38eb58bffeb1a6ffe39}{\index{Main\-Window@{Main\-Window}!volume\-Images\-Filenames@{volume\-Images\-Filenames}}
+\hypertarget{class_main_window_ae2defb97ae56b28261ea646b533c5b10}{\index{Main\-Window@{Main\-Window}!volume\-Filename@{volume\-Filename}}
+\index{volume\-Filename@{volume\-Filename}!MainWindow@{Main\-Window}}
+\subsubsection[{volume\-Filename}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String {\bf Main\-Window\-::volume\-Filename}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d9/dc6/class_main_window_ae2defb97ae56b28261ea646b533c5b10}
+
+
+The filename of the selected volume. 
+
+\hypertarget{class_main_window_a1a88d2961b59b38eb58bffeb1a6ffe39}{\index{Main\-Window@{Main\-Window}!volume\-Images\-Filenames@{volume\-Images\-Filenames}}
 \index{volume\-Images\-Filenames@{volume\-Images\-Filenames}!MainWindow@{Main\-Window}}
 \subsubsection[{volume\-Images\-Filenames}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String\-List {\bf Main\-Window\-::volume\-Images\-Filenames}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d9/dc6/class_main_window_a1a88d2961b59b38eb58bffeb1a6ffe39}
 
 
 The filenames of each selected volume image. 
 
-List that contains the volume images filenames. \hypertarget{class_main_window_ad2139711b6f91f541304b5dc5cf311ac}{\index{Main\-Window@{Main\-Window}!volume\-Rotation\-Data@{volume\-Rotation\-Data}}
+\hypertarget{class_main_window_ad2139711b6f91f541304b5dc5cf311ac}{\index{Main\-Window@{Main\-Window}!volume\-Rotation\-Data@{volume\-Rotation\-Data}}
 \index{volume\-Rotation\-Data@{volume\-Rotation\-Data}!MainWindow@{Main\-Window}}
 \subsubsection[{volume\-Rotation\-Data}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String {\bf Main\-Window\-::volume\-Rotation\-Data}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d9/dc6/class_main_window_ad2139711b6f91f541304b5dc5cf311ac}
 
 
 The filename of the rotation data for each image. 
 
-Roation data filename. \hypertarget{class_main_window_aec94bc06393ad4a2fc014d71fbeddbd3}{\index{Main\-Window@{Main\-Window}!volume\-Translation\-Data@{volume\-Translation\-Data}}
+\hypertarget{class_main_window_aec94bc06393ad4a2fc014d71fbeddbd3}{\index{Main\-Window@{Main\-Window}!volume\-Translation\-Data@{volume\-Translation\-Data}}
 \index{volume\-Translation\-Data@{volume\-Translation\-Data}!MainWindow@{Main\-Window}}
 \subsubsection[{volume\-Translation\-Data}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String {\bf Main\-Window\-::volume\-Translation\-Data}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d9/dc6/class_main_window_aec94bc06393ad4a2fc014d71fbeddbd3}
 
 
 The filename of the translation data for each image. 
 
-Translation data filename. 
+
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 

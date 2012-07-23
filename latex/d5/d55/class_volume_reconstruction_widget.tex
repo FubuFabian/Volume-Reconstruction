@@ -29,11 +29,7 @@ void \hyperlink{class_volume_reconstruction_widget_a748ad3f117a04950da1e46eda4d5
 void \hyperlink{class_volume_reconstruction_widget_a610fbb01abf2c0a69c143304233170ac}{save} ()
 \begin{DoxyCompactList}\small\item\em Saves the volume in a .mhd and .raw file. \end{DoxyCompactList}\item 
 void \hyperlink{class_volume_reconstruction_widget_a65ed7b767a7e256539b4f4cdeebe8a3f}{generate} ()
-\begin{DoxyCompactList}\small\item\em Calls \hyperlink{_volume_reconstruction_8h}{Volume\-Reconstruction.\-h} to generate the new volume data. \end{DoxyCompactList}\item 
-void \hyperlink{class_volume_reconstruction_widget_abdcc0d358ef82fecdc093b534b11c08c}{invert} ()
-\begin{DoxyCompactList}\small\item\em Invert the color transfer function. \end{DoxyCompactList}\item 
-void \hyperlink{class_volume_reconstruction_widget_afef1bd7aa84184b34065beb91e858edc}{transparency} ()
-\begin{DoxyCompactList}\small\item\em Changes the oacity of the volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Calls \hyperlink{_volume_reconstruction_8h}{Volume\-Reconstruction.\-h} to generate the new volume data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,9 +39,9 @@ void \hyperlink{class_volume_reconstruction_widget_a6645ccc86f2b2b02e38835f191a9
 \begin{DoxyCompactList}\small\item\em Computes the coords of the images bounds int he 3\-D space. \end{DoxyCompactList}\item 
 void \hyperlink{class_volume_reconstruction_widget_aacf14912ac38b5633f01bb3c742f54f4}{calc\-Volume\-Size} (bool)
 \begin{DoxyCompactList}\small\item\em Computes the volume size. \end{DoxyCompactList}\item 
-void \hyperlink{class_volume_reconstruction_widget_a24a0314f3c08b8c878518e72da5fad3e}{set\-Volume\-Opacity} (int)
+void \hyperlink{class_volume_reconstruction_widget_a8802c2c6061cae11b7e3540ed78e6d7a}{set\-Volume\-Opacity} ()
 \begin{DoxyCompactList}\small\item\em Set the volume opacity. \end{DoxyCompactList}\item 
-void \hyperlink{class_volume_reconstruction_widget_abaeb27296325b0fe55125337e73cbea8}{set\-Volume\-Color\-Map} (bool)
+void \hyperlink{class_volume_reconstruction_widget_a0e24f75040e46128747c83e670cc242a}{set\-Volume\-Color\-Map} ()
 \begin{DoxyCompactList}\small\item\em Set the volume colo transfer function. \end{DoxyCompactList}\item 
 void \hyperlink{class_volume_reconstruction_widget_a318c42b0fc54dda95cf2a71346f994ff}{set\-Display\-Properties} (vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$)
 \begin{DoxyCompactList}\small\item\em Set the display properties of the volume and the rendering method. \end{DoxyCompactList}\item 
@@ -89,8 +85,6 @@ vnl\-\_\-vector$<$ double $>$ \hyperlink{class_volume_reconstruction_widget_abb6
 vnl\-\_\-vector$<$ double $>$ \hyperlink{class_volume_reconstruction_widget_ac6e459db730b1349685d3d01e95692bd}{volume\-Size}
 \item 
 vnl\-\_\-vector$<$ double $>$ \hyperlink{class_volume_reconstruction_widget_ae236e766bdd26a8e1d3af5abc965b558}{scale}
-\item 
-bool \hyperlink{class_volume_reconstruction_widget_a5c6d9354261c5494fab5d408da9ec13f}{invert\-Colors}
 \end{DoxyCompactItemize}
 
 
@@ -177,17 +171,6 @@ Display the volume in the 3\-D scene.
 
 Calls \hyperlink{_volume_reconstruction_8h}{Volume\-Reconstruction.\-h} to generate the new volume data. 
 
-\hypertarget{class_volume_reconstruction_widget_abdcc0d358ef82fecdc093b534b11c08c}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!invert@{invert}}
-\index{invert@{invert}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
-\subsubsection[{invert}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::invert} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}private, slot\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_abdcc0d358ef82fecdc093b534b11c08c}
-
-
-Invert the color transfer function. 
-
 \hypertarget{class_volume_reconstruction_widget_a610fbb01abf2c0a69c143304233170ac}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!save@{save}}
 \index{save@{save}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
 \subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::save} (
@@ -203,7 +186,7 @@ Saves the volume in a .mhd and .raw file.
 \index{set\-Display\-Properties@{set\-Display\-Properties}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
 \subsubsection[{set\-Display\-Properties}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::set\-Display\-Properties} (
 \begin{DoxyParamCaption}
-\item[{vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$}]{volume\-Data}
+\item[{vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$}]{}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a318c42b0fc54dda95cf2a71346f994ff}
 
@@ -224,13 +207,13 @@ Set the window to display the volume \hypertarget{class_volume_reconstruction_wi
 \item[{std\-::vector$<$ vnl\-\_\-matrix$<$ double $>$ $>$}]{transform\-Stack}
 \end{DoxyParamCaption}
 )}}\label{d5/d55/class_volume_reconstruction_widget_a4a6309c14e9dc0b56a4d2e5037f6ded7}
-Set the transformation stack for the volume image \hypertarget{class_volume_reconstruction_widget_abaeb27296325b0fe55125337e73cbea8}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!set\-Volume\-Color\-Map@{set\-Volume\-Color\-Map}}
+Set the transformation stack for the volume image \hypertarget{class_volume_reconstruction_widget_a0e24f75040e46128747c83e670cc242a}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!set\-Volume\-Color\-Map@{set\-Volume\-Color\-Map}}
 \index{set\-Volume\-Color\-Map@{set\-Volume\-Color\-Map}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
 \subsubsection[{set\-Volume\-Color\-Map}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::set\-Volume\-Color\-Map} (
 \begin{DoxyParamCaption}
-\item[{bool}]{invert}
+{}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_abaeb27296325b0fe55125337e73cbea8}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a0e24f75040e46128747c83e670cc242a}
 
 
 Set the volume colo transfer function. 
@@ -242,27 +225,16 @@ Set the volume colo transfer function.
 \item[{std\-::vector$<$ vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ $>$}]{volume\-Image\-Stack}
 \end{DoxyParamCaption}
 )}}\label{d5/d55/class_volume_reconstruction_widget_a748ad3f117a04950da1e46eda4d5f763}
-Set the image data stack \hypertarget{class_volume_reconstruction_widget_a24a0314f3c08b8c878518e72da5fad3e}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!set\-Volume\-Opacity@{set\-Volume\-Opacity}}
+Set the image data stack \hypertarget{class_volume_reconstruction_widget_a8802c2c6061cae11b7e3540ed78e6d7a}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!set\-Volume\-Opacity@{set\-Volume\-Opacity}}
 \index{set\-Volume\-Opacity@{set\-Volume\-Opacity}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
 \subsubsection[{set\-Volume\-Opacity}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::set\-Volume\-Opacity} (
 \begin{DoxyParamCaption}
-\item[{int}]{point}
+{}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a24a0314f3c08b8c878518e72da5fad3e}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a8802c2c6061cae11b7e3540ed78e6d7a}
 
 
 Set the volume opacity. 
-
-\hypertarget{class_volume_reconstruction_widget_afef1bd7aa84184b34065beb91e858edc}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!transparency@{transparency}}
-\index{transparency@{transparency}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
-\subsubsection[{transparency}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Volume\-Reconstruction\-Widget\-::transparency} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}private, slot\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_afef1bd7aa84184b34065beb91e858edc}
-
-
-Changes the oacity of the volume. 
 
 
 
@@ -285,10 +257,7 @@ Contains the transformed coords in x of each image pixel \hypertarget{class_volu
 Contains the transformed coords in y of each image pixel \hypertarget{class_volume_reconstruction_widget_addd1ebae781cf60c4a4dff76bc6b6a2c}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!image\-Coords\-Z\-Stack@{image\-Coords\-Z\-Stack}}
 \index{image\-Coords\-Z\-Stack@{image\-Coords\-Z\-Stack}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
 \subsubsection[{image\-Coords\-Z\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-matrix$<$double$>$ $>$ {\bf Volume\-Reconstruction\-Widget\-::image\-Coords\-Z\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_addd1ebae781cf60c4a4dff76bc6b6a2c}
-Contains the transformed coords in z of each image pixel \hypertarget{class_volume_reconstruction_widget_a5c6d9354261c5494fab5d408da9ec13f}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!invert\-Colors@{invert\-Colors}}
-\index{invert\-Colors@{invert\-Colors}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
-\subsubsection[{invert\-Colors}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Volume\-Reconstruction\-Widget\-::invert\-Colors}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a5c6d9354261c5494fab5d408da9ec13f}
-\hypertarget{class_volume_reconstruction_widget_a3c4a62c79152059201b1ace97af89691}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!main\-Window@{main\-Window}}
+Contains the transformed coords in z of each image pixel \hypertarget{class_volume_reconstruction_widget_a3c4a62c79152059201b1ace97af89691}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!main\-Window@{main\-Window}}
 \index{main\-Window@{main\-Window}!VolumeReconstructionWidget@{Volume\-Reconstruction\-Widget}}
 \subsubsection[{main\-Window}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Main\-Window}$\ast$ {\bf Volume\-Reconstruction\-Widget\-::main\-Window}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d5/d55/class_volume_reconstruction_widget_a3c4a62c79152059201b1ace97af89691}
 the main window to call it \hypertarget{class_volume_reconstruction_widget_ae236e766bdd26a8e1d3af5abc965b558}{\index{Volume\-Reconstruction\-Widget@{Volume\-Reconstruction\-Widget}!scale@{scale}}

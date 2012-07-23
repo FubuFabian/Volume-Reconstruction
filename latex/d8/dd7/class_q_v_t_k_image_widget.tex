@@ -25,12 +25,14 @@ void \hyperlink{class_q_v_t_k_image_widget_acd43450864ef2c0cdd7b8d37f045d8fd}{se
 \begin{DoxyCompactList}\small\item\em Set and display multiple images from a given images filenames. Display the image corresponding to the first element on the filenmaes list. \end{DoxyCompactList}\item 
 void \hyperlink{class_q_v_t_k_image_widget_ad605fe552c806d21e6729b66f648600a}{set\-And\-Display\-Volume\-Images} (Q\-String\-List Images\-Filenames, Q\-String rotation\-Filename, Q\-String translatoin\-Filename, Q\-String calibration\-Filename)
 \begin{DoxyCompactList}\small\item\em Set and display images from a given images filenames that represent the volume data. Display the image corresponding to the first element on the filenames list. \end{DoxyCompactList}\item 
+void \hyperlink{class_q_v_t_k_image_widget_ade574690f481377265c548816d7fd944}{set\-And\-Display\-Volume} (Q\-String volume\-Filename)
+\begin{DoxyCompactList}\small\item\em Set and display volume data. \end{DoxyCompactList}\item 
+void \hyperlink{class_q_v_t_k_image_widget_a3b0b5b058b7ce1b89bc25337cf30c29e}{set\-And\-Display\-Volume} (vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ \hyperlink{class_q_v_t_k_image_widget_a5e2dcad8b7ea1a85c4b8052e9452844c}{volume\-Data})
+\begin{DoxyCompactList}\small\item\em Set and display volume data. \end{DoxyCompactList}\item 
 void \hyperlink{class_q_v_t_k_image_widget_ae2b3f8c58a1c1162ce506b6da4a49e4c}{set\-And\-Display\-Multiple\-Images} (std\-::vector$<$ vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ $>$ \hyperlink{class_q_v_t_k_image_widget_a336708e27578dab885b069f12c120138}{image\-Stack})
 \begin{DoxyCompactList}\small\item\em Set and display multiple images from a given vtk\-Image\-Data Array. \end{DoxyCompactList}\item 
 void \hyperlink{class_q_v_t_k_image_widget_a74232311be68637533974b68b4d63bc5}{display\-Selected\-Image} (int idx)
 \begin{DoxyCompactList}\small\item\em display an image stored in this image\-Stack. \end{DoxyCompactList}\item 
-void \hyperlink{class_q_v_t_k_image_widget_af5a9192eb09b6db8582160aa527fc685}{display\-Volume} (vtk\-Smart\-Pointer$<$ vtk\-Volume $>$ volume)
-\item 
 Q\-String \hyperlink{class_q_v_t_k_image_widget_acb6c70c4b6e1394b0054d0902e72fcbf}{get\-Pixel\-Type} ()
 \begin{DoxyCompactList}\small\item\em Returns the pixel type in loaded images. \end{DoxyCompactList}\item 
 Q\-String \hyperlink{class_q_v_t_k_image_widget_af0626a3fda57807caecbbe115e95d409}{get\-Image\-Type} ()
@@ -61,6 +63,12 @@ void \hyperlink{class_q_v_t_k_image_widget_a088f422bce686308654f8c0899c1780f}{se
 \begin{DoxyCompactList}\small\item\em Set the mouse x coordinate position when mouse left button is pressed. \end{DoxyCompactList}\item 
 void \hyperlink{class_q_v_t_k_image_widget_a33c482cc6629c52762f27649e39f6006}{set\-Y\-Picked} (int \hyperlink{class_q_v_t_k_image_widget_a6724caff3a614db8321deaa70532255c}{y\-Position})
 \begin{DoxyCompactList}\small\item\em Set the mouse y coordinate position when mouse left button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_q_v_t_k_image_widget_aef9c08064cc4c9c854a083bd3fb3354f}{set\-Volume\-Data} (vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ \hyperlink{class_q_v_t_k_image_widget_a5e2dcad8b7ea1a85c4b8052e9452844c}{volume\-Data})
+\begin{DoxyCompactList}\small\item\em Set the data of the display volume. \end{DoxyCompactList}\item 
+void \hyperlink{class_q_v_t_k_image_widget_a3ffaadb9dfa3b4f12e1076eaed9b617e}{set\-Volume\-Opacity} (int opacity)
+\begin{DoxyCompactList}\small\item\em Set the opacity for the displayed volume. \end{DoxyCompactList}\item 
+void \hyperlink{class_q_v_t_k_image_widget_adb0713deec444a097e8624de90a84bb1}{set\-Volume\-Origin} (vnl\-\_\-vector$<$ double $>$ volume\-Origin)
+\item 
 vtk\-Smart\-Pointer$<$ vtk\-Image\-Viewer2 $>$ \hyperlink{class_q_v_t_k_image_widget_aaa03d39486c547c29d54127cf936c884}{get\-Image\-Viewer} ()
 \begin{DoxyCompactList}\small\item\em Return this widget image viewer. \end{DoxyCompactList}\item 
 Q\-V\-T\-K\-Widget $\ast$ \hyperlink{class_q_v_t_k_image_widget_a41d916b555961f04dbdb571d8263c515}{get\-Q\-V\-T\-K\-Widget} ()
@@ -83,6 +91,8 @@ void \hyperlink{class_q_v_t_k_image_widget_a48d0dad3ffc56126e2f3cbf14ee0fe98}{di
 \item 
 void \hyperlink{class_q_v_t_k_image_widget_a0078c9008605b2123ef6e99a71db4cd3}{display\-Volume\-Images} (std\-::vector$<$ vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ $>$ \hyperlink{class_q_v_t_k_image_widget_a2b96df48cde8c89ddb4a2a76c0b619c3}{volume\-Image\-Stack}, vnl\-\_\-matrix$<$ double $>$ \hyperlink{class_q_v_t_k_image_widget_ab9aba72f9fc8e922555b96f30bd1dba3}{volume\-Data\-Rotations}, vnl\-\_\-matrix$<$ double $>$ \hyperlink{class_q_v_t_k_image_widget_a039e71a63cbbba8d95894df141fa6986}{volume\-Data\-Translations}, std\-::vector$<$ double $>$ \hyperlink{class_q_v_t_k_image_widget_ad5069809b7e74c437884499f2aaaf0a0}{volume\-Data\-Calibration})
 \item 
+void \hyperlink{class_q_v_t_k_image_widget_af5a9192eb09b6db8582160aa527fc685}{display\-Volume} (vtk\-Smart\-Pointer$<$ vtk\-Volume $>$ \hyperlink{class_q_v_t_k_image_widget_a37424d6e8fd36a77aa8ab79e4aee5acf}{volume})
+\item 
 vnl\-\_\-matrix$<$ double $>$ \hyperlink{class_q_v_t_k_image_widget_a018d108cf5dbc574dcecf78fe6904a8d}{compute\-Transformation} (vnl\-\_\-vector$<$ double $>$ quaternion, vnl\-\_\-vector$<$ double $>$ translation, std\-::vector$<$ double $>$ calibration)
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
@@ -100,13 +110,25 @@ vtk\-Smart\-Pointer$<$ vtk\-Render\-Window $>$ \hyperlink{class_q_v_t_k_image_wi
 \item 
 vtk\-Smart\-Pointer$<$ vtk\-Renderer $>$ \hyperlink{class_q_v_t_k_image_widget_a06c273e6e390e8e860fa4c0c932a2cf8}{renderer}
 \item 
+vtk\-Smart\-Pointer$<$ vtk\-Volume $>$ \hyperlink{class_q_v_t_k_image_widget_a37424d6e8fd36a77aa8ab79e4aee5acf}{volume}
+\item 
+vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$ \hyperlink{class_q_v_t_k_image_widget_a5e2dcad8b7ea1a85c4b8052e9452844c}{volume\-Data}
+\item 
+vtk\-Smart\-Pointer\\*
+$<$ vtk\-Piecewise\-Function $>$ \hyperlink{class_q_v_t_k_image_widget_afd1074dad297031f5f2171681b8c85fc}{volume\-Scalar\-Opacity}
+\item 
+vtk\-Smart\-Pointer\\*
+$<$ vtk\-Volume\-Property $>$ \hyperlink{class_q_v_t_k_image_widget_ab354f6ff492086cf9abd53a371fa79f7}{volume\-Property}
+\item 
+int \hyperlink{class_q_v_t_k_image_widget_a70f1f3fa834da5feccd14b9373c3b2c0}{opacity\-Point}
+\item 
 std\-::vector$<$ vtk\-Smart\-Pointer\\*
 $<$ vtk\-Image\-Data $>$ $>$ \hyperlink{class_q_v_t_k_image_widget_a336708e27578dab885b069f12c120138}{image\-Stack}
 \begin{DoxyCompactList}\small\item\em A vtk\-Image\-Data Vector for keep the image references when load an image stack. \end{DoxyCompactList}\item 
 std\-::vector$<$ vtk\-Smart\-Pointer\\*
 $<$ vtk\-Image\-Data $>$ $>$ \hyperlink{class_q_v_t_k_image_widget_a2b96df48cde8c89ddb4a2a76c0b619c3}{volume\-Image\-Stack}
 \begin{DoxyCompactList}\small\item\em A vtk\-Image\-Data Vector for keep the volume image references when load an image stack. \end{DoxyCompactList}\item 
-std\-::vector$<$ vnl\-\_\-matrix$<$ double $>$ $>$ \hyperlink{class_q_v_t_k_image_widget_a77de3bb5e2ca81b3c66ca5864003d02d}{transform\-Stack}
+std\-::vector$<$ vnl\-\_\-matrix$<$ double $>$ $>$ \hyperlink{class_q_v_t_k_image_widget_a39502e633f132da83233e9cbb1306196}{transform\-Stack}
 \begin{DoxyCompactList}\small\item\em A vtk\-Image\-Data Vector for keep the volume image references when load an image stack Transformed. \end{DoxyCompactList}\item 
 std\-::vector$<$ vtk\-Smart\-Pointer\\*
 $<$ vtk\-Image\-Actor $>$ $>$ \hyperlink{class_q_v_t_k_image_widget_a0cdd7ea88a31d89a60352c27dc8bd556}{volume\-Image\-Actor\-Stack}
@@ -207,8 +229,8 @@ display an image stored in this image\-Stack.
 \begin{DoxyParamCaption}
 \item[{vtk\-Smart\-Pointer$<$ vtk\-Volume $>$}]{volume}
 \end{DoxyParamCaption}
-)}}\label{d8/dd7/class_q_v_t_k_image_widget_af5a9192eb09b6db8582160aa527fc685}
-\hypertarget{class_q_v_t_k_image_widget_a0078c9008605b2123ef6e99a71db4cd3}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!display\-Volume\-Images@{display\-Volume\-Images}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_af5a9192eb09b6db8582160aa527fc685}
+Display the given volume \hypertarget{class_q_v_t_k_image_widget_a0078c9008605b2123ef6e99a71db4cd3}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!display\-Volume\-Images@{display\-Volume\-Images}}
 \index{display\-Volume\-Images@{display\-Volume\-Images}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
 \subsubsection[{display\-Volume\-Images}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Q\-V\-T\-K\-Image\-Widget\-::display\-Volume\-Images} (
 \begin{DoxyParamCaption}
@@ -442,6 +464,38 @@ Set and display multiple images from a given vtk\-Image\-Data Array.
 \mbox{\tt in}  & {\em a} & std\-::vector of vtk\-Image\-Data \\
 \hline
 \end{DoxyParams}
+\hypertarget{class_q_v_t_k_image_widget_ade574690f481377265c548816d7fd944}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!set\-And\-Display\-Volume@{set\-And\-Display\-Volume}}
+\index{set\-And\-Display\-Volume@{set\-And\-Display\-Volume}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
+\subsubsection[{set\-And\-Display\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Q\-V\-T\-K\-Image\-Widget\-::set\-And\-Display\-Volume} (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{volume\-Filename}
+\end{DoxyParamCaption}
+)}}\label{d8/dd7/class_q_v_t_k_image_widget_ade574690f481377265c548816d7fd944}
+
+
+Set and display volume data. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & Q\-String that contain the filename of the volume \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_q_v_t_k_image_widget_a3b0b5b058b7ce1b89bc25337cf30c29e}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!set\-And\-Display\-Volume@{set\-And\-Display\-Volume}}
+\index{set\-And\-Display\-Volume@{set\-And\-Display\-Volume}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
+\subsubsection[{set\-And\-Display\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Q\-V\-T\-K\-Image\-Widget\-::set\-And\-Display\-Volume} (
+\begin{DoxyParamCaption}
+\item[{vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$}]{volume\-Data}
+\end{DoxyParamCaption}
+)}}\label{d8/dd7/class_q_v_t_k_image_widget_a3b0b5b058b7ce1b89bc25337cf30c29e}
+
+
+Set and display volume data. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & vtk\-Image\-Data generated by \hyperlink{_volume_reconstruction_8h}{Volume\-Reconstruction.\-h} \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_q_v_t_k_image_widget_ad605fe552c806d21e6729b66f648600a}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!set\-And\-Display\-Volume\-Images@{set\-And\-Display\-Volume\-Images}}
 \index{set\-And\-Display\-Volume\-Images@{set\-And\-Display\-Volume\-Images}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
 \subsubsection[{set\-And\-Display\-Volume\-Images}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Q\-V\-T\-K\-Image\-Widget\-::set\-And\-Display\-Volume\-Images} (
@@ -468,7 +522,36 @@ Set and display images from a given images filenames that represent the volume d
 \item[{bool}]{verbose}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_a148e0e9402c79f81afd1079754aec7d2}
-Set the needed image properties (pixel\-Type, image\-Type, num of dimensions) \hypertarget{class_q_v_t_k_image_widget_a088f422bce686308654f8c0899c1780f}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!set\-X\-Picked@{set\-X\-Picked}}
+Set the needed image properties (pixel\-Type, image\-Type, num of dimensions) \hypertarget{class_q_v_t_k_image_widget_aef9c08064cc4c9c854a083bd3fb3354f}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!set\-Volume\-Data@{set\-Volume\-Data}}
+\index{set\-Volume\-Data@{set\-Volume\-Data}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
+\subsubsection[{set\-Volume\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Q\-V\-T\-K\-Image\-Widget\-::set\-Volume\-Data} (
+\begin{DoxyParamCaption}
+\item[{vtk\-Smart\-Pointer$<$ vtk\-Image\-Data $>$}]{volume\-Data}
+\end{DoxyParamCaption}
+)}}\label{d8/dd7/class_q_v_t_k_image_widget_aef9c08064cc4c9c854a083bd3fb3354f}
+
+
+Set the data of the display volume. 
+
+\hypertarget{class_q_v_t_k_image_widget_a3ffaadb9dfa3b4f12e1076eaed9b617e}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!set\-Volume\-Opacity@{set\-Volume\-Opacity}}
+\index{set\-Volume\-Opacity@{set\-Volume\-Opacity}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
+\subsubsection[{set\-Volume\-Opacity}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Q\-V\-T\-K\-Image\-Widget\-::set\-Volume\-Opacity} (
+\begin{DoxyParamCaption}
+\item[{int}]{opacity}
+\end{DoxyParamCaption}
+)}}\label{d8/dd7/class_q_v_t_k_image_widget_a3ffaadb9dfa3b4f12e1076eaed9b617e}
+
+
+Set the opacity for the displayed volume. 
+
+\hypertarget{class_q_v_t_k_image_widget_adb0713deec444a097e8624de90a84bb1}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!set\-Volume\-Origin@{set\-Volume\-Origin}}
+\index{set\-Volume\-Origin@{set\-Volume\-Origin}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
+\subsubsection[{set\-Volume\-Origin}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Q\-V\-T\-K\-Image\-Widget\-::set\-Volume\-Origin} (
+\begin{DoxyParamCaption}
+\item[{vnl\-\_\-vector$<$ double $>$}]{volume\-Origin}
+\end{DoxyParamCaption}
+)}}\label{d8/dd7/class_q_v_t_k_image_widget_adb0713deec444a097e8624de90a84bb1}
+\hypertarget{class_q_v_t_k_image_widget_a088f422bce686308654f8c0899c1780f}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!set\-X\-Picked@{set\-X\-Picked}}
 \index{set\-X\-Picked@{set\-X\-Picked}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
 \subsubsection[{set\-X\-Picked}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Q\-V\-T\-K\-Image\-Widget\-::set\-X\-Picked} (
 \begin{DoxyParamCaption}
@@ -479,11 +562,6 @@ Set the needed image properties (pixel\-Type, image\-Type, num of dimensions) \h
 
 Set the mouse x coordinate position when mouse left button is pressed. 
 
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt out}  & {\em int} & x position \\
-\hline
-\end{DoxyParams}
 \hypertarget{class_q_v_t_k_image_widget_a33c482cc6629c52762f27649e39f6006}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!set\-Y\-Picked@{set\-Y\-Picked}}
 \index{set\-Y\-Picked@{set\-Y\-Picked}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
 \subsubsection[{set\-Y\-Picked}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Q\-V\-T\-K\-Image\-Widget\-::set\-Y\-Picked} (
@@ -495,11 +573,6 @@ Set the mouse x coordinate position when mouse left button is pressed.
 
 Set the mouse y coordinate position when mouse left button is pressed. 
 
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt out}  & {\em int} & y position \\
-\hline
-\end{DoxyParams}
 
 
 \subsection{Member Data Documentation}
@@ -552,7 +625,10 @@ Flag to know if it's displayed an volume image stack.
 The grayscale image displayed in this widget \hypertarget{class_q_v_t_k_image_widget_a6aff403421ea538248d48116a942271b}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!num\-Dimensions@{num\-Dimensions}}
 \index{num\-Dimensions@{num\-Dimensions}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
 \subsubsection[{num\-Dimensions}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf Q\-V\-T\-K\-Image\-Widget\-::num\-Dimensions}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_a6aff403421ea538248d48116a942271b}
-The number of the image dimensions \hypertarget{class_q_v_t_k_image_widget_a067b78e68ed458d840ad1cf0d16b4ad6}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!pixel\-Type@{pixel\-Type}}
+The number of the image dimensions \hypertarget{class_q_v_t_k_image_widget_a70f1f3fa834da5feccd14b9373c3b2c0}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!opacity\-Point@{opacity\-Point}}
+\index{opacity\-Point@{opacity\-Point}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
+\subsubsection[{opacity\-Point}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Q\-V\-T\-K\-Image\-Widget\-::opacity\-Point}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_a70f1f3fa834da5feccd14b9373c3b2c0}
+\hypertarget{class_q_v_t_k_image_widget_a067b78e68ed458d840ad1cf0d16b4ad6}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!pixel\-Type@{pixel\-Type}}
 \index{pixel\-Type@{pixel\-Type}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
 \subsubsection[{pixel\-Type}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string {\bf Q\-V\-T\-K\-Image\-Widget\-::pixel\-Type}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_a067b78e68ed458d840ad1cf0d16b4ad6}
 The type of the image pixels \hypertarget{class_q_v_t_k_image_widget_a461f6ca20211ec9ff4b367aeb95e8139}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!qvtk\-Widget@{qvtk\-Widget}}
@@ -570,14 +646,20 @@ The V\-T\-K render window \hypertarget{class_q_v_t_k_image_widget_ae8cea614979cc
 The R\-G\-B image displayed for this widget \hypertarget{class_q_v_t_k_image_widget_a9c5324e5b044bf1e55f3205002d69da0}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!scale@{scale}}
 \index{scale@{scale}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
 \subsubsection[{scale}]{\setlength{\rightskip}{0pt plus 5cm}vnl\-\_\-vector$<$double$>$ {\bf Q\-V\-T\-K\-Image\-Widget\-::scale}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_a9c5324e5b044bf1e55f3205002d69da0}
-Estimated scale of the images \hypertarget{class_q_v_t_k_image_widget_a77de3bb5e2ca81b3c66ca5864003d02d}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!transform\-Stack@{transform\-Stack}}
+Estimated scale of the images \hypertarget{class_q_v_t_k_image_widget_a39502e633f132da83233e9cbb1306196}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!transform\-Stack@{transform\-Stack}}
 \index{transform\-Stack@{transform\-Stack}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
-\subsubsection[{transform\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$vnl\-\_\-matrix$<$double$>$ $>$ {\bf Q\-V\-T\-K\-Image\-Widget\-::transform\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_a77de3bb5e2ca81b3c66ca5864003d02d}
+\subsubsection[{transform\-Stack}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ vnl\-\_\-matrix$<$double$>$ $>$ {\bf Q\-V\-T\-K\-Image\-Widget\-::transform\-Stack}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_a39502e633f132da83233e9cbb1306196}
 
 
 A vtk\-Image\-Data Vector for keep the volume image references when load an image stack Transformed. 
 
-\hypertarget{class_q_v_t_k_image_widget_ad5069809b7e74c437884499f2aaaf0a0}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!volume\-Data\-Calibration@{volume\-Data\-Calibration}}
+\hypertarget{class_q_v_t_k_image_widget_a37424d6e8fd36a77aa8ab79e4aee5acf}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!volume@{volume}}
+\index{volume@{volume}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
+\subsubsection[{volume}]{\setlength{\rightskip}{0pt plus 5cm}vtk\-Smart\-Pointer$<$vtk\-Volume$>$ {\bf Q\-V\-T\-K\-Image\-Widget\-::volume}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_a37424d6e8fd36a77aa8ab79e4aee5acf}
+The displayed volume data \hypertarget{class_q_v_t_k_image_widget_a5e2dcad8b7ea1a85c4b8052e9452844c}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!volume\-Data@{volume\-Data}}
+\index{volume\-Data@{volume\-Data}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
+\subsubsection[{volume\-Data}]{\setlength{\rightskip}{0pt plus 5cm}vtk\-Smart\-Pointer$<$vtk\-Image\-Data$>$ {\bf Q\-V\-T\-K\-Image\-Widget\-::volume\-Data}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_a5e2dcad8b7ea1a85c4b8052e9452844c}
+The displayed volume data \hypertarget{class_q_v_t_k_image_widget_ad5069809b7e74c437884499f2aaaf0a0}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!volume\-Data\-Calibration@{volume\-Data\-Calibration}}
 \index{volume\-Data\-Calibration@{volume\-Data\-Calibration}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
 \subsubsection[{volume\-Data\-Calibration}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$double$>$ {\bf Q\-V\-T\-K\-Image\-Widget\-::volume\-Data\-Calibration}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_ad5069809b7e74c437884499f2aaaf0a0}
 The angles and translation estimated \hypertarget{class_q_v_t_k_image_widget_ab9aba72f9fc8e922555b96f30bd1dba3}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!volume\-Data\-Rotations@{volume\-Data\-Rotations}}
@@ -608,7 +690,13 @@ A vtk\-Image\-Data Vector for keep the volume image actor references when load a
 
 A vtk\-Image\-Data Vector for keep the volume image references when load an image stack. 
 
-\hypertarget{class_q_v_t_k_image_widget_aa55aaf6e037ee4d789449ff3d365201b}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!vtk\-Image@{vtk\-Image}}
+\hypertarget{class_q_v_t_k_image_widget_ab354f6ff492086cf9abd53a371fa79f7}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!volume\-Property@{volume\-Property}}
+\index{volume\-Property@{volume\-Property}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
+\subsubsection[{volume\-Property}]{\setlength{\rightskip}{0pt plus 5cm}vtk\-Smart\-Pointer$<$vtk\-Volume\-Property$>$ {\bf Q\-V\-T\-K\-Image\-Widget\-::volume\-Property}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_ab354f6ff492086cf9abd53a371fa79f7}
+The displayed volume properties \hypertarget{class_q_v_t_k_image_widget_afd1074dad297031f5f2171681b8c85fc}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!volume\-Scalar\-Opacity@{volume\-Scalar\-Opacity}}
+\index{volume\-Scalar\-Opacity@{volume\-Scalar\-Opacity}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
+\subsubsection[{volume\-Scalar\-Opacity}]{\setlength{\rightskip}{0pt plus 5cm}vtk\-Smart\-Pointer$<$vtk\-Piecewise\-Function$>$ {\bf Q\-V\-T\-K\-Image\-Widget\-::volume\-Scalar\-Opacity}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_afd1074dad297031f5f2171681b8c85fc}
+The displayed volume opacity \hypertarget{class_q_v_t_k_image_widget_aa55aaf6e037ee4d789449ff3d365201b}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!vtk\-Image@{vtk\-Image}}
 \index{vtk\-Image@{vtk\-Image}!QVTKImageWidget@{Q\-V\-T\-K\-Image\-Widget}}
 \subsubsection[{vtk\-Image}]{\setlength{\rightskip}{0pt plus 5cm}vtk\-Smart\-Pointer$<$vtk\-Image\-Data$>$ {\bf Q\-V\-T\-K\-Image\-Widget\-::vtk\-Image}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{d8/dd7/class_q_v_t_k_image_widget_aa55aaf6e037ee4d789449ff3d365201b}
 The V\-T\-K image to display i this window \hypertarget{class_q_v_t_k_image_widget_a17897def9ef084b36378099c51f94be3}{\index{Q\-V\-T\-K\-Image\-Widget@{Q\-V\-T\-K\-Image\-Widget}!x\-Picked@{x\-Picked}}
