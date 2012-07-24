@@ -64,6 +64,11 @@ public:
      * \brief Set the scale of the images
      */
     void setScale(vnl_vector<double>);
+    
+    /**
+     * \brief Set the resolution of the volume
+     */
+    void setResolution(int);
 
     /**
      * \brief Returns the new volume data with the voxel based method
@@ -100,6 +105,8 @@ private:
     /** the maximun distance found in the volume */
 	double maxDistance;
 
+        /** The resolution of the volume*/
+        int resolution;
 
     /**
      * \brief Compute the plane equation for each image

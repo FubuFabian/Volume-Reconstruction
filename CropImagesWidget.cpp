@@ -155,7 +155,7 @@ void CropImagesWidget::save()
 		saveFile = str.c_str();
 
 		writer->SetFileName(saveFile);
-		writer->SetInput(cropStack.at(i));
+		writer->SetInput(cropImage);
 		writer->Write();
 	}	
 }

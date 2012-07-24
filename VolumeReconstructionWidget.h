@@ -93,6 +93,9 @@ private:
 
     /** Scale of the images */
 	vnl_vector<double> scale;
+        
+    /** The relation between voxel:pixel, example res:1*/    
+        int res;
 
     /**
      * \brief Computes every pixel coord of each image in the 3D space
@@ -143,6 +146,10 @@ private slots:
      */
     void generate();
 
+    /**
+     * \brief Set the resolution of the volume
+     */
+    void setResolution(int idx);
 
 };
 

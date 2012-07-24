@@ -10,14 +10,13 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 {
 	std::cout<<"Generating Volume Data"<<std::endl;
 	
-	int fs = 10;
 
 	vtkSmartPointer<vtkImageData> volumeData = vtkSmartPointer<vtkImageData>::New();
 	volumeData->SetNumberOfScalarComponents(1);
 	volumeData->SetScalarType(VTK_UNSIGNED_CHAR);
 	volumeData->SetOrigin(0,0,0);
 	volumeData->SetDimensions(volumeSize[0],volumeSize[1],volumeSize[2]);
-	volumeData->SetSpacing(scale[0]*fs,scale[0]*fs,scale[0]*fs);
+	volumeData->SetSpacing(scale[0]*resolution,scale[0]*resolution,scale[0]*resolution);
 	volumeData->AllocateScalars();
 
 	calcImagePlane();
@@ -34,9 +33,9 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 			for(int k=0; k<volumeSize[2]; k++){
 
 				double voxel[3];
-				voxel[0] = i*scale[0]*fs + volumeOrigin[0];
-				voxel[1] = j*scale[1]*fs + volumeOrigin[1];
-				voxel[2] = k*scale[1]*fs + volumeOrigin[2];
+				voxel[0] = i*scale[0]*resolution + volumeOrigin[0];
+				voxel[1] = j*scale[1]*resolution + volumeOrigin[1];
+				voxel[2] = k*scale[1]*resolution + volumeOrigin[2];
 
 				vnl_vector<double>	distance;
 				distance.set_size(3);
@@ -271,4 +270,9 @@ void VolumeReconstruction::setVolumeSize(vnl_vector<double> volumeSize)
 void VolumeReconstruction::setVolumeOrigin(vnl_vector<double> volumeOrigin)
 {
     this->volumeOrigin = volumeOrigin;
+}
+
+void VolumeReconstruction::setResolution(int resolution)
+{
+    this->resolution = resolution;
 }

@@ -12,6 +12,9 @@ VolumeReconstructionWidget::VolumeReconstructionWidget(QWidget *parent) :
 
 	ui->setupUi(this);
 	this->setAttribute(Qt::WA_DeleteOnClose);
+        ui->resolution->show();
+        ui->resolution->setTickInterval(1);
+        ui->resolution->setRange(1, 10);
 
 }
 
@@ -49,6 +52,7 @@ void VolumeReconstructionWidget::generate()
 		reconstructor->setVolumeImageStack(volumeImageStack);
 		reconstructor->setVolumeOrigin(volumeOrigin);
 		reconstructor->setVolumeSize(volumeSize);
+                reconstructor->setResolution(res);
 		
 		volumeData = reconstructor->generateVolume();
 
@@ -236,11 +240,10 @@ void VolumeReconstructionWidget::calcVolumeSize(bool usePixelMethod)
 	volumeFinal[2] = zMax.max_value();
 	std::cout<<"Volume final coords: "<<volumeFinal[0]<<","<<volumeFinal[1]<<","<<volumeFinal[2]<<std::endl;
 
-	int fs = 10;
 	volumeSize.set_size(3);
-	volumeSize[0] = vtkMath::Round((volumeFinal[0] - volumeOrigin[0])/(scale[0]*fs));
-	volumeSize[1] = vtkMath::Round((volumeFinal[1] - volumeOrigin[1])/(scale[0]*fs));
-	volumeSize[2] = vtkMath::Round((volumeFinal[2] - volumeOrigin[2])/(scale[0]*fs));
+	volumeSize[0] = vtkMath::Round((volumeFinal[0] - volumeOrigin[0])/(scale[0]*res));
+	volumeSize[1] = vtkMath::Round((volumeFinal[1] - volumeOrigin[1])/(scale[0]*res));
+	volumeSize[2] = vtkMath::Round((volumeFinal[2] - volumeOrigin[2])/(scale[0]*res));
 	std::cout<<"Volume size: "<<volumeSize[0]<<","<<volumeSize[1]<<","<<volumeSize[2]<<std::endl<<std::endl;
 }
 
@@ -281,4 +284,9 @@ void VolumeReconstructionWidget::save()
 	}catch( exception& e){
 		std::cout<<e.what()<<std::endl;
 	}
+}
+
+void VolumeReconstructionWidget::setResolution(int idx)
+{
+    res = idx;
 }
