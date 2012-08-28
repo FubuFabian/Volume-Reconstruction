@@ -38,11 +38,11 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 				voxel[2] = k*scale[1]*resolution + volumeOrigin[2];
 
 				vnl_vector<double>	distance;
-				distance.set_size(3);
+				distance.set_size(2);
 				distance.fill(maxDistance);
 
 				vnl_vector<double>	distancePlane;
-				distancePlane.set_size(3);
+				distancePlane.set_size(2);
 				
 
 				for(int plane=0; plane<volumeImageStack.size(); plane++){				
@@ -50,34 +50,24 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 					double d = imagePlaneStack.at(plane)->DistanceToPlane(voxel);
 					
 					if(d <= distance[0]){
-						
-						distance.put(2,distance[1]);
+					
 						distance.put(1,distance[0]);
 						distance.put(0,d);
 
-						distancePlane.put(2,distancePlane[1]);
 						distancePlane.put(1,distancePlane[0]);
 						distancePlane.put(0,plane);
 					
 					}else if(d <= distance[1]){
 
-						distance.put(2,distance[1]);
 						distance.put(1, d);
 
-						distancePlane.put(2,distancePlane[1]);
 						distancePlane.put(1,plane);
-
-					}else if(d <= distance[2]){
-
-						distance.put(2,d);
-
-						distancePlane.put(2,plane);
 
 					}
 				}
 
 				std::vector< vnl_vector<double> > crossPoints;
-				crossPoints.reserve(3);
+				crossPoints.reserve(2);
 
 				double crossPoint[3];
 				vnl_vector<double> crossPointVector;
@@ -91,13 +81,6 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 				crossPoints.push_back(crossPointVector);
 
 				imagePlaneStack.at(distancePlane[1])->ProjectPoint(voxel,crossPoint);
-				crossPointVector.put(0,crossPoint[0]);
-				crossPointVector.put(1,crossPoint[1]);
-				crossPointVector.put(2,crossPoint[2]);
-				
-				crossPoints.push_back(crossPointVector);
-
-				imagePlaneStack.at(distancePlane[2])->ProjectPoint(voxel,crossPoint);
 				crossPointVector.put(0,crossPoint[0]);
 				crossPointVector.put(1,crossPoint[1]);
 				crossPointVector.put(2,crossPoint[2]);
@@ -151,17 +134,13 @@ double VolumeReconstruction::calcVoxelValue(std::vector< vnl_vector<double> > cr
 
 				prom++;
 				
-				pixelValue += volumeImageStack.at(distancePlane[i])->GetScalarComponentAsDouble(x-1,y-1,0,0);
 				pixelValue += volumeImageStack.at(distancePlane[i])->GetScalarComponentAsDouble(x,y-1,0,0);
-				pixelValue += volumeImageStack.at(distancePlane[i])->GetScalarComponentAsDouble(x+1,y-1,0,0);
 				pixelValue += volumeImageStack.at(distancePlane[i])->GetScalarComponentAsDouble(x-1,y,0,0);
 				pixelValue += volumeImageStack.at(distancePlane[i])->GetScalarComponentAsDouble(x,y,0,0);
 				pixelValue += volumeImageStack.at(distancePlane[i])->GetScalarComponentAsDouble(x+1,y,0,0);
-				pixelValue += volumeImageStack.at(distancePlane[i])->GetScalarComponentAsDouble(x-1,y+1,0,0);
 				pixelValue += volumeImageStack.at(distancePlane[i])->GetScalarComponentAsDouble(x,y+1,0,0);
-				pixelValue += volumeImageStack.at(distancePlane[i])->GetScalarComponentAsDouble(x+1,y+1,0,0);
 
-				pixelValue /= 9;
+				pixelValue /= 5;
 
 				double w = 1 - distance[i]/maxDistance;
 

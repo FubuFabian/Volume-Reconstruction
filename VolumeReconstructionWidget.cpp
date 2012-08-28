@@ -252,15 +252,14 @@ void VolumeReconstructionWidget::save()
 {
 	vtkSmartPointer<vtkMetaImageWriter> writer = vtkSmartPointer<vtkMetaImageWriter>::New();
 	
-	QString saveDirectory = QFileDialog::getExistingDirectory(
-                this, tr("Choose Directory to Save Volume"), QDir::currentPath(), 
-				QFileDialog::ShowDirsOnly );
+	QString saveDirectory = QFileDialog::getSaveFileName(
+                this, tr("Choose File to Save Volume"), QDir::currentPath());
 
 	QString saveMhdDirectory = saveDirectory;
 	QString saveRawDirectory = saveDirectory;
 
-    QString mhdFilename = "/GeneratedVolume.mhd";
-	QString rawFilename = "/GeneratedVolume.raw";
+    QString mhdFilename = ".mhd";
+	QString rawFilename = ".raw";
 
     QString qtSaveMhdFile = saveMhdDirectory.append(mhdFilename);
 	QString qtSaveRawFile = saveRawDirectory.append(rawFilename);
