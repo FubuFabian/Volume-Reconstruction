@@ -60,7 +60,6 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 					}else if(d <= distance[1]){
 
 						distance.put(1, d);
-
 						distancePlane.put(1,plane);
 
 					}

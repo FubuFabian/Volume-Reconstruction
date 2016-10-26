@@ -1,6 +1,7 @@
 #include "VolumeReconstructionWidget.h"
 #include "ui_VolumeReconstructionWidget.h"
 #include "VolumeReconstruction.h"
+#include "VolumeReconstructionPBM.h"
 #include "vtkMetaImageWriter.h"
 
 #include <QString>
@@ -36,8 +37,20 @@ void VolumeReconstructionWidget::generate()
 
 	if(ui->pixelMethod->isChecked()){
 		
-		calcImageCoords();
-		calcVolumeSize(true);
+		calcImageBounds();
+		calcVolumeSize(false);
+
+		VolumeReconstructionPBM * reconstructor = VolumeReconstructionPBM::New();
+
+		reconstructor->setScale(scale);
+		reconstructor->setVolumeImageStack(volumeImageStack);
+		reconstructor->setTransformStack(transformStack);
+		reconstructor->setVolumeOrigin(volumeOrigin);
+		reconstructor->setVolumeSize(volumeSize);
+        reconstructor->setResolution(res);
+		
+		volumeData = reconstructor->generateVolume();
+
 
 	}else if(ui->voxelMethod->isChecked()){
 		
@@ -52,7 +65,7 @@ void VolumeReconstructionWidget::generate()
 		reconstructor->setVolumeImageStack(volumeImageStack);
 		reconstructor->setVolumeOrigin(volumeOrigin);
 		reconstructor->setVolumeSize(volumeSize);
-                reconstructor->setResolution(res);
+        reconstructor->setResolution(res);
 		
 		volumeData = reconstructor->generateVolume();
 
@@ -72,7 +85,7 @@ void VolumeReconstructionWidget::setVolumeImageStack(std::vector< vtkSmartPointe
     this->volumeImageStack = volumeImageStack;
 }
 
-void VolumeReconstructionWidget::calcImageCoords()
+/*void VolumeReconstructionWidget::calcImageCoords()
 {
 	vnl_vector<double> point;
 	point.set_size(4);
@@ -116,7 +129,7 @@ void VolumeReconstructionWidget::calcImageCoords()
 		imageCoordsZStack.push_back(imageCoordsZ);
 
 	}
-}
+}*/
 
 void VolumeReconstructionWidget::calcImageBounds()
 {

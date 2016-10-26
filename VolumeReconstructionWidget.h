@@ -95,12 +95,12 @@ private:
 	vnl_vector<double> scale;
         
     /** The relation between voxel:pixel, example res:1*/    
-        int res;
+    int res;
 
     /**
      * \brief Computes every pixel coord of each image in the 3D space
      */
-	void calcImageCoords();
+	//void calcImageCoords();
 
     /**
      * \brief Computes the coords of the images bounds int he 3D space

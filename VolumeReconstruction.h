@@ -77,7 +77,7 @@ public:
 
 private:
 
-     /** Size of the volume */
+    /** Size of the volume */
 	vnl_vector<double> volumeSize;
 
     /** Where the volume data begins in the 3D scene */
