@@ -1,7 +1,6 @@
 #include "VolumeReconstructionPBM.h"
 
 #include <time.h>
-#include <math.h>
 #include <vtkMath.h>
 
 vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
@@ -260,12 +259,14 @@ void VolumeReconstructionPBM::holeFillingGrowingRegion()
                 if (filledVoxel[0] == 0)
                 {
                     // initial window size
-                    int kernelSize = 3;
-                    int windowStep = 1;
+                    int kernelSize = 1;
+                    int windowStep = 0;
                     int idx = 0;
 
                     while ((idx == 0) && (kernelSize <= maxKernelSize))
                     {
+						windowStep++;
+                        kernelSize += 2;
                         
                         // create subvolume extent
                         int subX1 = ((x - windowStep) < 0) ? 0 : x - windowStep;
@@ -315,10 +316,6 @@ void VolumeReconstructionPBM::holeFillingGrowingRegion()
                             }
                         }
 
-                        if (idx = 0){
-                            windowStep++;
-                            kernelSize += 2;
-                        }
                     }
                 }
             }
@@ -362,11 +359,11 @@ void VolumeReconstructionPBM::setResolution(int resolution)
 
 double VolumeReconstructionPBM::calcMaxDistance()
 {
-        double x = volumeSize[0]*scale[0]*resolution; 
-        double y = volumeSize[1]*scale[1]*resolution; 
-        double z = volumeSize[2]*scale[1]*resolution; 
+    double x = volumeSize[0]*scale[0]*resolution; 
+    double y = volumeSize[1]*scale[1]*resolution; 
+    double z = volumeSize[2]*scale[1]*resolution; 
         
-        double maxDistance = sqrt(x*x + y*y + z*z);
+    double maxDistance = sqrt(x*x + y*y + z*z);
 	std::cout<<std::endl<<"Maximum distance in the volume: "<<maxDistance<<std::endl;
 
 	return maxDistance;
