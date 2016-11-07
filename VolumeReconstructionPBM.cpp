@@ -239,9 +239,7 @@ void VolumeReconstructionPBM::holeFillingFixedRegion()
     unsigned char * innerVoxel;
 
     for(int x=0; x<volumeSize[0]; x++){
-        
-	std::cout<<"."<<std::flush;
-
+		std::cout<<"."<<std::flush;
 		for(int y=0; y<volumeSize[1]; y++){
 			for(int z=0; z<volumeSize[2]; z++){
 
@@ -249,7 +247,8 @@ void VolumeReconstructionPBM::holeFillingFixedRegion()
 							(filledVolume->GetScalarPointer(x, y, z));
 
 					if (filledVoxel[0] == 0)
-					{                 
+					{               			
+
 						// create subvolume extent
 						int subX1 = ((x - windowStep) < 0) ? 0 : x - windowStep;
 						int subX2 = ((x + windowStep) >= volumeSize[0]) ? volumeSize[0]-1 : x + windowStep;
@@ -270,8 +269,7 @@ void VolumeReconstructionPBM::holeFillingFixedRegion()
 
 									if (innerVoxel[0] != 0)
 									{
-	                                    
-										double distance = sqrt((double)((x-i)^2+(y-j)^2+(z-k)^2));
+										double distance = sqrt(pow(double(x-i),2)+pow(double(y-j),2)+pow(double(z-k),2));
 	                                    
 										//double w = exp(-0.5*pow(distance/maxDistance,2.0)); //Gaus
 										double w = 1 - distance/maxDistance; //Lineal
