@@ -105,7 +105,9 @@ private:
      * @param zScale
      * @param volumeScale
      */
-    void binFilling();
+    void binFillingNN();
+
+	void binFillingGauss();
 
 	void holeFillingFixedRegion();
 

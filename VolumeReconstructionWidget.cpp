@@ -255,8 +255,8 @@ void VolumeReconstructionWidget::calcVolumeSize(bool usePixelMethod)
 
 	volumeSize.set_size(3);
 	volumeSize[0] = vtkMath::Round((volumeFinal[0] - volumeOrigin[0])/(scale[0]*res));
-	volumeSize[1] = vtkMath::Round((volumeFinal[1] - volumeOrigin[1])/(scale[0]*res));
-	volumeSize[2] = vtkMath::Round((volumeFinal[2] - volumeOrigin[2])/(scale[0]*res));
+	volumeSize[1] = vtkMath::Round((volumeFinal[1] - volumeOrigin[1])/(scale[1]*res));
+	volumeSize[2] = vtkMath::Round((volumeFinal[2] - volumeOrigin[2])/(scale[1]*res));
 	std::cout<<"Volume size: "<<volumeSize[0]<<","<<volumeSize[1]<<","<<volumeSize[2]<<std::endl<<std::endl;
 }
 

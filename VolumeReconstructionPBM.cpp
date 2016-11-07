@@ -60,14 +60,14 @@ vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
     }
 
     /////////////////////////////////
-    this->binFilling();
+    this->binFillingNN();
 	this->holeFillingFixedRegion();
   
     return volumeData;
 
 }
 
-void VolumeReconstructionPBM::binFilling()
+void VolumeReconstructionPBM::binFillingNN()
 {
 
     std::cout<<"Calculating voxel values"<<std::flush;
@@ -133,8 +133,94 @@ void VolumeReconstructionPBM::binFilling()
     clock_t end = clock();
     double diffticks = end - begin;
     double diffms = (diffticks * 10) / CLOCKS_PER_SEC;
-    std::cout<<std::endl<<"Time elapsed reconstructing volume: "<< double(diffms)<<" ms" <<std::end;
+    std::cout<<std::endl<<"Time elapsed reconstructing volume: "<< double(diffms)<<" ms" <<std::endl;
 
+}
+
+void VolumeReconstructionPBM::binFillingGauss()
+{
+
+	float sigma = 2.5;
+	const int wSize = 2*(2*sigma)+1;
+	int wCenter = vtkMath::Ceil(wSize/2); 
+
+	for(int i=0;i<wSize;i++){
+		for(int j=0;j<wSize;j++){
+			for(int k=0;k<wSize;k++){
+
+				float radius = (i-wCenter)^2 + (j-wCenter)^2 + (k-wCenter)^2;
+
+
+			}
+		}
+	}
+
+
+
+	std::cout<<"Calculating voxel values with a gaussian kernel with sigma="<<sigma<<" and a window size of "<<wSize<<std::flush;
+    clock_t begin = clock();
+
+	vnl_vector<double> point;
+	point.set_size(4);
+	point[0]=0;
+	point[1]=0;
+	point[2]=0;
+	point[3]=1;
+
+    for (int i = 0; i < volumeImageStack.size(); i++)
+    {
+        int * imageSize = volumeImageStack.at(i)->GetDimensions();
+        std::cout<<"."<<std::flush;
+        
+        for (int x = 0; x<imageSize[0]; x++){
+            for (int y = 0; y<imageSize[1]; y++){
+                
+				point[0]=scale[0]*x;
+				point[1]=scale[1]*y;
+
+				vnl_vector<double> transformedPoint = transformStack.at(i)*point;
+
+                int voxel[3];
+                voxel[0] = vtkMath::Floor((transformedPoint[0] - volumeOrigin[0])/(scale[0]*resolution));
+                voxel[1] = vtkMath::Floor((transformedPoint[1] - volumeOrigin[1])/(scale[1]*resolution));
+                voxel[2] = vtkMath::Floor((transformedPoint[2] - volumeOrigin[2])/(scale[1]*resolution));                
+                                                                  
+                unsigned char * imagePixel = static_cast<unsigned char *> (
+                        volumeImageStack.at(i)->GetScalarPointer(x, y, 0));
+                
+
+                // get pointer to the current volume voxel 
+                unsigned char * volumeVoxel = static_cast<unsigned char *> (
+                        volumeData->GetScalarPointer(voxel[0], voxel[1], voxel[2]));
+
+                // get pointer to the current accumator volume voxel 
+                unsigned char * accDataVoxel = static_cast<unsigned char *> (
+                        AccDataVolume->GetScalarPointer(voxel[0], voxel[1], voxel[2]));
+
+
+                // get pointer to the current fill volume voxel 
+                unsigned char * fillVoxel = static_cast<unsigned char *> (
+                        filledVolume->GetScalarPointer(voxel[0], voxel[1], voxel[2]));
+
+
+                // set voxel value with the corresponding pixel value
+				if (fillVoxel[0] == 0)
+					fillVoxel[0] = 1;
+
+				accDataVoxel[0]++;
+
+				float temp = volumeVoxel[0] + (imagePixel[0]-volumeVoxel[0])/accDataVoxel[0];
+				volumeVoxel[0] = (unsigned char) temp;
+				
+          }
+        }                
+    
+     }
+
+    clock_t end = clock();
+    double diffticks = end - begin;
+    double diffms = (diffticks * 10) / CLOCKS_PER_SEC;
+    std::cout<<std::endl<<"Time elapsed reconstructing volume: "<< double(diffms)<<" ms" <<std::endl;
 }
 
 void VolumeReconstructionPBM::holeFillingFixedRegion()
@@ -185,7 +271,7 @@ void VolumeReconstructionPBM::holeFillingFixedRegion()
 									if (innerVoxel[0] != 0)
 									{
 	                                    
-										double distance = sqrt((x-i)^2+(y-j)^2+(z-k)^2);
+										double distance = sqrt((double)((x-i)^2+(y-j)^2+(z-k)^2));
 	                                    
 										//double w = exp(-0.5*pow(distance/maxDistance,2.0)); //Gaus
 										double w = 1 - distance/maxDistance; //Lineal
@@ -200,7 +286,7 @@ void VolumeReconstructionPBM::holeFillingFixedRegion()
 
 										// get pointer to the current accumator volume voxel 
 										unsigned char * accDataVoxel = static_cast<unsigned char *> (
-												AccDataVolume->GetScalarPointer(x,y,z);
+												AccDataVolume->GetScalarPointer(x,y,z));
 															
 										accDataVoxel[0]++;
 
@@ -288,7 +374,7 @@ void VolumeReconstructionPBM::holeFillingGrowingRegion()
 
                                     if (innerVoxel[0] != 0)
                                     {                         
-                                        double distance = sqrt((x-i)^2+(y-j)^2+(z-k)^2);
+                                        double distance = sqrt((double)((x-i)^2+(y-j)^2+(z-k)^2));
 	                                    
 										//double w = exp(-0.5*pow(distance/maxDistance,2.0)); //Gaus
 										double w = 1 - distance/maxDistance; //Lineal
@@ -303,7 +389,7 @@ void VolumeReconstructionPBM::holeFillingGrowingRegion()
 
 										// get pointer to the current accumator volume voxel 
 										unsigned char * accDataVoxel = static_cast<unsigned char *> (
-												AccDataVolume->GetScalarPointer(x,y,z);
+												AccDataVolume->GetScalarPointer(x,y,z));
 															
 										accDataVoxel[0]++;
 
