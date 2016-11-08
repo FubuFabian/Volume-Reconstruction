@@ -1,0 +1,14 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = True
+CompressedDataSize = 374
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 401.814 177.245 20.7056
+CenterOfRotation = 0 0 0
+ElementSpacing = 1.00586 0.950557 0.950557
+DimSize = 59 106 53
+AnatomicalOrientation = ???
+ElementType = MET_UCHAR
+ElementDataFile = PBMGauss.raw
