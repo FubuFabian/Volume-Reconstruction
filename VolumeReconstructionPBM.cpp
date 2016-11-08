@@ -60,8 +60,8 @@ vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
     }
 
     /////////////////////////////////
-    this->binFillingNN();
-	this->holeFillingFixedRegion();
+    this->binFillingGauss();
+	//this->holeFillingFixedRegion();
   
     return volumeData;
 
@@ -141,14 +141,23 @@ void VolumeReconstructionPBM::binFillingGauss()
 {
 
 	float sigma = 2.5;
-	const int wSize = 2*(2*sigma)+1;
-	int wCenter = vtkMath::Ceil(wSize/2); 
+	const int wSize = 2*(vtkMath::Round((2*(2*sigma)+1)/2))-1;
+	int wCenter = vtkMath::Floor(wSize/2); 
+	std::vector<std::vector<std::vector<double> > > gaussKernel;
+	
+	gaussKernel.resize(wSize);
+	for (int i = 0; i < wSize; ++i) {
+		gaussKernel[i].resize(wSize);
+		for (int j = 0; j < wSize; ++j)
+			gaussKernel[i][j].resize(wSize);
+    }
 
 	for(int i=0;i<wSize;i++){
 		for(int j=0;j<wSize;j++){
 			for(int k=0;k<wSize;k++){
 
-				float radius = (i-wCenter)^2 + (j-wCenter)^2 + (k-wCenter)^2;
+				float radius = pow(double(i-wCenter),2) + pow(double(j-wCenter),2) + pow(double(k-wCenter),2);
+				gaussKernel[i][j][k] = exp(-radius/sigma);
 
 
 			}
@@ -187,31 +196,49 @@ void VolumeReconstructionPBM::binFillingGauss()
                                                                   
                 unsigned char * imagePixel = static_cast<unsigned char *> (
                         volumeImageStack.at(i)->GetScalarPointer(x, y, 0));
+
+				// create subvolume extent
+				int subX1 = ((voxel[0] - wCenter) < 0) ? voxel[0] : voxel[0] - wCenter;
+				int subX2 = ((voxel[0] + wCenter) >= volumeSize[0]) ? volumeSize[0]-1 : voxel[0] + wCenter;
+				int subY1 = ((voxel[1] - wCenter) < 0) ? 0 : voxel[1] - wCenter;
+				int subY2 = ((voxel[1] + wCenter) >= volumeSize[1]) ? volumeSize[1]-1 : voxel[1] + wCenter;
+				int subZ1 = ((voxel[2] - wCenter) < 0) ? 0 : voxel[2] - wCenter;
+				int subZ2 = ((voxel[2] + wCenter) >= volumeSize[2]) ? volumeSize[2]-1 : voxel[2] + wCenter;
+
+				for (int i = subX1; i <= subX2; i++){
+					for (int j = subY1; j <= subY2; j++){
+						for (int k = subZ1; k < subZ2; k++){
                 
 
-                // get pointer to the current volume voxel 
-                unsigned char * volumeVoxel = static_cast<unsigned char *> (
-                        volumeData->GetScalarPointer(voxel[0], voxel[1], voxel[2]));
+							// get pointer to the current volume voxel 
+							unsigned char * volumeVoxel = static_cast<unsigned char *> (
+									volumeData->GetScalarPointer(i,j,k));
 
-                // get pointer to the current accumator volume voxel 
-                unsigned char * accDataVoxel = static_cast<unsigned char *> (
-                        AccDataVolume->GetScalarPointer(voxel[0], voxel[1], voxel[2]));
-
-
-                // get pointer to the current fill volume voxel 
-                unsigned char * fillVoxel = static_cast<unsigned char *> (
-                        filledVolume->GetScalarPointer(voxel[0], voxel[1], voxel[2]));
+							// get pointer to the current accumator volume voxel 
+							unsigned char * accDataVoxel = static_cast<unsigned char *> (
+									AccDataVolume->GetScalarPointer(i,j,k));
 
 
-                // set voxel value with the corresponding pixel value
-				if (fillVoxel[0] == 0)
-					fillVoxel[0] = 1;
+							// get pointer to the current fill volume voxel 
+							unsigned char * fillVoxel = static_cast<unsigned char *> (
+									filledVolume->GetScalarPointer(i,j,k));
 
-				accDataVoxel[0]++;
+							double gaussVal = gaussKernel[i-subX1][j-subY1][k-subZ1];
 
-				float temp = volumeVoxel[0] + (imagePixel[0]-volumeVoxel[0])/accDataVoxel[0];
-				volumeVoxel[0] = (unsigned char) temp;
-				
+
+							// set voxel value with the corresponding pixel value
+							if (fillVoxel[0] == 0)
+								fillVoxel[0] = 1;
+
+							accDataVoxel[0]++;
+
+							float temp = volumeVoxel[0] + ((gaussVal*imagePixel[0])-volumeVoxel[0])/accDataVoxel[0];
+							volumeVoxel[0] = (unsigned char) temp;
+
+						}
+					}
+				}
+
           }
         }                
     
@@ -372,7 +399,7 @@ void VolumeReconstructionPBM::holeFillingGrowingRegion()
 
                                     if (innerVoxel[0] != 0)
                                     {                         
-                                        double distance = sqrt((double)((x-i)^2+(y-j)^2+(z-k)^2));
+                                        double distance = sqrt(pow(double(x-i),2)+pow(double(y-j),2)+pow(double(z-k),2));
 	                                    
 										//double w = exp(-0.5*pow(distance/maxDistance,2.0)); //Gaus
 										double w = 1 - distance/maxDistance; //Lineal
