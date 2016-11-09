@@ -141,7 +141,7 @@ void VolumeReconstructionPBM::binFillingGauss()
 {
 
 	float sigma = 2.5;
-	const int wSize = 2*(vtkMath::Round((2*(2*sigma)+1)/2))-1;
+	const int wSize = 2*(vtkMath::Round(((2*sigma+1)+1)/2))-1;
 	int wCenter = vtkMath::Floor(wSize/2); 
 	std::vector<std::vector<std::vector<double> > > gaussKernel;
 	
@@ -166,7 +166,8 @@ void VolumeReconstructionPBM::binFillingGauss()
 
 
 
-	std::cout<<"Calculating voxel values with a gaussian kernel with sigma="<<sigma<<" and a window size of "<<wSize<<std::flush;
+	std::cout<<"Calculating voxel values with a gaussian kernel with sigma = "<<sigma<<" and a window size of "
+		<<wSize<<"x"<<wSize<<"x"<<wSize<<std::flush;
     clock_t begin = clock();
 
 	vnl_vector<double> point;
@@ -205,13 +206,15 @@ void VolumeReconstructionPBM::binFillingGauss()
 				int subZ1 = ((voxel[2] - wCenter) < 0) ? 0 : voxel[2] - wCenter;
 				int subZ2 = ((voxel[2] + wCenter) >= volumeSize[2]) ? volumeSize[2]-1 : voxel[2] + wCenter;
 
+				unsigned char * volumeVoxel;
+
 				for (int i = subX1; i <= subX2; i++){
 					for (int j = subY1; j <= subY2; j++){
 						for (int k = subZ1; k < subZ2; k++){
                 
 
 							// get pointer to the current volume voxel 
-							unsigned char * volumeVoxel = static_cast<unsigned char *> (
+							volumeVoxel = static_cast<unsigned char *> (
 									volumeData->GetScalarPointer(i,j,k));
 
 							// get pointer to the current accumator volume voxel 
@@ -223,7 +226,12 @@ void VolumeReconstructionPBM::binFillingGauss()
 							unsigned char * fillVoxel = static_cast<unsigned char *> (
 									filledVolume->GetScalarPointer(i,j,k));
 
-							double gaussVal = gaussKernel[i-subX1][j-subY1][k-subZ1];
+
+							int indx1 = i-subX1;
+							int indx2 = j-subY1;
+							int indx3 = k-subZ1;
+							double gaussVal = gaussKernel[indx1][indx2][indx3];
+							//double gaussVal = gaussKernel[i-subX1][j-subY1][k-subZ1];
 
 
 							// set voxel value with the corresponding pixel value
