@@ -2,6 +2,7 @@
 
 #include <time.h>
 #include <vtkMath.h>
+#include <vtkImageMathematics.h>
 
 vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
 {
@@ -238,10 +239,14 @@ void VolumeReconstructionPBM::binFillingGauss()
 							if (fillVoxel[0] == 0)
 								fillVoxel[0] = 1;
 
-							accDataVoxel[0]++;
+							//accDataVoxel[0]++;
 
-							float temp = volumeVoxel[0] + ((gaussVal*imagePixel[0])-volumeVoxel[0])/accDataVoxel[0];
-							volumeVoxel[0] = (unsigned char) temp;
+							//float temp = volumeVoxel[0] + ((gaussVal*imagePixel[0])-volumeVoxel[0])/accDataVoxel[0];
+							//volumeVoxel[0] = (unsigned char) temp;
+
+							///OHBUCHI///
+							volumeVoxel[0] +=  imagePixel[0]*gaussVal;
+							accDataVoxel[0] += gaussVal;
 
 						}
 					}
@@ -251,6 +256,14 @@ void VolumeReconstructionPBM::binFillingGauss()
         }                
     
      }
+
+	vtkSmartPointer<vtkImageMathematics> imageDivide = vtkSmartPointer<vtkImageMathematics>::New();
+	imageDivide->SetInput1(volumeData);
+	imageDivide->SetInput2(AccDataVolume);
+	imageDivide->SetOperationToDivide();
+	imageDivide->Update();
+
+	volumeData = imageDivide->GetOutput();
 
     clock_t end = clock();
     double diffticks = end - begin;
