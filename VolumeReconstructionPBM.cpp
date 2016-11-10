@@ -142,7 +142,8 @@ void VolumeReconstructionPBM::binFillingGauss()
 {
 
 	float sigma = 2.5;
-	const int wSize = 2*(vtkMath::Round(((2*sigma+1)+1)/2))-1;
+	//int wSize = 2*(vtkMath::Round(((2*sigma+1)+1)/2))-1;
+	int wSize = 2*(vtkMath::Round((5*sigma+1)/2))-1;
 	int wCenter = vtkMath::Floor(wSize/2); 
 	std::vector<std::vector<std::vector<double> > > gaussKernel;
 	
