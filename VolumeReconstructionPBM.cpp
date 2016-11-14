@@ -39,8 +39,8 @@ vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
 	unsigned char * accVoxel;
     
     for(int i=0; i<volumeSize[0]; i++){
-	for(int j=0; j<volumeSize[1]; j++){
-		for(int k=0; k<volumeSize[2]; k++){
+		for(int j=0; j<volumeSize[1]; j++){
+			for(int k=0; k<volumeSize[2]; k++){
                     
                     // get pointer to the current volume voxel   
                     volumeVoxel = static_cast<unsigned char *> (
@@ -61,8 +61,8 @@ vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
     }
 
     /////////////////////////////////
-    this->binFillingGauss();
-	//this->holeFillingFixedRegion();
+    this->binFillingNN();
+	this->holeFillingFixedRegion();
   
     return volumeData;
 
@@ -118,10 +118,11 @@ void VolumeReconstructionPBM::binFillingNN()
 
 
                 // set voxel value with the corresponding pixel value
-				if (fillVoxel[0] == 0)
+				if (fillVoxel[0] == 0){
 					fillVoxel[0] = 1;
+				}
 
-				accDataVoxel[0]++;
+				accDataVoxel[0]+= 1;
 
 				float temp = volumeVoxel[0] + (imagePixel[0]-volumeVoxel[0])/accDataVoxel[0];
 				volumeVoxel[0] = (unsigned char) temp;
@@ -142,8 +143,8 @@ void VolumeReconstructionPBM::binFillingGauss()
 {
 
 	float sigma = 2.5;
-	//int wSize = 2*(vtkMath::Round(((2*sigma+1)+1)/2))-1;
-	int wSize = 2*(vtkMath::Round((5*sigma+1)/2))-1;
+	int wSize = 2*(vtkMath::Round(((2*sigma+1)+1)/2))-1;
+	//int wSize = 2*(vtkMath::Round((5*sigma+1)/2))-1;
 	int wCenter = vtkMath::Floor(wSize/2); 
 	std::vector<std::vector<std::vector<double> > > gaussKernel;
 	
@@ -154,12 +155,14 @@ void VolumeReconstructionPBM::binFillingGauss()
 			gaussKernel[i][j].resize(wSize);
     }
 
+	float n = 1/(sqrt(pow(vtkMath::Pi(),3))*pow(sigma,3));
+
 	for(int i=0;i<wSize;i++){
 		for(int j=0;j<wSize;j++){
 			for(int k=0;k<wSize;k++){
 
 				float radius = pow(double(i-wCenter),2) + pow(double(j-wCenter),2) + pow(double(k-wCenter),2);
-				gaussKernel[i][j][k] = exp(-radius/sigma);
+				gaussKernel[i][j][k] = n*exp(-radius/(2*pow(sigma,2)));
 
 
 			}
@@ -275,7 +278,7 @@ void VolumeReconstructionPBM::binFillingGauss()
 void VolumeReconstructionPBM::holeFillingFixedRegion()
 {
 
-	int kernelSize = 11;
+	int kernelSize = 9;
 	int windowStep = vtkMath::Floor(kernelSize/2);
     
     double maxDistance = calcMaxDistance();
