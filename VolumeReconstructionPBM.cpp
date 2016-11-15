@@ -1,6 +1,7 @@
 #include "VolumeReconstructionPBM.h"
 
 #include <time.h>
+#include <math.h>
 #include <vtkMath.h>
 #include <vtkImageMathematics.h>
 
