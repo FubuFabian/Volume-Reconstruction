@@ -5,8 +5,7 @@
 #include <vtkImageMathematics.h>
 #include <vtkImageGradientMagnitude.h>
 #include <vtkBMPWriter.h>
-#include <vtkImageNormalize.h>
-#include <vtkImageCast.h>
+#include <vtkImageShiftScale.h>
 
 #include <QWidget>
 
@@ -280,7 +279,7 @@ void VolumeReconstructionPBM::binFillingAdaptiveGauss()
 	point[2]=0;
 	point[3]=1;
 
-    for (int i = 92; i < volumeImageStack.size(); i++)
+    for (int i = 0; i < volumeImageStack.size(); i++)
     {
         int * imageSize = volumeImageStack.at(i)->GetDimensions();
         std::cout<<"."<<std::flush;
@@ -301,18 +300,15 @@ void VolumeReconstructionPBM::binFillingAdaptiveGauss()
                 unsigned char * imagePixel = static_cast<unsigned char *> (
                         volumeImageStack.at(i)->GetScalarPointer(x, y, 0));
 
-				double * gradientValue = static_cast<double *> (
+				unsigned char * gradientValue = static_cast<unsigned char *> (
                         gradientImageStack.at(i)->GetScalarPointer(x, y, 0));
-	
 
-				int kernel = vtkMath::Round((double)((gradientValue[0])*(gaussKernelsStack.size() - 1)));
+				double temp = (double(gradientValue[0])/255)*(gaussKernelsStack.size() - 1);
+				int kernel = vtkMath::Round(temp);
 				gaussKernel = gaussKernelsStack.at(kernel);
-
-				std::cout<<gradientValue[0]<<" ";
 
 				int wSize = gaussKernel.size();
 				int wCenter = vtkMath::Floor(wSize/2); 
-				
 
 				// create subvolume extent
 				int subX1 = ((voxel[0] - wCenter) < 0) ? voxel[0] : voxel[0] - wCenter;
@@ -653,53 +649,56 @@ void VolumeReconstructionPBM::computeImageGradient()
 		imageGradientFilter->SetInput(volumeImageStack.at(i));
 		imageGradientFilter->Update();
 
-		/*vtkSmartPointer<vtkImageNormalize> normalizeFilter = vtkSmartPointer<vtkImageNormalize>::New();
-		normalizeFilter->SetInput(imageGradientFilter->GetOutput());
-		normalizeFilter->Update();
+		vtkSmartPointer<vtkImageData> gradientImage = imageGradientFilter->GetOutput();
 
-		vtkSmartPointer<vtkImageCast> normalizeCastFilter = vtkSmartPointer<vtkImageCast>::New();
-		normalizeCastFilter->SetInputConnection(normalizeFilter->GetOutputPort());
-		normalizeCastFilter->SetOutputScalarTypeToUnsignedChar();
-		normalizeCastFilter->Update();*/
+		float oldRange = gradientImage->GetScalarRange()[1] - gradientImage->GetScalarRange()[0];
+		float newRange = 255;
 		
-		gradientImageStack.push_back(imageGradientFilter->GetOutput());
+		vtkSmartPointer<vtkImageShiftScale> shiftScaleFilter = vtkSmartPointer<vtkImageShiftScale>::New();
+		shiftScaleFilter->SetOutputScalarTypeToUnsignedChar();
+		shiftScaleFilter->SetInput(gradientImage);
+		shiftScaleFilter->SetShift(-1.0f * gradientImage->GetScalarRange()[0]);
+		shiftScaleFilter->SetScale(newRange/oldRange);
+		shiftScaleFilter->Update();
+
+		gradientImageStack.push_back(shiftScaleFilter->GetOutput());
 
 	}
 
-	///*vtkSmartPointer<vtkBMPWriter> writer = vtkSmartPointer<vtkBMPWriter>::New();
-	//
-	//QString saveDirectory = QString("C:/Users/Fubu/Desktop/Gradient");
+	/*vtkSmartPointer<vtkBMPWriter> writer = vtkSmartPointer<vtkBMPWriter>::New();
+	
+	QString saveDirectory = QString("C:/Users/Fabian/Desktop/Gradiente");
 
-	//QString filename;
-	//std::string str;
-	//const char * saveFile;
+	QString filename;
+	std::string str;
+	const char * saveFile;
 
-	//for(int i=0; i < gradientImageStack.size(); i++){			
-	//		char imageNumber[4];
-	//		sprintf(imageNumber,"%d",i);
-	//		
-	//		filename = saveDirectory;
+	for(int i=0; i < gradientImageStack.size(); i++){			
+			char imageNumber[4];
+			sprintf(imageNumber,"%d",i);
+			
+			filename = saveDirectory;
 
-	//		if(i<10)
-	//			filename.append("/IMG000");
-	//		else if(i<100)
-	//			filename.append("/IMG00");
-	//		else if(i<1000)
-	//			filename.append("/IMG0");
-	//		else
-	//			filename.append("/IMG");
+			if(i<10)
+				filename.append("/IMG000");
+			else if(i<100)
+				filename.append("/IMG00");
+			else if(i<1000)
+				filename.append("/IMG0");
+			else
+				filename.append("/IMG");
 
-	//		filename.append(imageNumber);
-	//		filename.append(".bmp");
+			filename.append(imageNumber);
+			filename.append(".bmp");
 
-	//		str = std::string(filename.toAscii().data());
-	//		saveFile = str.c_str();
+			str = std::string(filename.toAscii().data());
+			saveFile = str.c_str();
 
-	//		writer->SetFileName(saveFile);
-	//		writer->SetInput(gradientImageStack.at(i));
-	//		writer->Write();
-	//
-	//}*/
+			writer->SetFileName(saveFile);
+			writer->SetInput(gradientImageStack.at(i));
+			writer->Write();
+	
+	}*/
 
 }
 
