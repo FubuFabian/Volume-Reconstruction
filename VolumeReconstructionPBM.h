@@ -82,6 +82,9 @@ private:
 	/** The stack of images data */
     std::vector< vtkSmartPointer< vtkImageData> > volumeImageStack;
 
+	/** The stack of images data */
+    std::vector< vtkSmartPointer< vtkImageData> > gradientImageStack;
+
 	/** Contains the transformation for each image */
     std::vector< vnl_matrix<double> > transformStack;
     
@@ -93,6 +96,8 @@ private:
 
 	/** the maximun distance found in the volume */
 	double maxDistance;
+
+	std::vector<std::vector<std::vector<std::vector<double> > > > gaussKernelsStack;
 
     /**
      * Fill the nearest voxel with pixel information
@@ -109,9 +114,15 @@ private:
 
 	void binFillingGauss();
 
+	void binFillingAdaptiveGauss();
+
 	void holeFillingFixedRegion();
 
 	void holeFillingGrowingRegion();
+
+	void computeGaussKernels(float maxVariance, float step);
+
+	void computeImageGradient();
 
 	/**
      * \brief Computes the maximun distance in the volume

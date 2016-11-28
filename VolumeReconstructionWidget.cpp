@@ -85,52 +85,6 @@ void VolumeReconstructionWidget::setVolumeImageStack(std::vector< vtkSmartPointe
     this->volumeImageStack = volumeImageStack;
 }
 
-/*void VolumeReconstructionWidget::calcImageCoords()
-{
-	vnl_vector<double> point;
-	point.set_size(4);
-	point[0]=0;
-	point[1]=0;
-	point[2]=0;
-	point[3]=1;
-
-	scale = mainWindow->getDisplayWidget()->getTransformScale();
-
-	std::cout<<"Calculating image coords"<<std::endl;
-
-	for(int i=0; i<volumeImageStack.size(); i++){
-		
-		vnl_matrix<double> imageCoordsX;
-		vnl_matrix<double> imageCoordsY;
-		vnl_matrix<double> imageCoordsZ;
-
-		int * imageSize = volumeImageStack.at(i)->GetDimensions();
-		imageCoordsX.set_size(imageSize[1],imageSize[0]);
-		imageCoordsY.set_size(imageSize[1],imageSize[0]);
-		imageCoordsZ.set_size(imageSize[1],imageSize[0]);
- 
-		for(int x=0; x<imageSize[0] ; x++){
-			for(int y=0; y<imageSize[1] ; y++){
-			
-				point[0]=scale[0]*x;
-				point[1]=scale[1]*y;
-
-				vnl_vector<double> transformedPoint = transformStack.at(i)*point;
-
-				imageCoordsX.put(y,x,transformedPoint[0]);
-				imageCoordsY.put(y,x,transformedPoint[1]);
-				imageCoordsZ.put(y,x,transformedPoint[2]);
-
-			}
-		}
-
-		imageCoordsXStack.push_back(imageCoordsX);
-		imageCoordsYStack.push_back(imageCoordsY);
-		imageCoordsZStack.push_back(imageCoordsZ);
-
-	}
-}*/
-
 void VolumeReconstructionWidget::calcImageBounds()
 {
 	std::cout<<"Calculating images bounds"<<std::endl;
