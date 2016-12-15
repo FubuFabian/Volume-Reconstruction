@@ -7,7 +7,8 @@
 #include <vtkBMPWriter.h>
 #include <vtkImageShiftScale.h>
 
-#include <QWidget>
+#include <iostream>
+#include <fstream>
 
 
 vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
@@ -67,8 +68,8 @@ vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
     }
 
     /////////////////////////////////
-    this->binFillingAdaptiveGauss();
-	//this->holeFillingFixedRegion();
+	this->binFillingNN();
+	this->holeFillingGrowingRegion();
   
     return volumeData;
 
@@ -76,6 +77,10 @@ vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
 
 void VolumeReconstructionPBM::binFillingNN()
 {
+	/////////////////////////////
+	//ofstream out;
+	//out.open ("Dimensiones3_Vox.txt");
+	//////////////////////////////////
 
     std::cout<<"Calculating voxel values"<<std::flush;
     clock_t begin = clock();
@@ -107,7 +112,11 @@ void VolumeReconstructionPBM::binFillingNN()
                                                                   
                 unsigned char * imagePixel = static_cast<unsigned char *> (
                         volumeImageStack.at(i)->GetScalarPointer(x, y, 0));
-                
+				
+				//////////////////////////
+				//if((int)imagePixel[0]!=0)
+				//	out<<voxel[0]<<" "<<voxel[1]<<" "<<voxel[2]<<" "<<(int)imagePixel[0]<<"\n";
+                //////////////////////////
 
                 // get pointer to the current volume voxel 
                 unsigned char * volumeVoxel = static_cast<unsigned char *> (
@@ -140,9 +149,12 @@ void VolumeReconstructionPBM::binFillingNN()
 
     clock_t end = clock();
     double diffticks = end - begin;
-    double diffms = (diffticks * 10) / CLOCKS_PER_SEC;
-    std::cout<<std::endl<<"Time elapsed reconstructing volume: "<< double(diffms)<<" ms" <<std::endl;
+    double diffms = (diffticks) / CLOCKS_PER_SEC;
+    std::cout<<std::endl<<"Time elapsed in bin-filling : "<< double(diffms)<<" ms" <<std::endl;
 
+	////////////////
+	//out.close();
+	///////////////
 }
 
 void VolumeReconstructionPBM::binFillingGauss()
@@ -254,8 +266,8 @@ void VolumeReconstructionPBM::binFillingGauss()
 
     clock_t end = clock();
     double diffticks = end - begin;
-    double diffms = (diffticks * 10) / CLOCKS_PER_SEC;
-    std::cout<<std::endl<<"Time elapsed reconstructing volume: "<< double(diffms)<<" ms" <<std::endl;
+    double diffms = (diffticks) / CLOCKS_PER_SEC;
+    std::cout<<std::endl<<"Time elapsed in bin-filling: "<< double(diffms)<<" ms" <<std::endl;
 }
 
 void VolumeReconstructionPBM::binFillingAdaptiveGauss()
@@ -360,12 +372,14 @@ void VolumeReconstructionPBM::binFillingAdaptiveGauss()
 
     clock_t end = clock();
     double diffticks = end - begin;
-    double diffms = (diffticks * 10) / CLOCKS_PER_SEC;
-    std::cout<<std::endl<<"Time elapsed reconstructing volume: "<< double(diffms)<<" ms" <<std::endl;
+    double diffms = (diffticks) / CLOCKS_PER_SEC;
+    std::cout<<std::endl<<"Time elapsed in bin filling: "<< double(diffms)<<"s" <<std::endl;
 }
 
 void VolumeReconstructionPBM::holeFillingFixedRegion()
 {
+
+	int cont = 0;
 
 	int kernelSize = 9;
 	int windowStep = vtkMath::Floor(kernelSize/2);
@@ -437,6 +451,7 @@ void VolumeReconstructionPBM::holeFillingFixedRegion()
 							}
 						}
 
+						cont++;
 	  
 					}
 				}
@@ -446,9 +461,9 @@ void VolumeReconstructionPBM::holeFillingFixedRegion()
     
     clock_t end = clock();
     double diffticks = end - begin;
-    double diffms = (diffticks * 10) / CLOCKS_PER_SEC;
-    std::cout<<std::endl<<"Time elapsed filling volume: "<< double(diffms)<<" ms" <<std::endl;
-
+    double diffms = (diffticks) / CLOCKS_PER_SEC;
+    std::cout<<std::endl<<"Time elapsed in hole-filling: "<< double(diffms)<<" s" <<std::endl;
+	std::cout<<cont<<" voxels filled in the hole-filling step"<<std::endl;
 	filledVolume->Delete();
 	AccDataVolume->Delete();
 
@@ -457,6 +472,7 @@ void VolumeReconstructionPBM::holeFillingFixedRegion()
 void VolumeReconstructionPBM::holeFillingGrowingRegion()
 {
 
+	int cont = 0;
 	int maxKernelSize = 11;
 
     if(maxKernelSize%2 == 0)
@@ -542,16 +558,19 @@ void VolumeReconstructionPBM::holeFillingGrowingRegion()
                         }
 
                     }
-                }
+                
+					cont++;
+				
+				}
             }
         }
     }
     
     clock_t end = clock();
     double diffticks = end - begin;
-    double diffms = (diffticks * 10) / CLOCKS_PER_SEC;
-    std::cout<<std::endl<<"Time elapsed filling volume: "<< double(diffms)<<" ms" <<std::endl;
-
+    double diffms = (diffticks) / CLOCKS_PER_SEC;
+    std::cout<<std::endl<<"Time elapsed in hole-filling: "<< double(diffms)<<" s" <<std::endl;
+	std::cout<<cont<<" voxels filled in the hole-filling step"<<std::endl;
 	filledVolume->Delete();
 	AccDataVolume->Delete();
 }

@@ -1,0 +1,14 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = True
+CompressedDataSize = 892791
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 26.4805 -367.35 33.1792
+CenterOfRotation = 0 0 0
+ElementSpacing = 0.498532 0.491964 0.491964
+DimSize = 119 167 122
+AnatomicalOrientation = ???
+ElementType = MET_UCHAR
+ElementDataFile = PBM_5_Raton.raw

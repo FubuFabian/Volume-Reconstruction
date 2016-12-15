@@ -12,7 +12,7 @@
 
 #include <vector>
 
-class VolumeReconstructionPBM
+class VolumeReconstructionPBM 
 {
     
 public:

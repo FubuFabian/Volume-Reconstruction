@@ -1,0 +1,14 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = True
+CompressedDataSize = 2891535
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 0 0 0
+CenterOfRotation = 0 0 0
+ElementSpacing = 0.201172 0.201172 0.201172
+DimSize = 218 109 219
+AnatomicalOrientation = ???
+ElementType = MET_UCHAR
+ElementDataFile = VBM_2_Dimensiones_2.raw

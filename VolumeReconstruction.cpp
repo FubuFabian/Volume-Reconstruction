@@ -95,7 +95,7 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 
 	clock_t end = clock();
 	double diffticks = end - begin;
-	double diffms = (diffticks * 10) / CLOCKS_PER_SEC;
+	double diffms = (diffticks) / CLOCKS_PER_SEC;
 	std::cout<<std::endl<<"Time elapsed: "<< double(diffms)<<" ms" <<std::endl;
 
 	return volumeData;

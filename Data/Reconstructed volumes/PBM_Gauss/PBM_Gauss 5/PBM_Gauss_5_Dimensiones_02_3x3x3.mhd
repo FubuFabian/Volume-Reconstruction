@@ -1,0 +1,14 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = True
+CompressedDataSize = 164097
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 341.056 41.4786 138.227
+CenterOfRotation = 0 0 0
+ElementSpacing = 0.50293 0.475278 0.475278
+DimSize = 87 44 88
+AnatomicalOrientation = ???
+ElementType = MET_UCHAR
+ElementDataFile = PBM_Gauss_5_Dimensiones_02_3x3x3.raw

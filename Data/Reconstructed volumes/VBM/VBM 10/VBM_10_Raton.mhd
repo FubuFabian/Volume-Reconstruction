@@ -1,0 +1,14 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = True
+CompressedDataSize = 118749
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 0 0 0
+CenterOfRotation = 0 0 0
+ElementSpacing = 0.997064 0.997064 0.997064
+DimSize = 60 84 61
+AnatomicalOrientation = ???
+ElementType = MET_UCHAR
+ElementDataFile = VBM_10_Raton.raw
