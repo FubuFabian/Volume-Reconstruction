@@ -1,0 +1,14 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = True
+CompressedDataSize = 2755984
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 271.315 84.9591 136.522
+CenterOfRotation = 0 0 0
+ElementSpacing = 0.201172 0.190111 0.190111
+DimSize = 219 105 213
+AnatomicalOrientation = ???
+ElementType = MET_UCHAR
+ElementDataFile = PBM_Grow_2_Dimensiones_3.raw

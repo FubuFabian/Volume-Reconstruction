@@ -6,17 +6,26 @@
 #include <vtkImageData.h>
 #include <vtkMatrix4x4.h>
 
+#include <itkCastImageFilter.h>
+#include <itkImage.h>
+
+
+
 // Other includes 
 #include <vnl/vnl_matrix.h>
 #include <vnl/vnl_vector.h>
 
 #include <vector>
+#include <QString>
 
 class VolumeReconstructionPBM 
 {
     
 public:
     
+	typedef itk::Image<unsigned char, 2> ImageType;    
+    typedef itk::Image<float, 2> FloatImageType;
+    typedef itk::CastImageFilter<FloatImageType, ImageType> CastFilterType;
     
     /**
      * \brief Constructor
@@ -129,6 +138,17 @@ private:
      */
 	double calcMaxDistance();
 
+	/**
+    * \brief convert a vtk image to an itk image
+    * [out] an itk image
+    */
+    FloatImageType::Pointer convertToITKImage(vtkSmartPointer<vtkImageData> vtkImage);
+    
+    /**
+    * \brief convert an itk image to a vtk image
+    * [out] a vtk image
+    */
+    vtkSmartPointer<vtkImageData> convertToVTKImage(FloatImageType::Pointer itkImage);
     
 };
 

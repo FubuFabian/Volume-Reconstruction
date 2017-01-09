@@ -1,0 +1,14 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = True
+CompressedDataSize = 3690300
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 26.4805 -367.35 33.1792
+CenterOfRotation = 0 0 0
+ElementSpacing = 0.299119 0.295178 0.295178
+DimSize = 198 278 203
+AnatomicalOrientation = ???
+ElementType = MET_UCHAR
+ElementDataFile = PBM_Gauss_3_Raton.raw

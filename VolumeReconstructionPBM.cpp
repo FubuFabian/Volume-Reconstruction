@@ -6,6 +6,14 @@
 #include <vtkImageGradientMagnitude.h>
 #include <vtkBMPWriter.h>
 #include <vtkImageShiftScale.h>
+#include <vtkImageLuminance.h>
+
+#include <itkGradientMagnitudeImageFilter.h>
+#include <itkRescaleIntensityImageFilter.h>
+#include <itkImageToVTKImageFilter.h>
+#include <itkVTKImageToImageFilter.h>
+#include <itkImageDuplicator.h>
+
 
 #include <iostream>
 #include <fstream>
@@ -68,7 +76,7 @@ vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
     }
 
     /////////////////////////////////
-	this->binFillingNN();
+	this->binFillingAdaptiveGauss();
 	this->holeFillingGrowingRegion();
   
     return volumeData;
@@ -160,7 +168,7 @@ void VolumeReconstructionPBM::binFillingNN()
 void VolumeReconstructionPBM::binFillingGauss()
 {
 
-	float sigma = 3.5;
+	float sigma = 2.5;
 	int wSize = 2*(vtkMath::Round((2*sigma+1)/2))-1;
 	int wCenter = vtkMath::Floor(wSize/2); 
 	std::vector<std::vector<std::vector<double> > > gaussKernel;
@@ -273,7 +281,7 @@ void VolumeReconstructionPBM::binFillingGauss()
 void VolumeReconstructionPBM::binFillingAdaptiveGauss()
 {
 
-	float maxVariance = 3.5;
+	float maxVariance = 1.5;
 	float step = 0.25;
 	
 	computeImageGradient();
@@ -663,8 +671,24 @@ void VolumeReconstructionPBM::computeImageGradient()
 
 	std::cout<<"Computing image gradient for 2D images"<<std::endl;
 	for(int i=0;i<volumeImageStack.size();i++){
-		
-		vtkSmartPointer<vtkImageGradientMagnitude> imageGradientFilter = vtkSmartPointer<vtkImageGradientMagnitude>::New();
+
+		typedef itk::GradientMagnitudeImageFilter<FloatImageType,FloatImageType> GradientFilterType;
+		GradientFilterType::Pointer gradientFilter = GradientFilterType::New();
+		gradientFilter->SetInput(this->convertToITKImage(volumeImageStack.at(i)));
+		gradientFilter->Update();
+
+		typedef itk::RescaleIntensityImageFilter<FloatImageType,FloatImageType> RescaleFilterType;
+    
+		RescaleFilterType::Pointer normalizeFilter = RescaleFilterType::New();
+		normalizeFilter->SetOutputMaximum(255);
+		normalizeFilter->SetOutputMinimum(0);
+		normalizeFilter->SetInput(gradientFilter->GetOutput());
+		normalizeFilter->Update(); 
+
+		gradientImageStack.push_back(this->convertToVTKImage(normalizeFilter->GetOutput()));
+
+
+		/*vtkSmartPointer<vtkImageGradientMagnitude> imageGradientFilter = vtkSmartPointer<vtkImageGradientMagnitude>::New();
 		imageGradientFilter->SetInput(volumeImageStack.at(i));
 		imageGradientFilter->Update();
 
@@ -678,15 +702,15 @@ void VolumeReconstructionPBM::computeImageGradient()
 		shiftScaleFilter->SetInput(gradientImage);
 		shiftScaleFilter->SetShift(-1.0f * gradientImage->GetScalarRange()[0]);
 		shiftScaleFilter->SetScale(newRange/oldRange);
-		shiftScaleFilter->Update();
+		shiftScaleFilter->Update();*/
 
-		gradientImageStack.push_back(shiftScaleFilter->GetOutput());
+		//gradientImageStack.push_back(shiftScaleFilter->GetOutput());
 
 	}
 
-	/*vtkSmartPointer<vtkBMPWriter> writer = vtkSmartPointer<vtkBMPWriter>::New();
+	vtkSmartPointer<vtkBMPWriter> writer = vtkSmartPointer<vtkBMPWriter>::New();
 	
-	QString saveDirectory = QString("C:/Users/Fabian/Desktop/Gradiente");
+	QString saveDirectory = QString("C:/Users/Fubu/Desktop/Gradiente");
 
 	QString filename;
 	std::string str;
@@ -717,7 +741,57 @@ void VolumeReconstructionPBM::computeImageGradient()
 			writer->SetInput(gradientImageStack.at(i));
 			writer->Write();
 	
-	}*/
+	}
 
 }
 
+typedef itk::Image<float, 2> FloatImageType;
+FloatImageType::Pointer VolumeReconstructionPBM::convertToITKImage(vtkSmartPointer<vtkImageData> vtkImage)
+{
+    
+    int numberOfScalars = vtkImage->GetNumberOfScalarComponents();
+    
+    typedef itk::VTKImageToImageFilter<ImageType> ITKConverterType;
+    ITKConverterType::Pointer itkConverter = ITKConverterType::New();
+    
+    if(numberOfScalars==3){
+        vtkSmartPointer<vtkImageLuminance> imageLuminance = vtkSmartPointer<vtkImageLuminance>::New();
+        imageLuminance->SetInput(vtkImage);
+        imageLuminance->Update();
+        itkConverter->SetInput(imageLuminance->GetOutput());
+    }else{
+        itkConverter->SetInput(vtkImage);
+    }
+
+	itkConverter->Update();
+    
+    typedef itk::ImageDuplicator<ImageType> DuplicatorType;
+    DuplicatorType::Pointer duplicator = DuplicatorType::New();
+    duplicator->SetInputImage(itkConverter->GetOutput());
+    duplicator->Update();
+        
+    typedef itk::CastImageFilter<ImageType,FloatImageType> CastImageType;
+    CastImageType::Pointer castImage = CastImageType::New();
+    castImage->SetInput(duplicator->GetOutput());
+    castImage->Update();
+    
+    return castImage->GetOutput();
+
+}
+
+vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::convertToVTKImage(FloatImageType::Pointer itkImage)
+{  
+	CastFilterType::Pointer castProbabilityFilter = CastFilterType::New();
+	castProbabilityFilter->SetInput(itkImage);
+	castProbabilityFilter->Update(); 
+    
+	typedef itk::ImageToVTKImageFilter<ImageType> VTKConverterType;
+	VTKConverterType::Pointer vtkConverter = VTKConverterType::New();
+	vtkConverter->SetInput(castProbabilityFilter->GetOutput());
+	vtkConverter->Update();
+    
+	vtkSmartPointer<vtkImageData> tempImage = vtkSmartPointer<vtkImageData>::New();
+	tempImage->DeepCopy(vtkConverter->GetOutput());
+    
+	return tempImage;
+}

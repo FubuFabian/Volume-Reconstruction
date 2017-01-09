@@ -1,0 +1,14 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = True
+CompressedDataSize = 12860654
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 26.4805 -367.35 33.1792
+CenterOfRotation = 0 0 0
+ElementSpacing = 0.199413 0.196785 0.196785
+DimSize = 297 416 305
+AnatomicalOrientation = ???
+ElementType = MET_UCHAR
+ElementDataFile = Raton.raw

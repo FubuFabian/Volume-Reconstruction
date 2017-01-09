@@ -47,7 +47,8 @@ SET(AppSrcs main.cpp mainwindow.cpp QVTKImageWidget.cpp QVTKImageWidgetCommand.c
     
 SET(AppHeaders mainwindow.h QVTKImageWidget.h QVTKImageWidgetCommand.h 
     ProbeCalibrationWidget.h Calibration.h VolumeReconstructionWidget.h
-    VolumeReconstruction.h VolumeReconstructionPBM.h CropImagesWidget.h)
+    VolumeReconstruction.h VolumeReconstructionPBM.h CropImagesWidget.h
+    itkImageToVTKImageFilter.h itkVTKImageToImageFilter.h)
     
 SET(AppUI mainwindow.ui ProbeCalibrationWidget.ui VolumeReconstructionWidget.ui 
     CropImagesWidget.ui)
