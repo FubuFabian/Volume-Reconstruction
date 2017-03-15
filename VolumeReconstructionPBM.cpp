@@ -14,9 +14,10 @@
 #include <itkVTKImageToImageFilter.h>
 #include <itkImageDuplicator.h>
 
-
+#include <algorithm>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 
 vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
@@ -76,7 +77,7 @@ vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
     }
 
     /////////////////////////////////
-	this->binFillingAdaptiveGauss();
+	this->binFillingGauss();
 	this->holeFillingGrowingRegion();
   
     return volumeData;
@@ -85,11 +86,6 @@ vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
 
 void VolumeReconstructionPBM::binFillingNN()
 {
-	/////////////////////////////
-	//ofstream out;
-	//out.open ("Dimensiones3_Vox.txt");
-	//////////////////////////////////
-
     std::cout<<"Calculating voxel values"<<std::flush;
     clock_t begin = clock();
 
@@ -117,39 +113,49 @@ void VolumeReconstructionPBM::binFillingNN()
                 voxel[0] = vtkMath::Floor((transformedPoint[0] - volumeOrigin[0])/(scale[0]*resolution));
                 voxel[1] = vtkMath::Floor((transformedPoint[1] - volumeOrigin[1])/(scale[1]*resolution));
                 voxel[2] = vtkMath::Floor((transformedPoint[2] - volumeOrigin[2])/(scale[1]*resolution));                
-                                                                  
-                unsigned char * imagePixel = static_cast<unsigned char *> (
-                        volumeImageStack.at(i)->GetScalarPointer(x, y, 0));
-				
-				//////////////////////////
-				//if((int)imagePixel[0]!=0)
-				//	out<<voxel[0]<<" "<<voxel[1]<<" "<<voxel[2]<<" "<<(int)imagePixel[0]<<"\n";
-                //////////////////////////
+                
+				//voxel[0] = vtkMath::Floor((pixelCoordsXStack.at(i)[x][y] - volumeOrigin[0])/(scale[0]*resolution));
+                //voxel[1] = vtkMath::Floor((pixelCoordsYStack.at(i)[x][y] - volumeOrigin[1])/(scale[1]*resolution));
+                //voxel[2] = vtkMath::Floor((pixelCoordsZStack.at(i)[x][y] - volumeOrigin[2])/(scale[1]*resolution));                
+                
+                //if (voxel[0] < volumeSize[0] && voxel[0] > 0 && 
+                //        voxel[1] < volumeSize[1] && voxel[1] > 0 &&
+                //        voxel[2] < volumeSize[2] && voxel[2] > 0)
+                //{                                                    
+                    unsigned char * imagePixel = static_cast<unsigned char *> (
+                            volumeImageStack.at(i)->GetScalarPointer(x, y, 0));
+                    
 
-                // get pointer to the current volume voxel 
-                unsigned char * volumeVoxel = static_cast<unsigned char *> (
-                        volumeData->GetScalarPointer(voxel[0], voxel[1], voxel[2]));
+                    // get pointer to the current volume voxel 
+                    unsigned char * volumeVoxel = static_cast<unsigned char *> (
+                            volumeData->GetScalarPointer(voxel[0], voxel[1], voxel[2]));
 
-                // get pointer to the current accumator volume voxel 
-                float * accDataVoxel = static_cast<float *> (
-                        AccDataVolume->GetScalarPointer(voxel[0], voxel[1], voxel[2]));
-
-
-                // get pointer to the current fill volume voxel 
-                unsigned char * fillVoxel = static_cast<unsigned char *> (
-                        filledVolume->GetScalarPointer(voxel[0], voxel[1], voxel[2]));
+                    // get pointer to the current accumator volume voxel 
+                    unsigned char * accDataVoxel = static_cast<unsigned char *> (
+                            AccDataVolume->GetScalarPointer(voxel[0], voxel[1], voxel[2]));
 
 
-                // set voxel value with the corresponding pixel value
-				if (fillVoxel[0] == 0){
-					fillVoxel[0] = 1;
-				}
+                    // get pointer to the current fill volume voxel 
+                    unsigned char * fillVoxel = static_cast<unsigned char *> (
+                            filledVolume->GetScalarPointer(voxel[0], voxel[1], voxel[2]));
 
-				accDataVoxel[0]+= 1;
 
-				float temp = volumeVoxel[0] + (imagePixel[0]-volumeVoxel[0])/accDataVoxel[0];
-				volumeVoxel[0] = (unsigned char) temp;
-				
+                    // set voxel value with the corresponding pixel value
+                    if (fillVoxel[0] == 0)
+                    {
+                        volumeVoxel[0] = imagePixel[0];
+                        accDataVoxel[0] = 1;
+                        fillVoxel[0] = 1;
+                    }
+                    else
+                    {
+                        float temp = ((volumeVoxel[0] * accDataVoxel[0]) + imagePixel[0]) /
+                                (accDataVoxel[0] + 1);
+                        volumeVoxel[0] = (unsigned char) temp;
+                        accDataVoxel[0]++;
+                    }      
+                
+                //}
           }
         }                
     
@@ -157,19 +163,17 @@ void VolumeReconstructionPBM::binFillingNN()
 
     clock_t end = clock();
     double diffticks = end - begin;
-    double diffms = (diffticks) / CLOCKS_PER_SEC;
-    std::cout<<std::endl<<"Time elapsed in bin-filling : "<< double(diffms)<<" ms" <<std::endl;
+    double diffms = (diffticks * 10) / CLOCKS_PER_SEC;
+    std::cout<<std::endl<<"Time elapsed reconstructing volume: "<< double(diffms)<<" ms" <<std::endl;
 
-	////////////////
-	//out.close();
-	///////////////
 }
 
 void VolumeReconstructionPBM::binFillingGauss()
 {
 
-	float sigma = 2.5;
-	int wSize = 2*(vtkMath::Round((2*sigma+1)/2))-1;
+	float sigma = 1;
+	float hSize = sigma*3;
+	int wSize = 2*(vtkMath::Round(((2*hSize)+1)/2))-1;
 	int wCenter = vtkMath::Floor(wSize/2); 
 	std::vector<std::vector<std::vector<double> > > gaussKernel;
 	
@@ -225,7 +229,7 @@ void VolumeReconstructionPBM::binFillingGauss()
                         volumeImageStack.at(i)->GetScalarPointer(x, y, 0));
 
 				// create subvolume extent
-				int subX1 = ((voxel[0] - wCenter) < 0) ? voxel[0] : voxel[0] - wCenter;
+				int subX1 = ((voxel[0] - wCenter) < 0) ? 0 : voxel[0] - wCenter;
 				int subX2 = ((voxel[0] + wCenter) >= volumeSize[0]) ? volumeSize[0]-1 : voxel[0] + wCenter;
 				int subY1 = ((voxel[1] - wCenter) < 0) ? 0 : voxel[1] - wCenter;
 				int subY2 = ((voxel[1] + wCenter) >= volumeSize[1]) ? volumeSize[1]-1 : voxel[1] + wCenter;
@@ -262,6 +266,11 @@ void VolumeReconstructionPBM::binFillingGauss()
 							float sum = volumeVoxel[0]*accDataVoxel[0] + imagePixel[0]*gaussVal;
 							accDataVoxel[0] = accDataVoxel[0] + gaussVal;
 							volumeVoxel[0] = sum/accDataVoxel[0];
+							
+							//MAX
+							/*float temp = imagePixel[0]*gaussVal;
+							if(volumeVoxel[0]<temp)
+								volumeVoxel[0] = temp;*/
 
 						}
 					}
@@ -299,11 +308,14 @@ void VolumeReconstructionPBM::binFillingAdaptiveGauss()
 	point[2]=0;
 	point[3]=1;
 
+	std::vector<int> kernelCount;
+
     for (int i = 0; i < volumeImageStack.size(); i++)
+	//for (int i = 357; i < 358; i++)
     {
         int * imageSize = volumeImageStack.at(i)->GetDimensions();
         std::cout<<"."<<std::flush;
-        
+
         for (int x = 0; x<imageSize[0]; x++){
             for (int y = 0; y<imageSize[1]; y++){
                 
@@ -326,6 +338,8 @@ void VolumeReconstructionPBM::binFillingAdaptiveGauss()
 				double temp = (double(gradientValue[0])/255)*(gaussKernelsStack.size() - 1);
 				int kernel = vtkMath::Round(temp);
 				gaussKernel = gaussKernelsStack.at(kernel);
+
+				kernelCount.push_back(kernel);
 
 				int wSize = gaussKernel.size();
 				int wCenter = vtkMath::Floor(wSize/2); 
@@ -378,6 +392,14 @@ void VolumeReconstructionPBM::binFillingAdaptiveGauss()
     
      }
 
+
+	for(int b=0;b<gaussKernelsStack.size();b++){
+		int mycount = std::count(kernelCount.begin(), kernelCount.end(), b);
+		std::cout<<b<<" count: "<<mycount<<std::endl;
+	}
+
+	std::cout<<"Number of pixels: "<<kernelCount.size()<<std::endl;
+
     clock_t end = clock();
     double diffticks = end - begin;
     double diffms = (diffticks) / CLOCKS_PER_SEC;
@@ -393,87 +415,144 @@ void VolumeReconstructionPBM::holeFillingFixedRegion()
 	int windowStep = vtkMath::Floor(kernelSize/2);
     
     double maxDistance = calcMaxDistance();
-    std::cout<<"Filling Empty Voxels with a max Kernel of "<<kernelSize<<"x"<<kernelSize<<std::endl;
+    std::cout<<"Filling Empty Voxels with a Kernel of "<<kernelSize<<std::endl;
     
     clock_t begin = clock();
 
-    // create volume pointers
-    unsigned char * filledVoxel;
-    unsigned char * innerVoxel;
-
-    for(int x=0; x<volumeSize[0]; x++){
-		std::cout<<"."<<std::flush;
-		for(int y=0; y<volumeSize[1]; y++){
-			for(int z=0; z<volumeSize[2]; z++){
-
-					filledVoxel = static_cast<unsigned char *>
-							(filledVolume->GetScalarPointer(x, y, z));
-
-					if (filledVoxel[0] == 0)
-					{               			
-
-						// create subvolume extent
-						int subX1 = ((x - windowStep) < 0) ? 0 : x - windowStep;
-						int subX2 = ((x + windowStep) >= volumeSize[0]) ? volumeSize[0]-1 : x + windowStep;
-						int subY1 = ((y - windowStep) < 0) ? 0 : y - windowStep;
-						int subY2 = ((y + windowStep) >= volumeSize[1]) ? volumeSize[1]-1 : y + windowStep;
-						int subZ1 = ((z - windowStep) < 0) ? 0 : z - windowStep;
-						int subZ2 = ((z + windowStep) >= volumeSize[2]) ? volumeSize[2]-1 : z + windowStep;
-
-						for (int i = subX1; i <= subX2; i++){
-							for (int j = subY1; j <= subY2; j++){
-								for (int k = subZ1; k < subZ2; k++){
-	                                
-									if (x == i && y == j && z == k)
-										continue;
-
-									innerVoxel = static_cast<unsigned char *> (
-											filledVolume->GetScalarPointer(i,j,k));
-
-									if (innerVoxel[0] != 0)
-									{
-										double distance = sqrt(pow(double(x-i),2)+pow(double(y-j),2)+pow(double(z-k),2));
-	                                    
-										//double w = exp(-0.5*pow(distance/maxDistance,2.0)); //Gaus
-										double w = 1 - distance/maxDistance; //Lineal
-
-										// get pointer to the current volume voxel 
-										unsigned char *imageVoxel = static_cast<unsigned char *> (
-												volumeData->GetScalarPointer(i,j,k));
-
-										// get pointer to the current volume voxel 
-										unsigned char * volumeVoxel = static_cast<unsigned char *> (
-												volumeData->GetScalarPointer(x,y,z));
-
-										// get pointer to the current accumator volume voxel 
-										float * accDataVoxel = static_cast<float *> (
-												AccDataVolume->GetScalarPointer(x,y,z));
-															
-										accDataVoxel[0]++;
-
-										float temp = volumeVoxel[0] + (w*imageVoxel[0]-volumeVoxel[0])/accDataVoxel[0];
-										volumeVoxel[0] = (unsigned char) temp;
-
-									}
-								}
-							}
-						}
-
-						cont++;
-	  
-					}
-				}
-			}
+    // create an interpolation buffer
+    vtkSmartPointer<vtkImageData> InterpolationVolume = vtkSmartPointer<vtkImageData>::New();
+    InterpolationVolume->SetScalarTypeToUnsignedChar();
+    InterpolationVolume->SetNumberOfScalarComponents(1);
+    InterpolationVolume->SetOrigin(volumeOrigin[0],volumeOrigin[1],volumeOrigin[2]);
+    InterpolationVolume->SetDimensions(volumeSize[0],volumeSize[1],volumeSize[2]);
+    InterpolationVolume->SetSpacing(scale[0]*resolution,scale[1]*resolution,scale[1]*resolution);
+    InterpolationVolume->AllocateScalars();   
+    
+    unsigned char * interpolationVoxel;
+    
+    for(int i=0; i<volumeSize[0]; i++){
+	for(int j=0; j<volumeSize[1]; j++){
+		for(int k=0; k<volumeSize[2]; k++){
+                    
+                    // get pointer to the current volume voxel   
+                    interpolationVoxel = static_cast<unsigned char *> (
+                            InterpolationVolume->GetScalarPointer(i,j,k));                   
+                    
+                    interpolationVoxel[0] = 0;                                    
+                }
+        }
     }
 
+
+    // create volume pointers
+    unsigned char * voxel;
+    unsigned char * filledVoxel;
+    unsigned char * innerVoxel;
+    unsigned char * interpVoxel;
+    
+    vnl_vector<double> centralVoxel;
+    centralVoxel.set_size(3);
+    
+    vnl_vector<double> foundVoxel;
+    foundVoxel.set_size(3);
+
+    for(int x=0; x<volumeSize[0]; x++){
+        
+	std::cout<<"."<<std::flush;
+
+	for(int y=0; y<volumeSize[1]; y++){
+		for(int z=0; z<volumeSize[2]; z++){
+
+                filledVoxel = static_cast<unsigned char *>
+                        (filledVolume->GetScalarPointer(x, y, z));
+
+                if (filledVoxel[0] == 0)
+                {
+                    // center window point
+                    centralVoxel[0] = x;
+                    centralVoxel[1] = y;
+                    centralVoxel[2] = z;
+
+                    float acc = 0;
+                    int idx = 0;
+
+                        // create subvolume extent
+                        int subX1 = ((x - windowStep) < 0) ? 0 : x - windowStep;
+                        int subX2 = ((x + windowStep) >= volumeSize[0]) ? volumeSize[0]-1 : x + windowStep;
+                        int subY1 = ((y - windowStep) < 0) ? 0 : y - windowStep;
+                        int subY2 = ((y + windowStep) >= volumeSize[1]) ? volumeSize[1]-1 : y + windowStep;
+                        int subZ1 = ((z - windowStep) < 0) ? 0 : z - windowStep;
+                        int subZ2 = ((z + windowStep) >= volumeSize[2]) ? volumeSize[2]-1 : z + windowStep;
+
+                        for (int i = subX1; i <= subX2; i++){
+                            for (int j = subY1; j <= subY2; j++){
+                                for (int k = subZ1; k < subZ2; k++){
+                                    
+                                    if (x == i && y == j && z == k)
+                                        continue;
+
+                                    innerVoxel = static_cast<unsigned char *> (
+                                            volumeData->GetScalarPointer(i, j, k));
+
+                                    if (innerVoxel[0] != 0)
+                                    {
+                                        foundVoxel[0] = i;
+                                        foundVoxel[1] = j;
+                                        foundVoxel[2] = k;
+                                        
+                                        double distance = vnl_vector_ssd(centralVoxel,foundVoxel);
+                                        
+                                        double w = exp(-0.5*pow(distance/maxDistance,2.0)); //Gaus
+                                        //double w = 1 - distance/maxDistance; //Lineal
+
+                                        acc += w*innerVoxel[0];
+
+                                        idx++;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (idx != 0)
+                        {
+                            acc /= idx;
+
+                            interpVoxel = static_cast<unsigned char*>
+                                    (InterpolationVolume->GetScalarPointer(x, y, z));
+                            interpVoxel[0] = acc;
+                        }
+                      
+                }
+            }
+        }
+    }
+
+
+    for(int x=0; x<volumeSize[0]; x++){
+	for(int y=0; y<volumeSize[1]; y++){
+		for(int z=0; z<volumeSize[2]; z++){
+                    
+                    
+                interpVoxel = static_cast<unsigned char*>
+                        (InterpolationVolume->GetScalarPointer(x, y, z));
+                
+                if (interpVoxel[0] != 0)
+                {
+                    voxel = static_cast<unsigned char *>
+                            (volumeData->GetScalarPointer(x, y, z));
+
+
+
+                    voxel[0] = interpVoxel[0];
+                }
+            }
+        }
+    }
     
     clock_t end = clock();
     double diffticks = end - begin;
-    double diffms = (diffticks) / CLOCKS_PER_SEC;
-    std::cout<<std::endl<<"Time elapsed in hole-filling: "<< double(diffms)<<" s" <<std::endl;
-	std::cout<<cont<<" voxels filled in the hole-filling step"<<std::endl;
-	filledVolume->Delete();
-	AccDataVolume->Delete();
+    double diffms = (diffticks * 10) / CLOCKS_PER_SEC;
+    std::cout<<std::endl<<"Time elapsed filling volume: "<< double(diffms)<<" ms" <<std::endl;
 
 }
 
@@ -636,7 +715,8 @@ void VolumeReconstructionPBM::computeGaussKernels(float maxVariance, float step)
 
 	for(int k=0;k<nKernels;k++){
 
-		int wSize = 2*(vtkMath::Round((2*sigma+1)/2))-1;
+		float hSize = sigma*3;
+		int wSize = 2*(vtkMath::Round(((2*hSize)+1)/2))-1;
 		int wCenter = vtkMath::Floor(wSize/2); 
 		std::vector<std::vector<std::vector<double> > > gaussKernel;
 
@@ -708,7 +788,7 @@ void VolumeReconstructionPBM::computeImageGradient()
 
 	}
 
-	vtkSmartPointer<vtkBMPWriter> writer = vtkSmartPointer<vtkBMPWriter>::New();
+	/*vtkSmartPointer<vtkBMPWriter> writer = vtkSmartPointer<vtkBMPWriter>::New();
 	
 	QString saveDirectory = QString("C:/Users/Fubu/Desktop/Gradiente");
 
@@ -741,7 +821,7 @@ void VolumeReconstructionPBM::computeImageGradient()
 			writer->SetInput(gradientImageStack.at(i));
 			writer->Write();
 	
-	}
+	}*/
 
 }
 

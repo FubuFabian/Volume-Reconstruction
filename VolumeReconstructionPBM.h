@@ -9,8 +9,6 @@
 #include <itkCastImageFilter.h>
 #include <itkImage.h>
 
-
-
 // Other includes 
 #include <vnl/vnl_matrix.h>
 #include <vnl/vnl_vector.h>

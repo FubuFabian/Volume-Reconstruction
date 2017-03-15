@@ -32,6 +32,20 @@
 #include <vtkColorTransferFunction.h>
 #include <vtkMath.h>
 #include <vtkMetaImageReader.h>
+#include <vtkMetaImageWriter.h>
+
+#include <vtkImageShiftScale.h>
+#include <vtkImageLuminance.h>
+
+#include <itkDiscreteGaussianImageFilter.h>
+#include <itkRescaleIntensityImageFilter.h>
+#include <itkImageToVTKImageFilter.h>
+#include <itkVTKImageToImageFilter.h>
+#include <itkImageDuplicator.h>
+
+#include <exception>
+
+using namespace std;
 
 QVTKImageWidget::QVTKImageWidget(QWidget *parent) : QWidget(parent)
 {
@@ -301,6 +315,55 @@ void QVTKImageWidget::setAndDisplayVolume(QString volumeFilename)
 
     volumeData = reader->GetOutput();
 
+	//////////////////////////////
+
+	/*typedef itk::DiscreteGaussianImageFilter<FilterFloatImageType,FilterFloatImageType >  FilterType;
+	FilterType::Pointer filter = FilterType::New();
+	filter->SetInput(this->convertToITKImage(volumeData));
+	filter->SetVariance(3.5);
+	filter->SetMaximumKernelWidth(7);
+	filter->Update();
+
+	typedef itk::RescaleIntensityImageFilter<FilterFloatImageType,FilterFloatImageType> RescaleFilterType;
+    RescaleFilterType::Pointer normalizeFilter = RescaleFilterType::New();
+	normalizeFilter->SetOutputMaximum(255);
+	normalizeFilter->SetOutputMinimum(0);
+	normalizeFilter->SetInput(filter->GetOutput());
+	normalizeFilter->Update(); 
+
+	vtkSmartPointer<vtkMetaImageWriter> writer = vtkSmartPointer<vtkMetaImageWriter>::New();
+
+	QString saveDirectoryMHD = QString("C:/Users/Fabian/Desktop/");
+	QString saveDirectoryRAW = QString("C:/Users/Fabian/Desktop/");
+
+	QString mhd = saveDirectoryMHD.append("Vol.mhd");
+	const char * saveFileMHD;
+	std::string str1;
+	str1 = std::string(mhd.toAscii().data());
+	saveFileMHD = str1.c_str();
+
+	QString raw = saveDirectoryRAW.append("Vol.raw");
+	const char * saveFileRAW;
+	std::string str2;
+	str2 = std::string(raw.toAscii().data());
+	saveFileRAW = str2.c_str();
+
+	std::cout<<"Saving Volume in files:"<<std::endl<<std::endl;
+	std::cout<<saveFileMHD<<std::endl<<std::endl;
+	std::cout<<saveFileRAW<<std::endl;
+
+	writer->SetFileName(saveFileMHD);
+	writer->SetRAWFileName(saveFileRAW);
+	writer->SetInput(this->convertToVTKImage(normalizeFilter->GetOutput()));
+
+	try{
+		writer->Write();
+	}catch( exception& e ){
+		std::cout<<e.what()<<std::endl;
+	}*/
+
+	//////////////////////////////////////////////////
+
     volumeProperty = vtkSmartPointer<vtkVolumeProperty>::New();
 
     vtkSmartPointer<vtkVolumeRayCastCompositeFunction> rayCastFunction =
@@ -335,6 +398,12 @@ void QVTKImageWidget::setAndDisplayVolume(QString volumeFilename)
     volume->SetOrigin(0,0,0);
     volume->SetProperty(volumeProperty);
     volume->Update();
+
+	/////////////////////////////////
+
+
+
+	////////////////////////////////
 
     this->displayVolume(volume);
 
@@ -701,3 +770,53 @@ int QVTKImageWidget::getImageDisplayedIndex()
     return imageDisplayedIndex;
 }
 
+typedef itk::Image<float, 3> FilterFloatImageType;
+FilterFloatImageType::Pointer QVTKImageWidget::convertToITKImage(vtkSmartPointer<vtkImageData> vtkImage)
+{
+    
+    int numberOfScalars = vtkImage->GetNumberOfScalarComponents();
+    
+    typedef itk::VTKImageToImageFilter<FilterImageType> ITKConverterType;
+    ITKConverterType::Pointer itkConverter = ITKConverterType::New();
+    
+    if(numberOfScalars==3){
+        vtkSmartPointer<vtkImageLuminance> imageLuminance = vtkSmartPointer<vtkImageLuminance>::New();
+        imageLuminance->SetInput(vtkImage);
+        imageLuminance->Update();
+        itkConverter->SetInput(imageLuminance->GetOutput());
+    }else{
+        itkConverter->SetInput(vtkImage);
+    }
+
+	itkConverter->Update();
+    
+    typedef itk::ImageDuplicator<FilterImageType> DuplicatorType;
+    DuplicatorType::Pointer duplicator = DuplicatorType::New();
+    duplicator->SetInputImage(itkConverter->GetOutput());
+    duplicator->Update();
+        
+    typedef itk::CastImageFilter<FilterImageType,FilterFloatImageType> CastImageType;
+    CastImageType::Pointer castImage = CastImageType::New();
+    castImage->SetInput(duplicator->GetOutput());
+    castImage->Update();
+    
+    return castImage->GetOutput();
+
+}
+
+vtkSmartPointer<vtkImageData> QVTKImageWidget::convertToVTKImage(FilterFloatImageType::Pointer itkImage)
+{  
+	CastFilterType::Pointer castProbabilityFilter = CastFilterType::New();
+	castProbabilityFilter->SetInput(itkImage);
+	castProbabilityFilter->Update(); 
+    
+	typedef itk::ImageToVTKImageFilter<FilterImageType> VTKConverterType;
+	VTKConverterType::Pointer vtkConverter = VTKConverterType::New();
+	vtkConverter->SetInput(castProbabilityFilter->GetOutput());
+	vtkConverter->Update();
+    
+	vtkSmartPointer<vtkImageData> tempImage = vtkSmartPointer<vtkImageData>::New();
+	tempImage->DeepCopy(vtkConverter->GetOutput());
+    
+	return tempImage;
+}

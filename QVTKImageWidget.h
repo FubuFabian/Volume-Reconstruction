@@ -37,7 +37,8 @@
 #include <vnl/vnl_matrix.h>
 #include <vnl/vnl_vector.h>
 
-
+#include <itkCastImageFilter.h>
+#include <itkImage.h>
 
 typedef itk::RGBPixel< unsigned char > RGBPixelType;
 typedef itk::Image< unsigned char > ImageType;
@@ -52,6 +53,11 @@ class QVTKImageWidget : public QWidget {
     Q_OBJECT    
     
 public:
+
+	typedef itk::Image<unsigned char, 3> FilterImageType;    
+    typedef itk::Image<float, 3> FilterFloatImageType;
+    typedef itk::CastImageFilter<FilterFloatImageType, FilterImageType> CastFilterType;
+
     /** 
      * Constructor for this ImageWidget 
      */
@@ -357,6 +363,18 @@ private:
     
     /** \brief Object for display information in the corners of the vtkImageViewer2 */
     vtkSmartPointer<vtkCornerAnnotation> cornerAnnotation;
+
+	/**
+    * \brief convert a vtk image to an itk image
+    * [out] an itk image
+    */
+    FilterFloatImageType::Pointer convertToITKImage(vtkSmartPointer<vtkImageData> vtkImage);
+    
+    /**
+    * \brief convert an itk image to a vtk image
+    * [out] a vtk image
+    */
+    vtkSmartPointer<vtkImageData> convertToVTKImage(FilterFloatImageType::Pointer itkImage);
     
 
 };
