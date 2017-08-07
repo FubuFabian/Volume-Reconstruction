@@ -75,6 +75,8 @@ public:
      */
 	vtkSmartPointer<vtkImageData> generateVolume();
 
+	void setPointCloud(std::vector<double>,std::vector<double>,std::vector<double>,std::vector<unsigned char>);
+
 private:
 
     /** Size of the volume */
@@ -108,6 +110,16 @@ private:
         /** The resolution of the volume*/
         int resolution;
 
+	std::vector<double> pointCloudX;
+
+	std::vector<double> pointCloudY;
+
+	std::vector<double> pointCloudZ;
+	
+	std::vector<unsigned char> pointCloudGray;
+
+	vtkSmartPointer<vtkImageData> volumeData;
+
     /**
      * \brief Compute the plane equation for each image
      */
@@ -124,5 +136,9 @@ private:
      * \brief Computes the voxel value using three lineal interpolation
      */
 	double calcVoxelValue(std::vector< vnl_vector<double> >, vnl_vector<double>, vnl_vector<double>);
+
+	vtkSmartPointer<vtkImageData> nearestPlane();
+
+	vtkSmartPointer<vtkImageData> nearestPixels();
 
 };

@@ -18,6 +18,12 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <iomanip>
+#include <cmath>
+
+#include <QFileDialog>
+#include <QFile>
+#include <QTextStream>
 
 
 vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
@@ -77,7 +83,7 @@ vtkSmartPointer<vtkImageData> VolumeReconstructionPBM::generateVolume()
     }
 
     /////////////////////////////////
-	this->binFillingGauss();
+	this->binFillingNN();
 	this->holeFillingGrowingRegion();
   
     return volumeData;
@@ -170,8 +176,20 @@ void VolumeReconstructionPBM::binFillingNN()
 
 void VolumeReconstructionPBM::binFillingGauss()
 {
+	QString str1 = "Choose Directory to Save Calibration";
 
-	float sigma = 1;
+	QString saveCalibrationFile = QFileDialog::getSaveFileName();
+
+    QFile file(saveCalibrationFile);
+
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text)){
+        std::cout<<"Could not open File to save the estimated calibration parameters"<<std::endl;
+        return;
+    }
+
+	QTextStream out(&file);
+
+	/*float sigma = 1;
 	float hSize = sigma*3;
 	int wSize = 2*(vtkMath::Round(((2*hSize)+1)/2))-1;
 	int wCenter = vtkMath::Floor(wSize/2); 
@@ -191,10 +209,61 @@ void VolumeReconstructionPBM::binFillingGauss()
 				float radius = pow(double(i-wCenter),2) + pow(double(j-wCenter),2) + pow(double(k-wCenter),2);
 				gaussKernel[i][j][k] = exp(-radius/(2*pow(sigma,2)));
 
-
+				out<<gaussKernel[i][j][k]<<" ";
 			}
+			out<<"\n";
 		}
+		out<<"\n";
 	}
+
+	file.close();*/
+
+	// set standard deviation to 1.0
+    double sigma = 1.0;
+    double r, s = 2.0 * sigma * sigma;
+	float hSize = sigma*3;
+	int wSize = 2*(vtkMath::Round(((2*hSize)+1)/2))-1;
+	int wCenter = vtkMath::Floor(wSize/2); 
+ 
+    // sum is for normalization
+    double sum = 0.0;
+
+	std::vector<std::vector<std::vector<double> > > gaussKernel;
+	
+	gaussKernel.resize(wSize);
+	for (int i = 0; i < wSize; ++i) {
+		gaussKernel[i].resize(wSize);
+		for (int j = 0; j < wSize; ++j)
+			gaussKernel[i][j].resize(wSize);
+    }
+ 
+    for(int x=-wCenter; x<=wCenter; x++){
+		for(int y=-wCenter; y<=wCenter; y++){
+			for(int z=-wCenter; z<=wCenter; z++){
+
+				r = sqrt(double(x*x + y*y + z*z));
+				gaussKernel[x + wCenter][y + wCenter][z + wCenter] = (exp(-(r*r)/s))/(vtkMath::Pi() * s);
+				sum += gaussKernel[x + wCenter][y + wCenter][z + wCenter];
+			
+			}
+
+        }
+
+    }
+ 
+    // normalize the Kernel
+    for(int i=0;i<wSize;i++){
+		for(int j=0;j<wSize;j++){
+			for(int k=0;k<wSize;k++){
+				//gaussKernel[i][j][k] /= sum;
+				out<<gaussKernel[i][j][k]<<" ";
+			}
+			out<<"\n";
+		}
+		out<<"\n";
+	}
+
+	file.close();
 
 	std::cout<<"Calculating voxel values with a gaussian kernel with sigma = "<<sigma<<" and a window size of "
 		<<wSize<<"x"<<wSize<<"x"<<wSize<<std::flush;
@@ -560,13 +629,10 @@ void VolumeReconstructionPBM::holeFillingGrowingRegion()
 {
 
 	int cont = 0;
-	int maxKernelSize = 11;
-
-    if(maxKernelSize%2 == 0)
-        maxKernelSize -= 1;
+	int radio = 5;
     
     double maxDistance = calcMaxDistance();
-    std::cout<<"Filling Empty Voxels with a Kernel of "<<maxKernelSize<<"x"<<maxKernelSize<<std::endl;
+    std::cout<<"Filling Empty Voxels with a Kernel of "<<radio*2 + 1<<std::endl;
     
     clock_t begin = clock();
 
@@ -574,12 +640,301 @@ void VolumeReconstructionPBM::holeFillingGrowingRegion()
     unsigned char * filledVoxel;
     unsigned char * innerVoxel;
 
+	int auxX=0, auxY=0, auxZ=0;
+
     for(int x=0; x<volumeSize[0]; x++){
         
 	std::cout<<"."<<std::flush;
 
 	for(int y=0; y<volumeSize[1]; y++){
 		for(int z=0; z<volumeSize[2]; z++){
+
+                filledVoxel = static_cast<unsigned char *>
+                        (filledVolume->GetScalarPointer(x, y, z));
+
+                if (filledVoxel[0] == 0)
+                {
+					int i=1;
+					int cant=0;
+
+					while (i <= radio)
+					{
+						//Cubrimos las caras en X negativo
+						auxX = x - i;
+						for (int j = -i; j <= i; j++)
+						{
+							auxY = y + j;
+							for (int k = -i; k <= i; k++)
+							{
+								auxZ = z + k;
+
+
+								if (auxX >= 0 && auxY >= 0 && auxZ >= 0 && auxX < volumeSize[0] && auxY < volumeSize[1] && auxZ < volumeSize[2])
+								{
+									innerVoxel = static_cast<unsigned char *> (filledVolume->GetScalarPointer(auxX,auxY,auxZ));
+									 //funcionalidad
+									if (innerVoxel[0] != 0)
+                                    {                         
+                                        double distance = sqrt(pow(double(x-auxX),2)+pow(double(y-auxY),2)+pow(double(z-auxZ),2));
+	                                    
+										//double w = exp(-0.5*pow(distance/maxDistance,2.0)); //Gaus
+										double w = 1 - distance/maxDistance; //Lineal
+
+										// get pointer to the current volume voxel 
+										unsigned char *imageVoxel = static_cast<unsigned char *> (
+												volumeData->GetScalarPointer(auxX,auxY,auxZ));
+
+										// get pointer to the current volume voxel 
+										unsigned char * volumeVoxel = static_cast<unsigned char *> (
+												volumeData->GetScalarPointer(x,y,z));
+
+										// get pointer to the current accumator volume voxel 
+										float * accDataVoxel = static_cast<float *> (
+												AccDataVolume->GetScalarPointer(x,y,z));
+															
+										accDataVoxel[0]++;
+
+										float temp = volumeVoxel[0] + (w*imageVoxel[0]-volumeVoxel[0])/accDataVoxel[0];
+										volumeVoxel[0] = (unsigned char) temp;
+										cant++;
+									}
+								}
+							}
+						}
+				
+						//Cubrimos las caras en X poditivo
+						auxX = x + i;
+						for (int j = -i; j <= i; j++)
+						{
+							auxY = y + j;
+							for (int k = -i; k <= i; k++)
+							{
+								auxZ = z + k;
+
+
+								if (auxX >= 0 && auxY >= 0 && auxZ >= 0 && auxX < volumeSize[0] && auxY < volumeSize[1] && auxZ < volumeSize[2])
+								{
+									innerVoxel = static_cast<unsigned char *> (filledVolume->GetScalarPointer(auxX,auxY,auxZ));
+									 //funcionalidad
+									if (innerVoxel[0] != 0)
+                                    {                         
+                                        double distance = sqrt(pow(double(x-auxX),2)+pow(double(y-auxY),2)+pow(double(z-auxZ),2));
+	                                    
+										//double w = exp(-0.5*pow(distance/maxDistance,2.0)); //Gaus
+										double w = 1 - distance/maxDistance; //Lineal
+
+										// get pointer to the current volume voxel 
+										unsigned char *imageVoxel = static_cast<unsigned char *> (
+												volumeData->GetScalarPointer(auxX,auxY,auxZ));
+
+										// get pointer to the current volume voxel 
+										unsigned char * volumeVoxel = static_cast<unsigned char *> (
+												volumeData->GetScalarPointer(x,y,z));
+
+										// get pointer to the current accumator volume voxel 
+										float * accDataVoxel = static_cast<float *> (
+												AccDataVolume->GetScalarPointer(x,y,z));
+															
+										accDataVoxel[0]++;
+
+										float temp = volumeVoxel[0] + (w*imageVoxel[0]-volumeVoxel[0])/accDataVoxel[0];
+										volumeVoxel[0] = (unsigned char) temp;
+										cant++;
+									}
+								}
+							}
+						}
+					
+						//calculamos caras en Y, omitiendo las ya revisadas en X
+						auxY = y - i;
+						for (int j = (-i+1); j < i; j++)
+						{
+							auxX = x + j;
+							for (int k = -i; k <= i; k++)
+							{
+								auxZ = z + k;
+
+
+								if (auxX >= 0 && auxY >= 0 && auxZ >= 0 && auxX < volumeSize[0] && auxY < volumeSize[1] && auxZ < volumeSize[2])
+								{
+									innerVoxel = static_cast<unsigned char *> (filledVolume->GetScalarPointer(auxX,auxY,auxZ));
+									 //funcionalidad
+									if (innerVoxel[0] != 0)
+                                    {                         
+                                       double distance = sqrt(pow(double(x-auxX),2)+pow(double(y-auxY),2)+pow(double(z-auxZ),2));
+	                                    
+										//double w = exp(-0.5*pow(distance/maxDistance,2.0)); //Gaus
+										double w = 1 - distance/maxDistance; //Lineal
+
+										// get pointer to the current volume voxel 
+										unsigned char *imageVoxel = static_cast<unsigned char *> (
+												volumeData->GetScalarPointer(auxX,auxY,auxZ));
+
+										// get pointer to the current volume voxel 
+										unsigned char * volumeVoxel = static_cast<unsigned char *> (
+												volumeData->GetScalarPointer(x,y,z));
+
+										// get pointer to the current accumator volume voxel 
+										float * accDataVoxel = static_cast<float *> (
+												AccDataVolume->GetScalarPointer(x,y,z));
+															
+										accDataVoxel[0]++;
+
+										float temp = volumeVoxel[0] + (w*imageVoxel[0]-volumeVoxel[0])/accDataVoxel[0];
+										volumeVoxel[0] = (unsigned char) temp;
+										cant++;
+									}
+								}
+							}
+						}
+						
+						auxY = y + i;
+						for (int j = (-i + 1); j < i; j++)
+						{
+							auxX = x + j;
+							for (int k = -i; k <= i; k++)
+							{
+								auxZ = z + k;
+
+
+								if (auxX >= 0 && auxY >= 0 && auxZ >= 0 && auxX < volumeSize[0] && auxY < volumeSize[1] && auxZ < volumeSize[2])
+								{
+									innerVoxel = static_cast<unsigned char *> (filledVolume->GetScalarPointer(auxX,auxY,auxZ));
+									 //funcionalidad
+									if (innerVoxel[0] != 0)
+                                    {                         
+                                        double distance = sqrt(pow(double(x-auxX),2)+pow(double(y-auxY),2)+pow(double(z-auxZ),2));
+	                                    
+										//double w = exp(-0.5*pow(distance/maxDistance,2.0)); //Gaus
+										double w = 1 - distance/maxDistance; //Lineal
+
+										// get pointer to the current volume voxel 
+										unsigned char *imageVoxel = static_cast<unsigned char *> (
+												volumeData->GetScalarPointer(auxX,auxY,auxZ));
+
+										// get pointer to the current volume voxel 
+										unsigned char * volumeVoxel = static_cast<unsigned char *> (
+												volumeData->GetScalarPointer(x,y,z));
+
+										// get pointer to the current accumator volume voxel 
+										float * accDataVoxel = static_cast<float *> (
+												AccDataVolume->GetScalarPointer(x,y,z));
+															
+										accDataVoxel[0]++;
+
+										float temp = volumeVoxel[0] + (w*imageVoxel[0]-volumeVoxel[0])/accDataVoxel[0];
+										volumeVoxel[0] = (unsigned char) temp;
+										cant++;
+									}
+								}
+							}
+						}
+				
+						//Revisamos las 2 caras en Z
+						auxZ = z -i;
+						for (int j = (-i + 1); j < i; j++)
+						{
+							auxX = x + j;
+							for (int k = (-i+1); k < i; k++)
+							{
+								auxY = y + k;
+
+
+								if (auxX >= 0 && auxY >= 0 && auxZ >= 0 && auxX < volumeSize[0] && auxY < volumeSize[1] && auxZ < volumeSize[2])
+								{
+									innerVoxel = static_cast<unsigned char *> (filledVolume->GetScalarPointer(auxX,auxY,auxZ));
+									 //funcionalidad
+									if (innerVoxel[0] != 0)
+                                    {                         
+                                        double distance = sqrt(pow(double(x-auxX),2)+pow(double(y-auxY),2)+pow(double(z-auxZ),2));
+	                                    
+										//double w = exp(-0.5*pow(distance/maxDistance,2.0)); //Gaus
+										double w = 1 - distance/maxDistance; //Lineal
+
+										// get pointer to the current volume voxel 
+										unsigned char *imageVoxel = static_cast<unsigned char *> (
+												volumeData->GetScalarPointer(auxX,auxY,auxZ));
+
+										// get pointer to the current volume voxel 
+										unsigned char * volumeVoxel = static_cast<unsigned char *> (
+												volumeData->GetScalarPointer(x,y,z));
+
+										// get pointer to the current accumator volume voxel 
+										float * accDataVoxel = static_cast<float *> (
+												AccDataVolume->GetScalarPointer(x,y,z));
+															
+										accDataVoxel[0]++;
+
+										float temp = volumeVoxel[0] + (w*imageVoxel[0]-volumeVoxel[0])/accDataVoxel[0];
+										volumeVoxel[0] = (unsigned char) temp;
+										cant++;
+									}
+								}
+							}
+						}
+
+						auxZ = z + i;
+						for (int j = (-i + 1); j < i; j++)
+						{
+							auxX = x + j;
+							for (int k = (-i + 1); k < i; k++)
+							{
+								auxY = y + k;
+
+
+								if (auxX >= 0 && auxY >= 0 && auxZ >= 0 && auxX < volumeSize[0] && auxY < volumeSize[1] && auxZ < volumeSize[2])
+								{
+									innerVoxel = static_cast<unsigned char *> (filledVolume->GetScalarPointer(auxX,auxY,auxZ));
+									 //funcionalidad
+									if (innerVoxel[0] != 0)
+                                    {                         
+                                        double distance = sqrt(pow(double(x-auxX),2)+pow(double(y-auxY),2)+pow(double(z-auxZ),2));
+	                                    
+										//double w = exp(-0.5*pow(distance/maxDistance,2.0)); //Gaus
+										double w = 1 - distance/maxDistance; //Lineal
+
+										// get pointer to the current volume voxel 
+										unsigned char *imageVoxel = static_cast<unsigned char *> (
+												volumeData->GetScalarPointer(auxX,auxY,auxZ));
+
+										// get pointer to the current volume voxel 
+										unsigned char * volumeVoxel = static_cast<unsigned char *> (
+												volumeData->GetScalarPointer(x,y,z));
+
+										// get pointer to the current accumator volume voxel 
+										float * accDataVoxel = static_cast<float *> (
+												AccDataVolume->GetScalarPointer(x,y,z));
+															
+										accDataVoxel[0]++;
+
+										float temp = volumeVoxel[0] + (w*imageVoxel[0]-volumeVoxel[0])/accDataVoxel[0];
+										volumeVoxel[0] = (unsigned char) temp;
+										cant++;
+									}
+								}
+							}
+						}
+				
+						if (cant > 0)
+						{
+							break;
+						}
+				
+						i++;
+					}
+				cont++;
+				}
+			}
+			
+		}
+	}
+
+	/*	for(int x=0; x<volumeSize[0]; x++){
+        
+	std::cout<<"."<<std::flush;
+	
+		for(int y=0; y<volumeSize[1]; y++){
+			for(int z=0; z<volumeSize[2]; z++){
 
                 filledVoxel = static_cast<unsigned char *>
                         (filledVolume->GetScalarPointer(x, y, z));
@@ -651,7 +1006,7 @@ void VolumeReconstructionPBM::holeFillingGrowingRegion()
 				}
             }
         }
-    }
+    }*/
     
     clock_t end = clock();
     double diffticks = end - begin;

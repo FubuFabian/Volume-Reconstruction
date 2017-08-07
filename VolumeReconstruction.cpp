@@ -2,16 +2,18 @@
 
 #include <vtkMath.h>
 #include <vtkMetaImageWriter.h>
+#include <vtkImageIterator.h>
 #include <vnl/vnl_inverse.h>
 #include <exception>
 #include <time.h>
+#include <algorithm> 
 
 vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 {
 	std::cout<<"Generating Volume Data"<<std::endl;
 	
 
-	vtkSmartPointer<vtkImageData> volumeData = vtkSmartPointer<vtkImageData>::New();
+	volumeData = vtkSmartPointer<vtkImageData>::New();
 	volumeData->SetNumberOfScalarComponents(1);
 	volumeData->SetScalarType(VTK_UNSIGNED_CHAR);
 	volumeData->SetOrigin(0,0,0);
@@ -19,10 +21,18 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 	volumeData->SetSpacing(scale[0]*resolution,scale[0]*resolution,scale[0]*resolution);
 	volumeData->AllocateScalars();
 
+	volumeData = nearestPixels();
+
+	return volumeData;
+
+}
+
+vtkSmartPointer<vtkImageData> VolumeReconstruction::nearestPlane()
+{
 	calcImagePlane();
 	maxDistance = calcMaxDistance();
 
-	std::cout<<"Calculating voxel values"<<std::flush;
+	std::cout<<"Calculating voxel values with nearest planes"<<std::flush;
 	clock_t begin = clock();
 	
 	for(int i=0; i<volumeSize[0]; i++){
@@ -31,7 +41,7 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 
 		for(int j=0; j<volumeSize[1]; j++){
 			for(int k=0; k<volumeSize[2]; k++){
-
+				
 				double voxel[3];
 				voxel[0] = i*scale[0]*resolution + volumeOrigin[0];
 				voxel[1] = j*scale[1]*resolution + volumeOrigin[1];
@@ -89,6 +99,162 @@ vtkSmartPointer<vtkImageData> VolumeReconstruction::generateVolume()
 				double voxelValue = calcVoxelValue(crossPoints, distancePlane, distance);
 
 				volumeData->SetScalarComponentFromDouble(i,j,k,0,voxelValue);
+
+
+			}
+		}
+	}
+
+	clock_t end = clock();
+	double diffticks = end - begin;
+	double diffms = (diffticks) / CLOCKS_PER_SEC;
+	std::cout<<std::endl<<"Time elapsed: "<< double(diffms)<<" ms" <<std::endl;
+
+	return volumeData;
+
+}
+
+/*struct Point{
+	unsigned char grayValue;
+	double distance;
+};
+
+bool acompare(Point lhs, Point rhs) { return lhs.distance < rhs.distance; }
+
+vtkSmartPointer<vtkImageData> VolumeReconstruction::nearestPixels()
+{
+
+	std::cout<<"Calculating voxel values with nearest pixels"<<std::flush;
+	std::cout<<"Spacing: "<<volumeData->GetSpacing()[0]<<","<<volumeData->GetSpacing()[1]<<","<<volumeData->GetSpacing()[2]<<std::endl;
+	std::cout<<"Calculating voxel values"<<std::flush;
+	clock_t begin = clock();
+	
+	for(int i=0; i<volumeSize[0]; i++){
+		
+		std::cout<<"."<<std::flush;
+
+		for(int j=0; j<volumeSize[1]; j++){
+			for(int k=0; k<volumeSize[2]; k++){
+
+				double voxel[3];
+				voxel[0] = i*scale[0]*resolution + volumeOrigin[0];
+				voxel[1] = j*scale[1]*resolution + volumeOrigin[1];
+				voxel[2] = k*scale[1]*resolution + volumeOrigin[2];
+
+				unsigned char * volumeVoxel = static_cast<unsigned char *> (
+                            volumeData->GetScalarPointer(i,j,k));
+
+				int acc = 0;
+				bool fill=false;
+				volumeVoxel[0] = 0;
+				double radius = 1.0;
+				std::vector<Point> points;
+
+				for(int x=0;x<pointCloudX.size();x++){
+					Point p;
+					p.distance = sqrt(pow(voxel[0]-pointCloudX[x],2) + pow(voxel[1]-pointCloudY[x],2) + pow(voxel[2]-pointCloudZ[x],2));
+					p.grayValue = pointCloudGray[x];
+					points.push_back(p);
+
+				}
+
+				std::sort(points.begin(),points.end(), acompare);
+				
+				while(!fill){
+
+					int idx = 0;
+					while(points[idx].distance <= radius){
+
+							double w = 1 - points[idx].distance/radius;
+
+							if(fill){
+								float temp = ((volumeVoxel[0] * acc) + w*points[idx].grayValue)/(acc + w);
+								volumeVoxel[0] = (unsigned char) temp;
+								acc += w;
+							}else{
+								volumeVoxel[0] = w*points[idx].grayValue;
+								acc = w;
+								fill = true;
+							}
+
+							idx++;
+
+					}
+					radius += 0.5;
+				}
+
+			}
+		}
+	}
+
+	clock_t end = clock();
+	double diffticks = end - begin;
+	double diffms = (diffticks) / CLOCKS_PER_SEC;
+	std::cout<<std::endl<<"Time elapsed: "<< double(diffms)<<" ms" <<std::endl;
+
+	return volumeData;
+
+}*/
+
+vtkSmartPointer<vtkImageData> VolumeReconstruction::nearestPixels()
+{
+
+	std::cout<<"Calculating voxel values with nearest pixels"<<std::flush;
+
+	double radius = 1.0;
+
+	std::cout<<"Spacing: "<<volumeData->GetSpacing()[0]<<","<<volumeData->GetSpacing()[1]<<","<<volumeData->GetSpacing()[2]<<std::endl;
+
+	std::cout<<"Calculating voxel values"<<std::flush;
+	clock_t begin = clock();
+	
+	for(int i=0; i<volumeSize[0]; i++){
+		
+		std::cout<<"."<<std::flush;
+
+		for(int j=0; j<volumeSize[1]; j++){
+			for(int k=0; k<volumeSize[2]; k++){
+
+				double voxel[3];
+				voxel[0] = i*scale[0]*resolution + volumeOrigin[0];
+				voxel[1] = j*scale[1]*resolution + volumeOrigin[1];
+				voxel[2] = k*scale[1]*resolution + volumeOrigin[2];
+
+				unsigned char * volumeVoxel = static_cast<unsigned char *> (
+                            volumeData->GetScalarPointer(i,j,k));
+
+				int acc = 0;
+				bool fill=false;
+
+				volumeVoxel[0] = 0;
+
+				while(!fill){
+
+					for(int x=0;x<pointCloudGray.size();x++){
+
+						double distance = sqrt(pow(voxel[0]-pointCloudX[x],2) + pow(voxel[1]-pointCloudY[x],2) + pow(voxel[2]-pointCloudZ[x],2));
+
+						if(distance<=radius){
+
+							double w = 1 - distance/radius;
+
+							if(fill){
+								float temp = ((volumeVoxel[0] * acc) + w*pointCloudGray[x])/(acc + w);
+								volumeVoxel[0] = (unsigned char) temp;
+								acc++;
+							}else{
+								volumeVoxel[0] = w*pointCloudGray[x];
+								acc = w;
+								fill = true;
+							}
+
+						}
+
+					}
+
+					radius += 0.5;
+				}
+
 			}
 		}
 	}
@@ -253,4 +419,17 @@ void VolumeReconstruction::setVolumeOrigin(vnl_vector<double> volumeOrigin)
 void VolumeReconstruction::setResolution(int resolution)
 {
     this->resolution = resolution;
+}
+
+void VolumeReconstruction::setPointCloud(std::vector<double> pointCloudX, 
+										 std::vector<double> pointCloudY, 
+										 std::vector<double> pointCloudZ,
+										 std::vector<unsigned char> pointCloudGray){
+
+	this->pointCloudX = pointCloudX;
+	this->pointCloudY = pointCloudY;
+	this->pointCloudZ = pointCloudZ;
+	this->pointCloudGray = pointCloudGray;
+
+
 }

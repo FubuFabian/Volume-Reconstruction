@@ -55,6 +55,7 @@ void VolumeReconstructionWidget::generate()
 	}else if(ui->voxelMethod->isChecked()){
 		
 		calcImageBounds();
+		calcPointCloud();
 		calcVolumeSize(false);
 
 		VolumeReconstruction * reconstructor = VolumeReconstruction::New();
@@ -66,6 +67,7 @@ void VolumeReconstructionWidget::generate()
 		reconstructor->setVolumeOrigin(volumeOrigin);
 		reconstructor->setVolumeSize(volumeSize);
         reconstructor->setResolution(res);
+		reconstructor->setPointCloud(pointCloudX,pointCloudY,pointCloudZ,pointCloudGray);
 		
 		volumeData = reconstructor->generateVolume();
 
@@ -255,4 +257,39 @@ void VolumeReconstructionWidget::save()
 void VolumeReconstructionWidget::setResolution(int idx)
 {
     res = idx;
+}
+
+void VolumeReconstructionWidget::calcPointCloud(){
+
+	std::cout<<"Calculating Point Cloud"<<std::endl;
+
+	vnl_vector<double> point;
+	point.set_size(4);
+	point[0]=0;
+	point[1]=0;
+	point[2]=0;
+	point[3]=1;
+
+	for(int i=0; i<volumeImageStack.size(); i++){	
+
+		 int * imageSize = volumeImageStack.at(i)->GetDimensions();
+
+	        for (int x = 0; x<imageSize[0]; x++){
+				for (int y = 0; y<imageSize[1]; y++){
+                
+					point[0]=scale[0]*x;
+					point[1]=scale[1]*y;
+	
+					vnl_vector<double> transformedPoint = transformStack.at(i)*point;
+					unsigned char * imagePixel = static_cast<unsigned char *> (
+				                volumeImageStack.at(i)->GetScalarPointer(x, y, 0));
+
+					pointCloudX.push_back(transformedPoint[0]);
+					pointCloudY.push_back(transformedPoint[1]);
+					pointCloudZ.push_back(transformedPoint[2]);	
+					pointCloudGray.push_back(imagePixel[0]);
+				}
+			}
+	}
+
 }

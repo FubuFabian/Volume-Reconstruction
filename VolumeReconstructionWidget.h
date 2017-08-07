@@ -134,6 +134,17 @@ private:
      */
 	void displayVolume();
 
+	void calcPointCloud();
+
+	std::vector<double> pointCloudX;
+
+	std::vector<double> pointCloudY;
+
+	std::vector<double> pointCloudZ;
+	
+	std::vector<unsigned char> pointCloudGray;
+	
+
 private slots:
 
     /**
